@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Steady Men 16:13 mark</title><desc id="desc">A navy circular mark with a gold crown and SM monogram.</desc>
+  <circle cx="128" cy="128" r="120" fill="#17212B"/>
+  <circle cx="128" cy="128" r="104" fill="none" stroke="#BE8B3B" stroke-width="7"/>
+  <path d="M76 84l20 19 32-38 32 38 20-19v43H76z" fill="#BE8B3B"/>
+  <path d="M88 139h80" stroke="#BE8B3B" stroke-width="4" opacity=".85"/>
+  <text x="128" y="185" text-anchor="middle" fill="#F7F4ED" font-family="Arial, Helvetica, sans-serif" font-size="55" font-weight="800" letter-spacing="-5">SM</text>
+  <text x="128" y="213" text-anchor="middle" fill="#BE8B3B" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="4">16:13</text>
+</svg>
