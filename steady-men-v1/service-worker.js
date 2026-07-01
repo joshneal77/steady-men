@@ -1,4 +1,4 @@
-const CACHE_NAME = 'steady-men-v1';
+const CACHE_NAME = 'steady-men-v1.1';
 const ASSETS = [
   './', './index.html', './css/styles.css', './js/study-data.js', './js/app.js',
   './assets/brand-mark.svg', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'
