@@ -37,11 +37,13 @@ Useful checks:
 The automatic daily reading uses `America/Toronto` time for the Niagara, Ontario group.
 
 ## PWA files
-- `manifest.webmanifest` controls the installable app name, colors, and icons.
+- `manifest.webmanifest` controls the installable app name, colors, and icon.
 - `service-worker.js` caches core files and prefers fresh network responses so updates are not stuck behind old cached pages.
-- `icons/icon-192.png` and `icons/icon-512.png` are used by the manifest and mobile install surfaces.
+- `assets/steady-men-crest.png` is the approved crest used for the page logo, favicon, Apple touch icon, and installable app icon.
 
-## Known content decisions
-The current logo file is `assets/brand-mark.svg`. If an approved crest-only production logo replaces it later, keep the filename or update all references together.
+## Logo assets
+The approved crest-only logo is `assets/steady-men-crest.png`.
+
+Use that file for compact logo placements such as the sidebar, mobile header, hero mark, footer, favicon, and app install icon. Do not restore the old temporary `assets/brand-mark.svg` or generated `icons/icon-192.png` / `icons/icon-512.png` files unless there is a clear replacement plan.
 
 The study package PDF link should point to a real, non-empty PDF before launch. If the PDF is not ready, leave `studyPackageUrl` empty so the resource card can be marked unavailable.
