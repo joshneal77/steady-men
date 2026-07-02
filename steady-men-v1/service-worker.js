@@ -1,14 +1,12 @@
-const CACHE_NAME = 'steady-men-v1.2';
+const CACHE_NAME = 'steady-men-v1.3';
 const CORE_ASSETS = [
   './',
   './index.html',
   './css/styles.css',
   './js/study-data.js',
   './js/app.js',
-  './assets/brand-mark.svg',
-  './manifest.webmanifest',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
+  './assets/steady-men-crest.png',
+  './manifest.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {
