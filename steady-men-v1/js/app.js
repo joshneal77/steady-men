@@ -1,20 +1,35 @@
 (() => {
   const byId = (id) => document.getElementById(id);
-  const dateFormatter = new Intl.DateTimeFormat(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
-  const shortDateFormatter = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });
+  const SITE_TIME_ZONE = 'America/Toronto';
 
-  function toLocalKey(date = new Date()) {
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, '0');
-    const d = String(date.getDate()).padStart(2, '0');
-    return `${y}-${m}-${d}`;
+  function dateFormatter(options) {
+    return new Intl.DateTimeFormat(undefined, { timeZone: SITE_TIME_ZONE, ...options });
   }
 
-  function parseKey(key) { return new Date(`${key}T12:00:00`); }
-  function formatDate(key) { return dateFormatter.format(parseKey(key)); }
-  function shortDate(key) { return shortDateFormatter.format(parseKey(key)); }
+  function toSiteKey(date = new Date()) {
+    const parts = dateFormatter({ year: 'numeric', month: '2-digit', day: '2-digit' })
+      .formatToParts(date)
+      .reduce((result, part) => {
+        result[part.type] = part.value;
+        return result;
+      }, {});
+    return `${parts.year}-${parts.month}-${parts.day}`;
+  }
+
+  function parseKey(key) { return new Date(`${key}T12:00:00Z`); }
+  function formatDate(key) { return dateFormatter({ weekday: 'long', month: 'long', day: 'numeric' }).format(parseKey(key)); }
+  function shortDate(key) { return dateFormatter({ month: 'short', day: 'numeric' }).format(parseKey(key)); }
   function isBefore(a, b) { return a < b; }
   function isAfter(a, b) { return a > b; }
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[char]));
+  }
 
   function getPreviewKey() {
     const value = new URLSearchParams(window.location.search).get('preview');
@@ -22,7 +37,8 @@
   }
 
   function scheduleState() {
-    const selected = getPreviewKey() || toLocalKey();
+    const preview = getPreviewKey();
+    const selected = preview || toSiteKey();
     const start = STUDY_CONFIG.startDate;
     const end = STUDY_CONFIG.endDate;
     let mode = 'active';
@@ -30,7 +46,7 @@
     if (isBefore(selected, start)) { mode = 'upcoming'; reading = READING_PLAN[0]; }
     else if (isAfter(selected, end)) { mode = 'complete'; reading = READING_PLAN[READING_PLAN.length - 1]; }
     else if (!reading) { reading = READING_PLAN[0]; }
-    return { selected, mode, reading, preview: Boolean(getPreviewKey()) };
+    return { selected, mode, reading, preview: Boolean(preview) };
   }
 
   function bibleUrl(reading) {
@@ -59,7 +75,7 @@
   }
 
   function currentStudy(selected) {
-    if (!STUDY_CONFIG.showStudyVideos) return null;
+    if (!STUDY_CONFIG.showStudyVideos || !STUDY_CONFIG.videos.length) return null;
     return STUDY_CONFIG.videos.find((video) => selected >= video.activeStart && selected <= video.activeEnd)
       || (selected < STUDY_CONFIG.videos[0].activeStart ? STUDY_CONFIG.videos[0] : STUDY_CONFIG.videos[STUDY_CONFIG.videos.length - 1]);
   }
@@ -101,7 +117,10 @@
     byId('hero-reading-link').href = url;
     byId('brotherhood-reminder').textContent = getReminder(reading.date);
     const whatsApp = byId('whatsapp-link');
-    if (STUDY_CONFIG.whatsAppUrl) { whatsApp.href = STUDY_CONFIG.whatsAppUrl; whatsApp.classList.remove('hidden'); }
+    if (STUDY_CONFIG.whatsAppUrl) {
+      whatsApp.href = STUDY_CONFIG.whatsAppUrl;
+      whatsApp.classList.remove('hidden');
+    }
   }
 
   function renderStudy(state) {
@@ -118,14 +137,15 @@
 
   function renderGatherings(state) {
     const next = nextGathering(state.selected);
-    const place = next.location ? ` · ${next.location}` : '';
+    const place = next.location ? ` · ${escapeHtml(next.location)}` : '';
     byId('next-gathering').innerHTML = `
       <div class="gathering-date-block"><span>NEXT GATHERING</span><strong>${formatDate(next.date)}</strong></div>
-      <div class="gathering-copy"><h3>${next.title}</h3><p>${next.time}${place}</p></div>
+      <div class="gathering-copy"><h3>${escapeHtml(next.title)}</h3><p>${escapeHtml(next.time)}${place}</p></div>
       <div class="gathering-countdown">${daysUntil(state.selected, next.date)}</div>`;
     byId('gathering-list').innerHTML = STUDY_CONFIG.gatherings.map((item) => {
       const isNext = item.date === next.date;
-      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${shortDate(item.date).toUpperCase()}</span><strong>${item.title}</strong><span>${item.time}${item.location ? `<br>${item.location}` : ''}</span></div>`;
+      const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
+      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${shortDate(item.date).toUpperCase()}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.time)}${location}</span></div>`;
     }).join('');
   }
 
@@ -148,7 +168,8 @@
       const open = week === activeWeek ? ' open' : '';
       return `<details class="week-details"${open}><summary class="week-summary"><span><span class="week-summary-title">Week ${week}</span><span class="week-summary-subtitle">${shortDate(start)} – ${shortDate(end)}</span></span><span class="week-summary-icon">+</span></summary><div class="reading-rows">${entries.map((reading) => {
         const today = reading.date === state.reading.date;
-        return `<div class="reading-row ${today ? 'is-today' : ''}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${today ? '<span class="today-chip">CURRENT DAY</span>' : ''}</div><div><span class="reading-cell-label">New Testament</span><a class="reading-ref" target="_blank" rel="noopener" href="${bibleUrl(reading)}">${reading.newTestament}</a></div><div><span class="reading-cell-label">Wisdom + Old Testament</span><a class="reading-ref" target="_blank" rel="noopener" href="${bibleUrl(reading)}">${reading.companion}</a></div><div class="reading-note">${reading.note}</div></div>`;
+        const url = bibleUrl(reading);
+        return `<div class="reading-row ${today ? 'is-today' : ''}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${today ? '<span class="today-chip">CURRENT DAY</span>' : ''}</div><div><span class="reading-cell-label">New Testament</span><a class="reading-ref" target="_blank" rel="noopener" href="${url}">${escapeHtml(reading.newTestament)}</a></div><div><span class="reading-cell-label">Wisdom + Old Testament</span><a class="reading-ref" target="_blank" rel="noopener" href="${url}">${escapeHtml(reading.companion)}</a></div><div class="reading-note">${escapeHtml(reading.note)}</div></div>`;
       }).join('')}</div></details>`;
     }).join('');
     const notice = byId('plan-notice');
@@ -156,7 +177,18 @@
     else if (state.mode === 'complete') { notice.style.display = 'block'; notice.textContent = 'The 2026 plan has concluded. The final anchor reading is highlighted above.'; }
   }
 
-  function renderResources() { byId('study-package-link').href = STUDY_CONFIG.studyPackageUrl; }
+  function renderResources() {
+    const studyPackage = byId('study-package-link');
+    if (!STUDY_CONFIG.studyPackageUrl) {
+      studyPackage.removeAttribute('href');
+      studyPackage.setAttribute('aria-disabled', 'true');
+      const note = studyPackage.querySelector('small');
+      if (note) note.textContent = 'Upload the PDF and add its path in js/study-data.js.';
+      return;
+    }
+    studyPackage.href = STUDY_CONFIG.studyPackageUrl;
+    studyPackage.removeAttribute('aria-disabled');
+  }
 
   function setActiveNav() {
     const sections = document.querySelectorAll('.section-anchor, #today');
@@ -178,12 +210,16 @@
       button.setAttribute('aria-expanded', String(open));
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      nav.classList.remove('open'); button.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
     }));
   }
 
   function registerServiceWorker() {
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.register('service-worker.js')
+      .then((registration) => registration.update())
+      .catch(() => {});
   }
 
   function init() {
