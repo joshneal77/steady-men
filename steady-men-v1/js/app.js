@@ -1,10 +1,23 @@
 (() => {
   const byId = (id) => document.getElementById(id);
   const SITE_TIME_ZONE = 'America/Toronto';
-  const BIBLE_APP_TEST = {
-    date: '2026-07-12',
-    url: 'https://www.bible.com/bible/1713/JHN.1.1-18.CSB',
-    label: 'Open in Bible App'
+  const BIBLE_COM_VERSION_ID = '1713';
+  const BIBLE_COM_VERSION_CODE = 'CSB';
+  const BIBLE_BOOK_CODES = {
+    'John': 'JHN',
+    'James': 'JAS',
+    'Galatians': 'GAL',
+    'Ecclesiastes': 'ECC',
+    'Proverbs': 'PRO',
+    '1 Thessalonians': '1TH',
+    'Ephesians': 'EPH',
+    'Colossians': 'COL',
+    '1 Peter': '1PE',
+    '1 Corinthians': '1CO',
+    'Hebrews': 'HEB',
+    'Romans': 'ROM',
+    '1 Timothy': '1TI',
+    '2 Timothy': '2TI'
   };
 
   function dateFormatter(options) {
@@ -26,7 +39,6 @@
   function shortDate(key) { return dateFormatter({ month: 'short', day: 'numeric' }).format(parseKey(key)); }
   function isBefore(a, b) { return a < b; }
   function isAfter(a, b) { return a > b; }
-  function isBibleAppTestReading(reading) { return reading && reading.date === BIBLE_APP_TEST.date; }
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, (char) => ({
       '&': '&amp;',
@@ -55,24 +67,52 @@
     return { selected, mode, reading, preview: Boolean(preview) };
   }
 
-  function bibleUrl(reading) {
-    if (reading.openDay) return '#reading-plan';
-    if (isBibleAppTestReading(reading)) return BIBLE_APP_TEST.url;
-    const version = STUDY_CONFIG.bibleVersion || 'CSB';
-    return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reading.scripture)}&version=${encodeURIComponent(version)}`;
+  function findBibleBook(reference) {
+    return Object.keys(BIBLE_BOOK_CODES)
+      .sort((a, b) => b.length - a.length)
+      .find((book) => reference.startsWith(`${book} `));
   }
 
-  function setReadingLink(link, reading, label = 'Read Scripture') {
+  function biblePathParts(reference) {
+    if (reference === '1 Thessalonians 4:13-5:11') return ['1TH.4.13-18', '1TH.5.1-11'];
+    return reference.split(';').flatMap((part) => {
+      const trimmed = part.trim();
+      const book = findBibleBook(trimmed);
+      if (!book) return [];
+      const code = BIBLE_BOOK_CODES[book];
+      const locator = trimmed.slice(book.length).trim();
+      if (/^\d+-\d+$/.test(locator)) {
+        const [start, end] = locator.split('-').map(Number);
+        return Array.from({ length: end - start + 1 }, (_, index) => `${code}.${start + index}`);
+      }
+      return [`${code}.${locator.replace(':', '.').replace(/\s+/g, '')}`];
+    });
+  }
+
+  function bibleUrl(reading) {
+    if (reading.openDay) return '';
+    const reference = reading.scripture.trim();
+    const useSearch = reference.includes(';') || /:\d+-\d+:\d+/.test(reference) || /^John 9-10$/.test(reference);
+    if (useSearch) return `https://www.bible.com/search/bible?q=${encodeURIComponent(reference)}&version_id=${BIBLE_COM_VERSION_ID}`;
+    const parts = biblePathParts(reference);
+    if (!parts.length) return '';
+    return `https://www.bible.com/bible/${BIBLE_COM_VERSION_ID}/${parts.map((part) => `${part}.${BIBLE_COM_VERSION_CODE}`).join(',')}`;
+  }
+
+  function setReadingLink(link, reading) {
     if (!link) return;
-    link.href = bibleUrl(reading);
-    link.textContent = reading.openDay ? 'Use Open Sunday' : (isBibleAppTestReading(reading) ? BIBLE_APP_TEST.label : label);
     if (reading.openDay) {
+      link.classList.add('hidden');
+      link.removeAttribute('href');
       link.removeAttribute('target');
       link.removeAttribute('rel');
-    } else {
-      link.target = '_blank';
-      link.rel = 'noopener';
+      return;
     }
+    link.classList.remove('hidden');
+    link.href = bibleUrl(reading);
+    link.textContent = 'Open in Bible App';
+    link.target = '_blank';
+    link.rel = 'noopener';
   }
 
   function promptFor(reading) {
@@ -114,7 +154,7 @@
     if (mode === 'upcoming') status.textContent = `The Rooted in the Word plan begins ${formatDate(STUDY_CONFIG.startDate)}. Start by looking ahead to the first reading.`;
     else if (mode === 'complete') status.textContent = 'The summer plan has concluded. Return to the final reading and keep walking steadily in the Word.';
     else status.textContent = `${formatDate(reading.date)} - open the Word, take one faithful step, and stay connected to your brothers.`;
-    setReadingLink(byId('hero-reading-link'), reading, 'Open Today\'s Reading');
+    setReadingLink(byId('hero-reading-link'), reading);
   }
 
   function renderToday(state) {
@@ -125,12 +165,13 @@
     byId('today-note').textContent = reading.note;
     byId('reflection-question').textContent = promptFor(reading);
     setReadingLink(byId('today-reading-link'), reading);
-    setReadingLink(byId('hero-reading-link'), reading, 'Open Today\'s Reading');
+    setReadingLink(byId('hero-reading-link'), reading);
     byId('brotherhood-reminder').textContent = getReminder(reading.date);
     const copyButton = byId('today-copy-button');
     if (copyButton) {
       copyButton.dataset.date = reading.date;
       copyButton.dataset.defaultLabel = 'Copy for WhatsApp';
+      copyButton.classList.toggle('hidden', Boolean(reading.openDay));
     }
     const whatsApp = byId('whatsapp-link');
     if (STUDY_CONFIG.whatsAppUrl) {
@@ -183,7 +224,8 @@
         if (current) classes.push('is-today');
         if (reading.openDay) classes.push('is-open-day');
         const studyNight = reading.studyNight ? `<div class="study-night-note">${escapeHtml(reading.studyNight)}</div>` : '';
-        return `<div class="${classes.join(' ')}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${current ? '<span class="today-chip">CURRENT DAY</span>' : ''}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">Reading Note</span>${escapeHtml(reading.note)}${studyNight}</div><div class="reading-actions"><button class="copy-reading-button" type="button" data-date="${reading.date}" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button></div></div>`;
+        const actions = reading.openDay ? '' : `<div class="reading-actions"><button class="copy-reading-button" type="button" data-date="${reading.date}" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button></div>`;
+        return `<div class="${classes.join(' ')}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${current ? '<span class="today-chip">CURRENT DAY</span>' : ''}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">Reading Note</span>${escapeHtml(reading.note)}${studyNight}</div>${actions}</div>`;
       }).join('')}</div></details>`;
     }).join('');
     const notice = byId('plan-notice');
@@ -232,11 +274,7 @@
   }
 
   function whatsappText(reading) {
-    if (isBibleAppTestReading(reading)) {
-      return `*Steady Men 16:13 — Sunday, July 12*\n\n*Reading:* John 1:1–18\n${BIBLE_APP_TEST.url}\n\n*Reading Note:*\nJohn opens by showing that Jesus is the eternal Word who was with God and is God. He is not merely a teacher or example; He is the source of life and light. A God-centered man starts by seeing Jesus for who He truly is.`;
-    }
-    const studyNight = reading.studyNight ? `\n\n${reading.studyNight}` : '';
-    return `Steady Men 16:13 - ${formatDate(reading.date)}\n${reading.openDay ? 'Open Sunday' : `Reading: ${reading.scripture}`}\nTheme: ${reading.theme}\n\n${reading.note}${studyNight}\n\nReply in WhatsApp with a checkmark, done, or a short thought when you finish.`;
+    return `*Steady Men 16:13 — ${formatDate(reading.date)}*\n\n*Reading:* ${reading.scripture}\n${bibleUrl(reading)}`;
   }
 
   function setCopyFeedback(button, message) {
@@ -251,7 +289,7 @@
 
   function handleCopyButton(button) {
     const reading = READING_PLAN.find((item) => item.date === button.dataset.date);
-    if (!reading) return;
+    if (!reading || reading.openDay) return;
     copyText(whatsappText(reading))
       .then(() => setCopyFeedback(button, 'Copied'))
       .catch(() => setCopyFeedback(button, 'Select text'));
