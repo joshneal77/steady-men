@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Steady Men 16:13 — a daily walk in the Word, honest brotherhood, and a stronger faith.">
+  <meta name="description" content="Steady Men 16:13 - Rooted in the Word: a daily walk in the Word, honest brotherhood, and steady growth.">
   <meta name="theme-color" content="#17212B">
   <meta name="color-scheme" content="light">
-  <title>Steady Men 16:13 | Today’s Journey</title>
+  <title>Steady Men 16:13 | Rooted in the Word</title>
   <link rel="icon" href="assets/steady-men-crest.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/steady-men-crest.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#today">Skip to today’s journey</a>
+  <a class="skip-link" href="#today">Skip to today's journey</a>
   <div class="app-shell">
     <aside class="sidebar" aria-label="Primary navigation">
       <a class="brand" href="#today" aria-label="Steady Men home">
@@ -23,14 +23,14 @@
       <nav class="nav-list" id="desktop-nav">
         <a href="#today" class="nav-link active" data-nav="today"><span class="nav-icon">◉</span>Today</a>
         <a href="#reading-plan" class="nav-link" data-nav="reading-plan"><span class="nav-icon">▤</span>Reading Plan</a>
-        <a href="#memory" class="nav-link" data-nav="memory"><span class="nav-icon">✦</span>Memory Verse</a>
-        <a href="#gatherings" class="nav-link" data-nav="gatherings"><span class="nav-icon">◫</span>Gatherings</a>
+        <a href="#study-nights" class="nav-link" data-nav="study-nights"><span class="nav-icon">◫</span>Study Nights</a>
+        <a href="#memory" class="nav-link" data-nav="memory"><span class="nav-icon">✦</span>Memory</a>
         <a href="#resources" class="nav-link" data-nav="resources"><span class="nav-icon">↗</span>Resources</a>
       </nav>
       <div class="sidebar-verse">
         <div class="sidebar-label">OUR FOUNDATION</div>
-        <p>“Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love.”</p>
-        <span>1 CORINTHIANS 16:13</span>
+        <p>"Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love."</p>
+        <span>1 CORINTHIANS 16:13-14</span>
       </div>
     </aside>
 
@@ -40,8 +40,8 @@
       <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
         <a href="#today" data-nav="today">Today</a>
         <a href="#reading-plan" data-nav="reading-plan">Reading Plan</a>
-        <a href="#memory" data-nav="memory">Memory Verse</a>
-        <a href="#gatherings" data-nav="gatherings">Gatherings</a>
+        <a href="#study-nights" data-nav="study-nights">Study Nights</a>
+        <a href="#memory" data-nav="memory">Memory</a>
         <a href="#resources" data-nav="resources">Resources</a>
       </nav>
     </header>
@@ -49,32 +49,35 @@
     <main class="main-content">
       <section id="today" class="hero-section section-anchor" aria-labelledby="today-heading">
         <div class="hero-content">
-          <div class="eyebrow" id="hero-kicker">TODAY’S JOURNEY</div>
-          <h1 id="today-heading">Steady Men 16:13.</h1>
-          <p id="hero-status" class="hero-status">Loading today’s reading…</p>
+          <div class="eyebrow" id="hero-kicker">ROOTED IN THE WORD</div>
+          <h1 id="today-heading">Rooted in the Word.</h1>
+          <p id="hero-status" class="hero-status">Loading today's reading...</p>
           <div class="hero-actions">
-            <a id="hero-reading-link" class="button button-primary" href="#">Open Today’s Reading <span aria-hidden="true">→</span></a>
+            <a id="hero-reading-link" class="button button-primary" href="#">Open Today's Reading <span aria-hidden="true">→</span></a>
             <a class="button button-quiet" href="#reading-plan">View Reading Plan</a>
           </div>
         </div>
         <div class="hero-side">
           <img src="assets/steady-men-crest.png" alt="" class="hero-mark">
           <div class="hero-side-rule"></div>
-          <p>A daily walk in the Word.<br>Honest brotherhood.<br>A stronger faith.</p>
+          <p>A daily walk in the Word.<br>Honest brotherhood.<br>Steady growth.</p>
         </div>
       </section>
 
-      <section class="today-grid" aria-label="Today’s journey details">
+      <section class="today-grid" aria-label="Today's journey details">
         <article class="card reading-card">
-          <div class="card-topline"><span class="card-icon">✦</span><span class="eyebrow">TODAY’S READING</span></div>
+          <div class="card-topline"><span class="card-icon">✦</span><span class="eyebrow">TODAY'S READING</span></div>
           <div id="today-date" class="card-date"></div>
           <h2 id="today-new-testament" class="reading-primary"></h2>
           <p id="today-companion" class="reading-companion"></p>
-          <a id="today-reading-link" class="text-link" href="#" target="_blank" rel="noopener">Read Scripture <span aria-hidden="true">→</span></a>
+          <div class="card-actions">
+            <a id="today-reading-link" class="text-link" href="#" target="_blank" rel="noopener">Read Scripture</a>
+            <button id="today-copy-button" class="copy-reading-button compact" type="button" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button>
+          </div>
         </article>
 
         <article class="card reflection-card">
-          <div class="card-topline"><span class="card-icon">◌</span><span class="eyebrow">TODAY’S NOTE</span></div>
+          <div class="card-topline"><span class="card-icon">◌</span><span class="eyebrow">TODAY'S NOTE</span></div>
           <h2>Keep this in view.</h2>
           <p id="today-note" class="reflection-text"></p>
           <div class="reflection-prompt"><span>Consider</span><p id="reflection-question"></p></div>
@@ -82,62 +85,54 @@
 
         <article class="card brotherhood-card">
           <div class="card-topline"><span class="card-icon">⌁</span><span class="eyebrow">BROTHERHOOD</span></div>
-          <h2>Stay connected.</h2>
+          <h2>Do not disappear.</h2>
           <p id="brotherhood-reminder" class="brotherhood-text"></p>
           <a id="whatsapp-link" class="text-link hidden" href="#" target="_blank" rel="noopener">Open WhatsApp Group <span aria-hidden="true">→</span></a>
         </article>
 
         <article class="card memory-card">
           <div class="card-topline"><span class="card-icon">⌂</span><span class="eyebrow">SUMMER MEMORY</span></div>
-          <h2>Psalm 1:1–3</h2>
-          <p>Rooted in the Word</p>
-          <a class="text-link" href="https://www.biblegateway.com/passage/?search=Psalm%201%3A1-3&version=NIV" target="_blank" rel="noopener">Open Passage <span aria-hidden="true">→</span></a>
+          <h2>Psalm 1:1-3</h2>
+          <p>Delight. Meditate. Be Rooted.</p>
+          <a class="text-link" href="https://www.biblegateway.com/passage/?search=Psalm%201%3A1-3&version=CSB" target="_blank" rel="noopener">Open Passage <span aria-hidden="true">→</span></a>
         </article>
-      </section>
-
-      <section id="study" class="study-section hidden" aria-labelledby="study-heading">
-        <div class="section-header compact">
-          <div><p class="eyebrow">CURRENT GROUP STUDY</p><h2 id="study-heading">This week’s message</h2></div>
-          <a href="#resources" class="text-link">All resources <span aria-hidden="true">→</span></a>
-        </div>
-        <article class="study-feature-card">
-          <div class="study-week-number" id="study-week-number">WEEK 1</div>
-          <div class="study-copy"><p id="study-scripture" class="eyebrow"></p><h3 id="study-title"></h3><p id="study-summary"></p></div>
-          <a id="study-video-link" class="button button-primary" href="#" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
-        </article>
-      </section>
-
-      <section id="gatherings" class="section-block section-anchor" aria-labelledby="gatherings-heading">
-        <div class="section-header"><div><p class="eyebrow">SHOW UP TOGETHER</p><h2 id="gatherings-heading">Next Gathering</h2></div><p class="section-intro">Gatherings are a place to be known, encouraged, challenged, and reminded that no man is meant to walk alone.</p></div>
-        <div id="next-gathering" class="next-gathering-card"></div>
-        <div id="gathering-list" class="gathering-list"></div>
       </section>
 
       <section id="reading-plan" class="section-block section-anchor" aria-labelledby="reading-plan-heading">
-        <div class="section-header"><div><p class="eyebrow">ROOTED IN THE WORD</p><h2 id="reading-plan-heading">Summer Reading Plan</h2></div><p class="section-intro">Read the New Testament passage first, then the wisdom or Old Testament companion reading. Read steadily, not hurriedly.</p></div>
+        <div class="section-header"><div><p class="eyebrow">JULY 12 - SEPTEMBER 5, 2026</p><h2 id="reading-plan-heading">Summer Reading Plan</h2></div><p class="section-intro">Read the assigned passage and Reading Note each day. A simple checkmark, done, or reaction in WhatsApp means completed.</p></div>
         <div id="plan-notice" class="plan-notice"></div>
         <div id="reading-plan-list" class="reading-plan-list"></div>
       </section>
 
+      <section id="study-nights" class="section-block section-anchor" aria-labelledby="study-nights-heading">
+        <div class="section-header"><div><p class="eyebrow">SHOW UP TOGETHER</p><h2 id="study-nights-heading">Steady Men Study Nights</h2></div><p class="section-intro">Every two weeks, we gather to eat together, spend time around a campfire or outdoors when possible, build community, and talk honestly about what God has been showing us through the readings.</p></div>
+        <div id="next-study-night" class="next-gathering-card"></div>
+        <div id="study-night-list" class="gathering-list"></div>
+      </section>
+
       <section id="memory" class="section-block section-anchor memory-section" aria-labelledby="memory-heading">
         <div class="memory-layout">
-          <div><p class="eyebrow">SCRIPTURE MEMORY</p><h2 id="memory-heading">Psalm 1:1–3</h2><p class="memory-lead">Throughout the summer, we are memorizing Psalm 1:1–3 together. The aim is not simply to know more verses, but to have God’s Word ready when we need truth, direction, courage, and faith.</p><a class="button button-outline" href="https://www.biblegateway.com/passage/?search=Psalm%201%3A1-3&version=NIV" target="_blank" rel="noopener">Read Psalm 1 <span aria-hidden="true">→</span></a></div>
-          <div class="memory-visual"><div class="tree-ring ring-1"></div><div class="tree-ring ring-2"></div><div class="tree-ring ring-3"></div><div class="tree-symbol">✦</div><div class="memory-ref">PSALM<br><strong>1:1–3</strong></div></div>
+          <div><p class="eyebrow">SCRIPTURE MEMORY</p><h2 id="memory-heading">Psalm 1:1-3</h2><p class="memory-lead">Delight. Meditate. Be Rooted. Memory work is encouraged, not tested. The aim is to let God's Word become steady truth we carry into prayer, temptation, decisions, and brotherhood.</p><a class="button button-outline" href="https://www.biblegateway.com/passage/?search=Psalm%201%3A1-3&version=CSB" target="_blank" rel="noopener">Read Psalm 1 <span aria-hidden="true">→</span></a></div>
+          <div class="memory-visual"><div class="tree-ring ring-1"></div><div class="tree-ring ring-2"></div><div class="tree-ring ring-3"></div><div class="tree-symbol">✦</div><div class="memory-ref">PSALM<br><strong>1:1-3</strong></div></div>
         </div>
       </section>
 
       <section id="resources" class="section-block section-anchor" aria-labelledby="resources-heading">
-        <div class="section-header"><div><p class="eyebrow">KEEP EVERYTHING TOGETHER</p><h2 id="resources-heading">Resources</h2></div></div>
+        <div class="section-header"><div><p class="eyebrow">KEEP EVERYTHING TOGETHER</p><h2 id="resources-heading">Resources</h2></div><p class="section-intro">The reading plan is the main flow. Video messages and extra materials live here as optional supports.</p></div>
         <div class="resource-grid">
-          <a id="study-package-link" class="resource-card" href="#" target="_blank" rel="noopener"><span class="resource-icon">↓</span><span><strong>Full Summer Study Package</strong><small>Reading plan, summaries, study guides, and memory cards.</small></span><span class="resource-arrow">→</span></a>
-          <a class="resource-card" href="#reading-plan"><span class="resource-icon">▤</span><span><strong>Reading Plan</strong><small>Every day of the summer in one place.</small></span><span class="resource-arrow">→</span></a>
-          <a class="resource-card" href="#memory"><span class="resource-icon">✦</span><span><strong>Memory Verse</strong><small>Psalm 1:1–3, rooted in the Word.</small></span><span class="resource-arrow">→</span></a>
+          <a id="study-package-link" class="resource-card" href="#" target="_blank" rel="noopener"><span class="resource-icon">↓</span><span><strong>Full Rooted in the Word Guide</strong><small>Reading plan, notes, study nights, and memory focus.</small></span><span class="resource-arrow">→</span></a>
+          <a class="resource-card" href="#reading-plan"><span class="resource-icon">▤</span><span><strong>Reading Plan</strong><small>Every day from July 12 to September 5 in one place.</small></span><span class="resource-arrow">→</span></a>
+          <a class="resource-card" href="#memory"><span class="resource-icon">✦</span><span><strong>Memory Focus</strong><small>Psalm 1:1-3, delighting in the Word and being rooted.</small></span><span class="resource-arrow">→</span></a>
+        </div>
+        <div class="optional-resources">
+          <div class="section-header compact"><div><p class="eyebrow">OPTIONAL SUPPORT</p><h2>Video Resources</h2></div></div>
+          <div id="optional-resource-list" class="optional-resource-list"></div>
         </div>
       </section>
 
       <footer class="site-footer">
         <div class="footer-brand"><img src="assets/steady-men-crest.png" alt=""><span><strong>STEADY MEN</strong><small>1 CORINTHIANS 16:13</small></span></div>
-        <p>Be watchful, Stand firm in the faith, act like men, be strong. Let everything you do be done in love. - ESV</p>
+        <p>Be watchful. Stand firm in the faith. Act like men. Be strong. Let everything be done in love.</p>
       </footer>
     </main>
   </div>
