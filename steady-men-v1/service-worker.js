@@ -1,4 +1,4 @@
-const CACHE_NAME = 'steady-men-v1.6';
+const CACHE_NAME = 'steady-men-v1.7';
 const CORE_ASSETS = [
   './',
   './index.html',
