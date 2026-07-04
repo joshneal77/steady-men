@@ -1,6 +1,11 @@
 (() => {
   const byId = (id) => document.getElementById(id);
   const SITE_TIME_ZONE = 'America/Toronto';
+  const BIBLE_APP_TEST = {
+    date: '2026-07-12',
+    url: 'https://www.bible.com/bible/1713/JHN.1.1-18.CSB',
+    label: 'Open in Bible App'
+  };
 
   function dateFormatter(options) {
     return new Intl.DateTimeFormat(undefined, { timeZone: SITE_TIME_ZONE, ...options });
@@ -21,6 +26,7 @@
   function shortDate(key) { return dateFormatter({ month: 'short', day: 'numeric' }).format(parseKey(key)); }
   function isBefore(a, b) { return a < b; }
   function isAfter(a, b) { return a > b; }
+  function isBibleAppTestReading(reading) { return reading && reading.date === BIBLE_APP_TEST.date; }
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, (char) => ({
       '&': '&amp;',
@@ -51,6 +57,7 @@
 
   function bibleUrl(reading) {
     if (reading.openDay) return '#reading-plan';
+    if (isBibleAppTestReading(reading)) return BIBLE_APP_TEST.url;
     const version = STUDY_CONFIG.bibleVersion || 'CSB';
     return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reading.scripture)}&version=${encodeURIComponent(version)}`;
   }
@@ -58,7 +65,7 @@
   function setReadingLink(link, reading, label = 'Read Scripture') {
     if (!link) return;
     link.href = bibleUrl(reading);
-    link.textContent = reading.openDay ? 'Use Open Sunday' : label;
+    link.textContent = reading.openDay ? 'Use Open Sunday' : (isBibleAppTestReading(reading) ? BIBLE_APP_TEST.label : label);
     if (reading.openDay) {
       link.removeAttribute('target');
       link.removeAttribute('rel');
@@ -225,6 +232,9 @@
   }
 
   function whatsappText(reading) {
+    if (isBibleAppTestReading(reading)) {
+      return `*Steady Men 16:13 — Sunday, July 12*\n\n*Reading:* John 1:1–18\n${BIBLE_APP_TEST.url}\n\n*Reading Note:*\nJohn opens by showing that Jesus is the eternal Word who was with God and is God. He is not merely a teacher or example; He is the source of life and light. A God-centered man starts by seeing Jesus for who He truly is.`;
+    }
     const studyNight = reading.studyNight ? `\n\n${reading.studyNight}` : '';
     return `Steady Men 16:13 - ${formatDate(reading.date)}\n${reading.openDay ? 'Open Sunday' : `Reading: ${reading.scripture}`}\nTheme: ${reading.theme}\n\n${reading.note}${studyNight}\n\nReply in WhatsApp with a checkmark, done, or a short thought when you finish.`;
   }
