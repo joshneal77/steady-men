@@ -9,8 +9,8 @@ The site lives in `steady-men-v1/`. Do not move these files unless the Vercel pr
 Most routine content changes happen in `js/study-data.js`.
 
 - `startDate` and `endDate`: Rooted in the Word date range.
-- `whatsAppUrl`: paste the group invite link when ready.
-- `studyPackageUrl`: path or URL for the uploaded full guide PDF.
+- `whatsAppUrl`: leave blank when men are being added to WhatsApp individually; add a group invite link only if the site should show one.
+- `studyPackageUrl`: path or URL for the uploaded full guide file.
 - `studyNights`: dates, titles, times, locations, and notes.
 - `optionalResources`: optional video or support links shown under Resources.
 - `brotherhoodReminders`: short rotating connection reminders.
@@ -47,4 +47,4 @@ The approved crest-only logo is `assets/steady-men-crest.png`.
 
 Use that file for compact logo placements such as the sidebar, mobile header, hero mark, footer, favicon, and app install icon. Do not restore the old temporary `assets/brand-mark.svg` or generated `icons/icon-192.png` / `icons/icon-512.png` files unless there is a clear replacement plan.
 
-The full guide link should point to a real, non-empty PDF before launch. If the PDF is not ready, leave `studyPackageUrl` empty so the resource card can be marked unavailable.
+The full guide link should point to a real, non-empty file before launch. If the guide file is not ready, leave `studyPackageUrl` empty so the resource card can be marked unavailable.
