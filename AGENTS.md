@@ -1,9 +1,9 @@
 # Steady Men Maintenance Notes
 
 ## Project purpose
-Steady Men is a Christian men's discipleship initiative rooted in 1 Corinthians 16:13-14. The current website is Version 1: a simple daily hub for men already participating in the Summer Study.
+Steady Men is a Christian men's discipleship initiative rooted in 1 Corinthians 16:13-14. The current website is Version 1: a simple daily hub for men participating in the Rooted in the Word summer reading plan.
 
-The homepage should stay focused on Today's Journey: today's reading, reflection, brotherhood reminder, memory passage, next gathering, and resources.
+The homepage should stay focused on Today's Journey: today's reading, reflection, brotherhood reminder, memory focus, next Study Night, and resources.
 
 ## Active website root
 The active static website lives in `steady-men-v1/`.
@@ -26,11 +26,11 @@ Use the approved crest-only mark where available. Do not invent or generate repl
 ## Editable content
 Most routine updates belong in `steady-men-v1/js/study-data.js`:
 
-- daily reading notes and references
-- gathering dates, times, and locations
+- daily reading notes and Scripture references
+- Study Night dates, times, locations, and notes
 - WhatsApp link
 - study package/resource links
-- optional weekly video details
+- optional video details
 - brotherhood reminder rotation
 
 Keep Bible links easy to update, but do not embed large copyrighted Bible passages.
@@ -40,11 +40,13 @@ For site changes, check:
 
 - `steady-men-v1/index.html` loads with no missing local assets
 - desktop and narrow mobile layouts
-- `?preview=2026-07-04` before the study
-- `?preview=2026-07-05` first study day
-- `?preview=2026-07-17` gathering day
-- `?preview=2026-09-05` final study day
-- `?preview=2026-09-06` after the study
+- `?preview=2026-07-11` before the reading plan starts and intro night
+- `?preview=2026-07-12` first reading day
+- `?preview=2026-07-19` open Sunday
+- `?preview=2026-07-24` first in-person Study Night
+- `?preview=2026-08-21` Brotherhood & Accountability Study Night
+- `?preview=2026-09-05` final reading day
+- `?preview=2026-09-06` after the study ends
 - America/Toronto date behavior for today's reading
 - service worker cache changes do not trap stale pages
 

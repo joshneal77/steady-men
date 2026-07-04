@@ -1,8 +1,9 @@
-const CACHE_NAME = 'steady-men-v1.3';
+const CACHE_NAME = 'steady-men-v1.4';
 const CORE_ASSETS = [
   './',
   './index.html',
   './css/styles.css',
+  './css/rooted-word.css',
   './js/study-data.js',
   './js/app.js',
   './assets/steady-men-crest.png',

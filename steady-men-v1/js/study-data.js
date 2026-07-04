@@ -1,463 +1,507 @@
-/* Edit this file to update the schedule, gathering details, video links, and daily notes. */
+/* Edit this file to update the schedule, study night details, resource links, and daily notes. */
 const STUDY_CONFIG = {
-  "siteTitle": "Steady Men 16:13",
-  "studyTitle": "Rooted in the Word | Summer Study 2026",
-  "startDate": "2026-07-05",
-  "endDate": "2026-09-05",
-  "showStudyVideos": true,
-  "whatsAppUrl": "",
-  "studyPackageUrl": "assets/Steady-Men-Summer-Study-Package.pdf",
-  "gatherings": [
+  siteTitle: "Steady Men 16:13",
+  studyTitle: "Rooted in the Word | Summer Reading Plan 2026",
+  tagline: "A daily walk in the Word. Honest brotherhood. Steady growth.",
+  startDate: "2026-07-12",
+  endDate: "2026-09-05",
+  bibleVersion: "CSB",
+  whatsAppUrl: "",
+  studyPackageUrl: "",
+  memory: {
+    reference: "Psalm 1:1-3",
+    version: "CSB",
+    theme: "Delight. Meditate. Be Rooted.",
+    url: "https://www.biblegateway.com/passage/?search=Psalm%201%3A1-3&version=CSB",
+    note: "Memory work is encouraged, not tested. Let this passage shape steady attention to God's Word."
+  },
+  studyNights: [
     {
-      "date": "2026-07-17",
-      "title": "Men's Gathering",
-      "time": "Time and location will be shared in WhatsApp.",
-      "location": ""
+      date: "2026-07-11",
+      title: "Intro Gathering",
+      theme: "Getting Started",
+      time: "9:00 PM",
+      location: "Online by Zoom/Teams (TBD)",
+      note: "Approx. 1 hour: expectations, introductions, group hopes, and a clear start."
     },
     {
-      "date": "2026-07-31",
-      "title": "Men's Gathering",
-      "time": "Time and location will be shared in WhatsApp.",
-      "location": ""
+      date: "2026-07-24",
+      title: "Steady Men Study Night 1",
+      theme: "Rooted in Christ",
+      time: "9:00 PM",
+      location: "693 Line 3, Niagara-on-the-Lake",
+      note: "Discussion, prayer, encouragement, accountability, and time together."
     },
     {
-      "date": "2026-08-14",
-      "title": "Men's Gathering",
-      "time": "Time and location will be shared in WhatsApp.",
-      "location": ""
+      date: "2026-08-07",
+      title: "Steady Men Study Night 2",
+      theme: "Faithful in Daily Life",
+      time: "9:00 PM",
+      location: "693 Line 3, Niagara-on-the-Lake",
+      note: "A short study guide will be shared in WhatsApp a few days before the night."
     },
     {
-      "date": "2026-08-28",
-      "title": "Men's Gathering",
-      "time": "Time and location will be shared in WhatsApp.",
-      "location": ""
+      date: "2026-08-21",
+      title: "Steady Men Study Night 3",
+      theme: "Brotherhood & Accountability",
+      time: "9:00 PM",
+      location: "693 Line 3, Niagara-on-the-Lake",
+      note: "Room for honest conversation, prayer, and practical encouragement."
+    },
+    {
+      date: "2026-09-04",
+      title: "Steady Men Study Night 4",
+      theme: "Endurance & Finishing Well",
+      time: "9:00 PM",
+      location: "693 Line 3, Niagara-on-the-Lake",
+      note: "A final night to reflect on the summer and encourage one another to keep going."
     }
   ],
-  "videos": [
+  optionalResources: [
     {
-      "week": 1,
-      "activeStart": "2026-07-05",
-      "activeEnd": "2026-07-17",
-      "title": "Where Have All the Good Men Gone?",
-      "scripture": "Genesis 1–3",
-      "url": "https://www.youtube.com/watch?v=6u2r8-VBHvg",
-      "summary": "Good manhood is a God-given calling lived under Jesus: faithful work, obedience, sacrificial love, and humble responsibility."
+      title: "Where Have All the Good Men Gone?",
+      type: "Optional Video",
+      scripture: "Genesis 1-3",
+      url: "https://www.youtube.com/watch?v=6u2r8-VBHvg",
+      summary: "A helpful background message on faithful work, obedience, sacrificial love, and humble responsibility."
     },
     {
-      "week": 2,
-      "activeStart": "2026-07-18",
-      "activeEnd": "2026-07-31",
-      "title": "Stand Firm & Act Like Men",
-      "scripture": "1 Peter 5:6–10",
-      "url": "https://www.youtube.com/watch?v=YcHdx3uyUks",
-      "summary": "A steady man humbles himself before God, casts burdens on Christ, refuses isolation, and gets back up through grace."
+      title: "Stand Firm & Act Like Men",
+      type: "Optional Video",
+      scripture: "1 Peter 5:6-10",
+      url: "https://www.youtube.com/watch?v=YcHdx3uyUks",
+      summary: "A supporting message on humility, casting burdens on Christ, refusing isolation, and getting back up through grace."
     },
     {
-      "week": 3,
-      "activeStart": "2026-08-01",
-      "activeEnd": "2026-08-14",
-      "title": "Stand Firm",
-      "scripture": "Ephesians 6:10–18",
-      "url": "https://www.youtube.com/watch?v=0Z8Z-J7dcv0",
-      "summary": "Standing firm means standing in the Lord’s strength, recognizing the real enemy, and fighting for the people God has entrusted to us."
+      title: "Stand Firm",
+      type: "Optional Video",
+      scripture: "Ephesians 6:10-18",
+      url: "https://www.youtube.com/watch?v=0Z8Z-J7dcv0",
+      summary: "A supporting message on standing in the Lord's strength and fighting for the people God has entrusted to us."
     },
     {
-      "week": 4,
-      "activeStart": "2026-08-15",
-      "activeEnd": "2026-09-05",
-      "title": "Be Strong",
-      "scripture": "Matthew 20:17–28",
-      "url": "https://www.youtube.com/watch?v=vo7-W-TnT2Q",
-      "summary": "Biblical strength is not position or power. It is a life under Jesus, able to endure hardship, humble itself, and serve in love."
+      title: "Be Strong",
+      type: "Optional Video",
+      scripture: "Matthew 20:17-28",
+      url: "https://www.youtube.com/watch?v=vo7-W-TnT2Q",
+      summary: "A supporting message on strength shaped by Jesus: enduring hardship, humility, and serving in love."
     }
   ],
-  "brotherhoodReminders": [
+  brotherhoodReminders: [
+    "A simple checkmark, done, or reaction in WhatsApp helps the group keep walking together.",
+    "Do not quietly disappear. If you miss a few days, jump back in with today's reading.",
     "Pray for another man in the group today. Reach out if he comes to mind.",
-    "Text one brother and ask how you can pray for him this week.",
-    "Encourage someone today. A short message can help keep a brother steady.",
-    "Do not carry burdens alone. Reach out when you need prayer, wisdom, or accountability.",
-    "Ask one honest question today: “How are you really doing?”",
-    "Thank God for another man in the group, then let him know you appreciate him.",
-    "Be willing to be known. Honest brotherhood grows when men stop pretending."
+    "Share one honest thought from the reading if God puts something on your heart.",
+    "Encourage a brother today. A short message can help keep a man steady.",
+    "This is not a place to judge, shame, or perform. Keep moving forward with grace.",
+    "Ask one honest question today: How are you really doing?"
   ]
 };
+
+const OPEN_SUNDAY_NOTE = "Catch up, reflect, pray, or rest. Do not stress about missed days - jump back in with the current reading and keep going.";
+
 const READING_PLAN = [
   {
-    "date": "2026-07-05",
-    "newTestament": "Luke 1",
-    "companion": "Proverbs 1–2",
-    "note": "Start steady. Luke opens with faithful waiting; Proverbs calls men to wisdom, discipline, and teachability."
+    date: "2026-07-12",
+    scripture: "John 1:1-18",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "John opens by showing that Jesus is the eternal Word who was with God and is God. He is not merely a teacher or example; He is the source of life and light. A God-centered man starts by seeing Jesus for who He truly is."
   },
   {
-    "date": "2026-07-06",
-    "newTestament": "Luke 2",
-    "companion": "Proverbs 3",
-    "note": "Christ enters ordinary life. Trust the Lord with your whole heart, not only the parts that feel safe."
+    date: "2026-07-13",
+    scripture: "John 1:19-51",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "Jesus calls ordinary men to follow Him and begins to reveal who He is. The first disciples do not have everything figured out; they respond to His invitation and bring others with them. Steady growth begins with following Jesus and helping other men see Him more clearly."
   },
   {
-    "date": "2026-07-07",
-    "newTestament": "Luke 3",
-    "companion": "Proverbs 4–5",
-    "note": "Repentance bears fruit. Guard your heart and choose wisdom before temptation gets close."
+    date: "2026-07-14",
+    scripture: "John 2",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "Jesus shows His authority over celebration, worship, and the temple. He brings joy, but He also refuses to let worship become hollow or self-serving. Following Him means letting Him shape both the ordinary parts of life and the places where our hearts have drifted."
   },
   {
-    "date": "2026-07-08",
-    "newTestament": "Luke 4",
-    "companion": "Psalm 27; Proverbs 6:1–19",
-    "note": "Jesus answers temptation with Scripture. Courage grows when God’s Word is already in your mouth."
+    date: "2026-07-15",
+    scripture: "John 3:1-21",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "Jesus tells Nicodemus that a religious life is not enough; we must be made new by the Spirit. This passage brings us back to the gospel: we are not earning a place with God, but receiving new life through faith in Christ."
   },
   {
-    "date": "2026-07-09",
-    "newTestament": "Luke 5",
-    "companion": "Psalm 23; Proverbs 6:20–35",
-    "note": "Jesus calls ordinary men to follow. Stay close to the Shepherd and flee destructive desire."
+    date: "2026-07-16",
+    scripture: "John 3:22-36",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "John the Baptist gives a clear picture of humility: Jesus must increase, and we must decrease. A steady man does not build his life around being noticed, right, or important. He gladly makes more of Christ."
   },
   {
-    "date": "2026-07-10",
-    "newTestament": "1 Corinthians 16:13–14",
-    "companion": "Joshua 1:1–9; Proverbs 3:1–12",
-    "note": "Anchor reading: strength is joined to love, courage, obedience, and meditation on God’s Word."
+    date: "2026-07-17",
+    scripture: "John 4:1-26",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "Jesus meets a woman with a complicated story and offers living water that truly satisfies. He sees people fully without turning away from them. Real change begins when we bring our thirst, shame, and need to Christ rather than trying to satisfy them elsewhere."
   },
   {
-    "date": "2026-07-11",
-    "newTestament": "Luke 6",
-    "companion": "Proverbs 7–8",
-    "note": "Jesus forms His people from the inside out. Wisdom calls loudly; do not ignore her voice."
+    date: "2026-07-18",
+    scripture: "John 4:27-54",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
+    note: "The woman at the well becomes a witness, and Jesus calls His disciples to see the spiritual needs around them. Faith is not meant to stay private. Men who are being changed by Jesus learn to notice, serve, and speak about what He has done."
   },
   {
-    "date": "2026-07-12",
-    "newTestament": "Luke 7",
-    "companion": "Psalm 34:1–10; Proverbs 9",
-    "note": "Come to Christ with need, not image management. Fear of the Lord is the beginning of wisdom."
+    date: "2026-07-19",
+    scripture: "Open Sunday",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-07-13",
-    "newTestament": "Luke 8",
-    "companion": "Proverbs 10:1–16",
-    "note": "The Word must take root. Ask what soil your heart is becoming today."
+    date: "2026-07-20",
+    scripture: "John 5",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    note: "Jesus heals, speaks with the authority of the Father, and calls people to honor Him. The issue is not whether we admire Jesus, but whether we trust and obey Him. Our faith becomes steady when His voice carries more weight than our fears or preferences."
   },
   {
-    "date": "2026-07-14",
-    "newTestament": "Luke 9",
-    "companion": "Proverbs 10:17–32; Psalm 15",
-    "note": "Following Jesus means daily surrender, not religious admiration from a distance."
+    date: "2026-07-21",
+    scripture: "John 6:1-29",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    note: "Jesus provides for a crowd and then challenges people who only want Him for what He can give. He is not a tool for a more comfortable life. He is the One we need, and faith means trusting Him even when we do not yet see the whole plan."
   },
   {
-    "date": "2026-07-15",
-    "newTestament": "Luke 10",
-    "companion": "Proverbs 11:1–15",
-    "note": "Love God and love your neighbour in real action. Wisdom shows up in humility and honesty."
+    date: "2026-07-22",
+    scripture: "John 6:30-71",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    note: "Jesus calls Himself the bread of life, and many people walk away because His words are hard. Peter stays because he recognizes that Jesus alone has the words of eternal life. A steady man keeps coming back to Christ when obedience is costly or confusing."
   },
   {
-    "date": "2026-07-16",
-    "newTestament": "John 15:1–11",
-    "companion": "Psalm 92:12–15; Proverbs 3:13–26",
-    "note": "Anchor reading: fruitfulness comes from abiding, not striving apart from Christ."
+    date: "2026-07-23",
+    scripture: "John 7",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    note: "Jesus teaches openly despite opposition and invites the thirsty to come to Him. He does not chase approval or move according to pressure. He follows the Father's timing and speaks the truth with courage."
   },
   {
-    "date": "2026-07-17",
-    "newTestament": "Luke 11",
-    "companion": "Psalm 37:1–11; Proverbs 11:16–31",
-    "note": "Gathering day. Ask the Lord to teach you to pray, trust, and walk in quiet faithfulness."
+    date: "2026-07-24",
+    scripture: "John 8",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    studyNight: "Steady Men Study Night Tonight - 9:00 PM | 693 Line 3, Niagara-on-the-Lake",
+    note: "Jesus confronts sin without abandoning people, exposes false confidence, and declares Himself the light of the world. Freedom comes from remaining in His word, not from doing whatever we feel. This is a strong passage for guarding our minds and homes with truth."
   },
   {
-    "date": "2026-07-18",
-    "newTestament": "Luke 12",
-    "companion": "Proverbs 12:1–14",
-    "note": "Do not be ruled by fear, money, or approval. Be ready, faithful, and awake."
+    date: "2026-07-25",
+    scripture: "John 9-10",
+    theme: "Rooted in Christ",
+    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    note: "Jesus gives sight to a man born blind and describes Himself as the Good Shepherd. He knows His sheep, leads them, and lays down His life for them. Men are called to listen for Christ's voice and lead others by serving, protecting, and pointing them to Him."
   },
   {
-    "date": "2026-07-19",
-    "newTestament": "Luke 13",
-    "companion": "Proverbs 12:15–28; Psalm 19:1–6",
-    "note": "Repentance is urgent. A wise man listens before defending himself."
+    date: "2026-07-26",
+    scripture: "Open Sunday",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-07-20",
-    "newTestament": "Luke 14",
-    "companion": "Proverbs 13:1–14",
-    "note": "Count the cost of discipleship. Wisdom receives correction and refuses empty pride."
+    date: "2026-07-27",
+    scripture: "John 11",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus enters grief, weeps with those who mourn, and shows power over death. He is neither distant nor overwhelmed by suffering. Following Him includes being present with people in hard moments and trusting that death does not have the final word."
   },
   {
-    "date": "2026-07-21",
-    "newTestament": "Luke 15",
-    "companion": "Proverbs 13:15–25; Psalm 32",
-    "note": "God seeks the lost and restores the repentant. Confession is not weakness; it is the way home."
+    date: "2026-07-28",
+    scripture: "John 12",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus speaks about a life that bears fruit by following Him rather than seeking self-protection or human praise. He also models a heart fixed on the Father's glory. A faithful man learns to put obedience above image and comfort."
   },
   {
-    "date": "2026-07-22",
-    "newTestament": "Luke 16",
-    "companion": "Proverbs 14:1–16",
-    "note": "Faithfulness with money and responsibility reveals the heart. Walk carefully, not carelessly."
+    date: "2026-07-29",
+    scripture: "John 13:1-20",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus washes His disciples' feet and gives them an example of humble service. Biblical leadership is not about being above others; it is about using strength and responsibility for their good. This matters at home, at work, and in the church."
   },
   {
-    "date": "2026-07-23",
-    "newTestament": "Ephesians 6:10–18",
-    "companion": "Psalm 144:1–2; Proverbs 4:20–27",
-    "note": "Anchor reading: stand in God’s strength, know the real enemy, and keep watch over your heart."
+    date: "2026-07-30",
+    scripture: "John 13:21-38",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus remains steady while betrayal and failure surround Him. He gives His followers a new command: love one another as He has loved them. Real brotherhood is built on that kind of committed, Christ-shaped love, not convenience."
   },
   {
-    "date": "2026-07-24",
-    "newTestament": "Luke 17",
-    "companion": "Proverbs 14:17–35; Psalm 46",
-    "note": "Forgive, serve, and trust God. He is refuge when life feels unstable."
+    date: "2026-07-31",
+    scripture: "John 14",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus tells troubled disciples not to let their hearts be afraid because He is the way, the truth, and the life. He promises the Holy Spirit to help them obey and remember His words. Men do not have to carry faithfulness alone; Christ has given His presence and help."
   },
   {
-    "date": "2026-07-25",
-    "newTestament": "Luke 18",
-    "companion": "Proverbs 15:1–17",
-    "note": "Come humble like the tax collector, dependent like a child, and persistent in prayer."
+    date: "2026-08-01",
+    scripture: "John 15",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
+    note: "Jesus calls His disciples to abide in Him because fruitfulness comes from remaining connected to Him. This is the heart of daily time in the Word: not checking a box, but staying close to the source of life. Psalm 1 uses a similar picture of a tree rooted near water."
   },
   {
-    "date": "2026-07-26",
-    "newTestament": "Luke 19",
-    "companion": "Proverbs 15:18–33; Psalm 51:1–12",
-    "note": "Jesus seeks and saves. Ask God for a clean heart and a teachable spirit."
+    date: "2026-08-02",
+    scripture: "Open Sunday",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-07-27",
-    "newTestament": "Luke 20",
-    "companion": "Proverbs 16:10–25",
-    "note": "Give God what belongs to God. Leadership requires justice, humility, and surrendered authority."
+    date: "2026-08-03",
+    scripture: "John 16",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    note: "Jesus prepares His disciples for trouble without leaving them hopeless. He promises the Spirit, tells them to pray in His name, and says that in Him they can have peace. A steady man does not deny hardship; he learns to face it with Christ."
   },
   {
-    "date": "2026-07-28",
-    "newTestament": "Luke 21",
-    "companion": "Proverbs 16:26–33; Psalm 63:1–8",
-    "note": "Stay watchful. Hunger for God more than control over tomorrow."
+    date: "2026-08-04",
+    scripture: "John 17",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    note: "Jesus prays for His disciples and for those who will believe through their message. His prayer centers on knowing God, being kept from evil, growing in truth, and living in unity. Prayer is not an extra part of Christian life; it is part of how we stand and care for one another."
   },
   {
-    "date": "2026-07-29",
-    "newTestament": "James 1:19–27",
-    "companion": "Proverbs 4:1–19; Psalm 19:7–14",
-    "note": "Anchor reading: receive the Word, do the Word, and let true religion show in action."
+    date: "2026-08-05",
+    scripture: "John 18",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    note: "Jesus faces arrest and injustice without panic, manipulation, or compromise. Peter's denial reminds us that confidence in ourselves is fragile. Jesus remains faithful where we fail, which gives us both humility and hope."
   },
   {
-    "date": "2026-07-30",
-    "newTestament": "Luke 22",
-    "companion": "Proverbs 17:1–14",
-    "note": "Jesus serves at the table and suffers betrayal. Strength is faithfulness under pressure."
+    date: "2026-08-06",
+    scripture: "John 19",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    note: "Jesus goes to the cross willingly and finishes the work the Father gave Him. His love is sacrificial, costly, and purposeful. Husbands, fathers, single men, and brothers alike are called to let Christ redefine strength through obedience and self-giving love."
   },
   {
-    "date": "2026-07-31",
-    "newTestament": "Luke 23",
-    "companion": "Proverbs 17:15–28; Psalm 84:1–5",
-    "note": "Gathering day. Be slow to speak, quick to worship, and thankful for the cross."
+    date: "2026-08-07",
+    scripture: "John 20",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    studyNight: "Steady Men Study Night Tonight - 9:00 PM | 693 Line 3, Niagara-on-the-Lake",
+    note: "The risen Jesus meets fearful disciples with peace, restores purpose, and sends them into the world. The resurrection changes what is possible: sin, fear, and failure do not get the final word. We follow a living Savior."
   },
   {
-    "date": "2026-08-01",
-    "newTestament": "Luke 24",
-    "companion": "Proverbs 18:1–15",
-    "note": "The risen Christ opens the Scriptures. Do not isolate; seek wise counsel."
+    date: "2026-08-08",
+    scripture: "John 21",
+    theme: "Faithful in Daily Life",
+    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
+    note: "Jesus restores Peter after failure and calls him to love Him and care for His people. The question is not whether we have failed, but whether we will return to Jesus and follow Him again. His grace restores men for faithful service."
   },
   {
-    "date": "2026-08-02",
-    "newTestament": "Acts 1",
-    "companion": "Proverbs 18:16–24; Psalm 90:12–17",
-    "note": "Wait on God’s power. Number your days and ask Him to establish your work."
+    date: "2026-08-09",
+    scripture: "Open Sunday",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-08-03",
-    "newTestament": "Philippians 2:1–11",
-    "companion": "Ecclesiastes 4:9–12; Micah 6:6–8",
-    "note": "Anchor reading: humility looks like Jesus; brotherhood helps men stand when one falls."
+    date: "2026-08-10",
+    scripture: "James 1:1-18",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "James begins with trials, wisdom, and the danger of being pulled away by our own desires. He does not say hardship is easy, but that God can use it to produce endurance. Ask God for wisdom honestly and keep bringing your struggles into the light."
   },
   {
-    "date": "2026-08-04",
-    "newTestament": "Acts 2",
-    "companion": "Proverbs 19:1–15",
-    "note": "The church is born through Word, Spirit, prayer, and fellowship. Keep the basics central."
+    date: "2026-08-11",
+    scripture: "James 1:19-27",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "James calls believers to be quick to listen, slow to speak, slow to anger, and doers of the word. Daily Scripture matters because it should shape how we speak, respond, and care for people. Hearing truth without living it leaves us unchanged."
   },
   {
-    "date": "2026-08-05",
-    "newTestament": "Acts 3",
-    "companion": "Proverbs 19:16–29; Psalm 91:1–8",
-    "note": "Give what you have in Jesus’ name. Obedience and refuge belong together."
+    date: "2026-08-12",
+    scripture: "James 2:1-13",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "James confronts favoritism and reminds believers that mercy is central to a life shaped by God. Brotherhood is not a place for comparison, status, or treating some men as more important than others. We build one another up because Christ has shown us mercy."
   },
   {
-    "date": "2026-08-06",
-    "newTestament": "Acts 4",
-    "companion": "Proverbs 20:1–15",
-    "note": "Boldness grows from being with Jesus. Integrity matters even when no one is watching."
+    date: "2026-08-13",
+    scripture: "James 2:14-26",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "James shows that genuine faith produces visible action. We are not saved by works, but faith that never affects how we live is empty. Steady men take responsibility and let their trust in Christ show up in practical obedience."
   },
   {
-    "date": "2026-08-07",
-    "newTestament": "Acts 5",
-    "companion": "Proverbs 20:16–30; Psalm 103:1–12",
-    "note": "Fear God more than man. Remember His mercy, patience, and steadfast love."
+    date: "2026-08-14",
+    scripture: "James 3:1-12",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "James takes our words seriously because the tongue can direct, damage, or bless. A man can be strong in many areas and still wound people through careless speech. Ask where your words need more truth, patience, and self-control."
   },
   {
-    "date": "2026-08-08",
-    "newTestament": "Acts 6",
-    "companion": "Proverbs 21:1–16",
-    "note": "Faithful service matters. Wisdom acts justly and cares for needs."
+    date: "2026-08-15",
+    scripture: "James 3:13-18",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
+    note: "Godly wisdom is humble, peaceable, gentle, and full of mercy. This is not weak leadership; it is strength under control. Homes, workplaces, and friendships are changed when men choose wisdom from above instead of jealousy, pride, or anger."
   },
   {
-    "date": "2026-08-09",
-    "newTestament": "1 Peter 5:5–11",
-    "companion": "Isaiah 40:28–31; Proverbs 16:1–9",
-    "note": "Anchor reading: humble yourself, cast your cares, stay alert, and trust God to strengthen you."
+    date: "2026-08-16",
+    scripture: "Open Sunday",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-08-10",
-    "newTestament": "Acts 7",
-    "companion": "Proverbs 21:17–31; Psalm 112",
-    "note": "Stephen stands firm. Righteous courage is built before the moment of testing."
+    date: "2026-08-17",
+    scripture: "James 4:1-12",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    note: "James traces conflict back to desires that are ruling the heart and calls us to submit to God. Accountability starts with humility: we bring our own pride, anger, and temptation before the Lord instead of only seeing what is wrong in others."
   },
   {
-    "date": "2026-08-11",
-    "newTestament": "Acts 8",
-    "companion": "Proverbs 22:1–16",
-    "note": "The gospel moves outward. A good name and a generous life matter."
+    date: "2026-08-18",
+    scripture: "James 4:13-17",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    note: "James speaks to planning, work, and the illusion of control. It is good to work and plan, but our confidence rests in God's will, not our schedules. Quiet faithfulness includes doing the good we know to do today."
   },
   {
-    "date": "2026-08-12",
-    "newTestament": "Acts 9",
-    "companion": "Proverbs 22:17–29; Psalm 121",
-    "note": "Jesus can change any man. Lift your eyes to the Lord who keeps you."
+    date: "2026-08-19",
+    scripture: "James 5:1-12",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    note: "James warns against trusting wealth, comfort, or control and calls believers to patient endurance. He points to the farmer who works faithfully while waiting for what he cannot force. Men need patience in work, family life, and the long process of spiritual growth."
   },
   {
-    "date": "2026-08-13",
-    "newTestament": "Acts 10",
-    "companion": "Proverbs 23:1–18",
-    "note": "God breaks barriers and purifies hearts. Do not envy sinners; continue in the fear of the Lord."
+    date: "2026-08-20",
+    scripture: "James 5:13-20",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    note: "James closes with prayer, confession, restoration, and bringing wandering people back. This is a key picture for Steady Men: men who pray for one another, speak honestly, and help each other return when someone drifts."
   },
   {
-    "date": "2026-08-14",
-    "newTestament": "Acts 11",
-    "companion": "Proverbs 23:19–35; Psalm 127",
-    "note": "Gathering day. Build under the Lord’s blessing, not your own anxious striving."
+    date: "2026-08-21",
+    scripture: "Galatians 6:1-10",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    studyNight: "Steady Men Study Night Tonight - 9:00 PM | 693 Line 3, Niagara-on-the-Lake",
+    note: "This is one of our memory passages because it holds grace and responsibility together. We restore a brother gently, carry burdens, examine our own lives, and do not grow weary in doing good. Accountability is meant to help men walk forward, not to shame them."
   },
   {
-    "date": "2026-08-15",
-    "newTestament": "Romans 12:9–21",
-    "companion": "Psalm 15; Proverbs 11:24–30",
-    "note": "Anchor reading: sincere love, patient endurance, generosity, peace, and overcoming evil with good."
+    date: "2026-08-22",
+    scripture: "Ecclesiastes 4:9-12; Proverbs 27:5-17",
+    theme: "Brotherhood & Accountability",
+    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
+    note: "These passages show why men need one another. Honest correction is better than hidden love, and friends sharpen friends through truth and presence. Brotherhood becomes meaningful when we know God's Word well enough to encourage and challenge one another with it."
   },
   {
-    "date": "2026-08-16",
-    "newTestament": "Acts 12",
-    "companion": "Proverbs 24:1–16",
-    "note": "God delivers and humbles. A righteous man gets back up."
+    date: "2026-08-23",
+    scripture: "Open Sunday",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-08-17",
-    "newTestament": "Acts 13",
-    "companion": "Proverbs 24:17–34; Psalm 128",
-    "note": "The mission continues through worship and sending. Faithfulness blesses the home."
+    date: "2026-08-24",
+    scripture: "1 Thessalonians 4:1-12",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Paul calls believers to grow in holiness, love one another, live quietly, and work faithfully. This is our second memory passage because it describes steady Christian life without spotlight or hype. Godly men pursue purity, responsibility, and a good witness in everyday life."
   },
   {
-    "date": "2026-08-18",
-    "newTestament": "Acts 14",
-    "companion": "Proverbs 25:1–14",
-    "note": "Hardship does not cancel calling. Reliable words are like refreshment to the weary."
+    date: "2026-08-25",
+    scripture: "1 Thessalonians 4:13-5:11",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Paul connects future hope with present alertness and encouragement. Because Christ will return, we do not drift or live carelessly. We encourage one another, stay awake spiritually, and put on faith, love, and hope."
   },
   {
-    "date": "2026-08-19",
-    "newTestament": "Acts 15",
-    "companion": "Proverbs 25:15–28; Psalm 141",
-    "note": "Unity requires wisdom, patience, and restraint. Guard your mouth."
+    date: "2026-08-26",
+    scripture: "Ephesians 5:15-33",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Paul calls believers to walk wisely, be filled with the Spirit, and live in mutual submission. For husbands, Christ's sacrificial love is the model - not control or passivity. For single men, this passage forms the kind of character and love that should shape every relationship."
   },
   {
-    "date": "2026-08-20",
-    "newTestament": "Acts 16",
-    "companion": "Proverbs 26:1–16",
-    "note": "Worship in suffering. Do not answer foolishness by becoming foolish."
+    date: "2026-08-27",
+    scripture: "Ephesians 6:1-4",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Fatherhood is not merely providing rules or resources; it is bringing children up in the instruction and discipline of the Lord. Presence, patience, example, prayer, and correction all matter. Men without children can still learn the kind of steady leadership younger people need around them."
   },
   {
-    "date": "2026-08-21",
-    "newTestament": "2 Timothy 2:1–7",
-    "companion": "Proverbs 27:5–17; Ecclesiastes 4:9–12",
-    "note": "Anchor reading: be strengthened by grace, endure like a soldier, and let iron sharpen iron."
+    date: "2026-08-28",
+    scripture: "Colossians 3:12-25",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Paul describes what life in Christ looks like inside real relationships: compassion, humility, forgiveness, love, and doing everything in Jesus' name. The home is one of the clearest places where our faith becomes visible. Let Christ's peace and word shape the atmosphere you bring into it."
   },
   {
-    "date": "2026-08-22",
-    "newTestament": "Acts 17",
-    "companion": "Proverbs 26:17–28; Psalm 145:1–13",
-    "note": "Reason from Scripture. Praise God’s greatness from one generation to the next."
+    date: "2026-08-29",
+    scripture: "1 Peter 3:1-12",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Living with holiness, responsibility, faithfulness at home, and a steady witness before others.",
+    note: "Peter calls husbands to honor their wives and live with understanding, while all believers are called to unity, compassion, humility, and blessing. Marriage is not a place to demand our own way; it is a place to practice Christlike honor and sacrificial love. Prayer and how we treat one another are connected."
   },
   {
-    "date": "2026-08-23",
-    "newTestament": "Acts 18",
-    "companion": "Ecclesiastes 1",
-    "note": "Keep serving faithfully. Life under the sun is empty without God."
+    date: "2026-08-30",
+    scripture: "Open Sunday",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    openDay: true,
+    note: OPEN_SUNDAY_NOTE
   },
   {
-    "date": "2026-08-24",
-    "newTestament": "Acts 19",
-    "companion": "Ecclesiastes 2:1–17; Psalm 39:4–7",
-    "note": "False gods lose power when Christ is treasured. Hope in God, not pleasure or achievement."
+    date: "2026-08-31",
+    scripture: "1 Corinthians 6:12-20",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    note: "Paul teaches that Christian freedom is not permission to be mastered by anything. Our bodies belong to the Lord, which gives a serious and hopeful foundation for sexual integrity. Lust loses power when it is brought into the light and replaced by deeper worship, honesty, and obedience."
   },
   {
-    "date": "2026-08-25",
-    "newTestament": "Acts 20",
-    "companion": "Ecclesiastes 2:18–26; Psalm 127:1–2",
-    "note": "Lead with tears, truth, and sacrifice. Work is gift when received from God."
+    date: "2026-09-01",
+    scripture: "Galatians 5:16-26",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    note: "Paul contrasts the desires of the flesh with life led by the Spirit. The answer to temptation is not merely trying harder; it is walking by the Spirit day by day. The fruit God produces includes self-control, faithfulness, gentleness, and love."
   },
   {
-    "date": "2026-08-26",
-    "newTestament": "Acts 21",
-    "companion": "Ecclesiastes 3:1–15",
-    "note": "Faithfulness may cost you. God rules over every season."
+    date: "2026-09-02",
+    scripture: "Hebrews 12:1-3",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    note: "The Christian life is described as a race that requires endurance, laying aside sin, and fixing our eyes on Jesus. We do not run by staring at our failures or comparing ourselves to others. We keep looking to Christ, who endured for us and strengthens us not to grow weary."
   },
   {
-    "date": "2026-08-27",
-    "newTestament": "Galatians 5:16–26",
-    "companion": "Psalm 139:23–24; Proverbs 25:28; Proverbs 4:23",
-    "note": "Anchor reading: walk by the Spirit, guard your heart, and ask God to search you honestly."
+    date: "2026-09-03",
+    scripture: "Romans 12:9-21",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    note: "Paul gives a practical picture of sincere Christian love: honor, hospitality, patience in suffering, prayer, humility, and refusing revenge. This is a strong summary of the kind of men we want to become. We overcome evil not by becoming harsh, but by doing good in the strength of Christ."
   },
   {
-    "date": "2026-08-28",
-    "newTestament": "Acts 22",
-    "companion": "Ecclesiastes 3:16–22; Psalm 16",
-    "note": "Gathering day. Tell what Christ has done and rest in God as your portion."
+    date: "2026-09-04",
+    scripture: "1 Timothy 4:6-16",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    studyNight: "Steady Men Study Night Tonight - 9:00 PM | 693 Line 3, Niagara-on-the-Lake",
+    note: "Paul tells Timothy to train for godliness and set an example in speech, conduct, love, faith, and purity. Growth is not accidental; it comes through steady attention to God's truth and faithful practice. Keep going, and let the progress be visible over time."
   },
   {
-    "date": "2026-08-29",
-    "newTestament": "Acts 23",
-    "companion": "Ecclesiastes 4:1–8; Psalm 73:23–28",
-    "note": "Courage under pressure. Nearness to God is your good."
-  },
-  {
-    "date": "2026-08-30",
-    "newTestament": "Acts 24",
-    "companion": "Ecclesiastes 5:1–20",
-    "note": "Speak truth with self-control. Be careful before God and receive simple gifts with gratitude."
-  },
-  {
-    "date": "2026-08-31",
-    "newTestament": "Acts 25",
-    "companion": "Ecclesiastes 6; Psalm 49:5–20",
-    "note": "Earthly power is limited. Do not trust wealth or status to save."
-  },
-  {
-    "date": "2026-09-01",
-    "newTestament": "Acts 26",
-    "companion": "Job 1:1–12; Psalm 46",
-    "note": "Give testimony clearly. God is refuge even when suffering cannot be fully explained."
-  },
-  {
-    "date": "2026-09-02",
-    "newTestament": "Hebrews 12:1–3",
-    "companion": "Isaiah 35:3–10; Proverbs 24:10–16",
-    "note": "Anchor reading: run with endurance by looking to Jesus; strengthen weak hands."
-  },
-  {
-    "date": "2026-09-03",
-    "newTestament": "Acts 27",
-    "companion": "Job 1:13–22; Psalm 34:17–22",
-    "note": "Storms reveal trust. Worship God even when life is shaken."
-  },
-  {
-    "date": "2026-09-04",
-    "newTestament": "Acts 28",
-    "companion": "Job 2:1–10; Psalm 62:5–8",
-    "note": "The mission continues through setbacks. Pour out your heart before God."
-  },
-  {
-    "date": "2026-09-05",
-    "newTestament": "Colossians 3:12–17",
-    "companion": "Psalm 133; Ecclesiastes 4:9–12; Proverbs 17:17",
-    "note": "Final anchor: put on Christlike character, let the Word dwell richly, and stand together in unity."
+    date: "2026-09-05",
+    scripture: "2 Timothy 4:6-8, 16-18",
+    theme: "Endurance & Finishing Well",
+    weekFocus: "Finishing the summer with purity, Spirit-led living, love, perseverance, and a long view of faithfulness.",
+    note: "Paul looks back on a life of faithfulness and forward to the Lord's final rescue. Finishing well is not about having an easy story or a perfect record. It is about continuing to trust Christ, fight the good fight, and keep the faith through every season."
   }
 ];
