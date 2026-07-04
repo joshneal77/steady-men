@@ -3,6 +3,7 @@
   const SITE_TIME_ZONE = 'America/Toronto';
   const BIBLE_COM_VERSION_ID = '1713';
   const BIBLE_COM_VERSION_CODE = 'CSB';
+  const DEFAULT_STUDY_PACKAGE_URL = 'assets/steady-men-rooted-in-the-word-full-guide.docx.pdf';
   const BIBLE_BOOK_CODES = {
     'John': 'JHN',
     'James': 'JAS',
@@ -236,14 +237,15 @@
 
   function renderResources() {
     const studyPackage = byId('study-package-link');
-    if (!STUDY_CONFIG.studyPackageUrl) {
+    const studyPackageUrl = STUDY_CONFIG.studyPackageUrl || DEFAULT_STUDY_PACKAGE_URL;
+    if (!studyPackageUrl) {
       studyPackage.removeAttribute('href');
       studyPackage.setAttribute('aria-disabled', 'true');
       studyPackage.classList.add('is-disabled');
       const note = studyPackage.querySelector('small');
       if (note) note.textContent = 'The full guide can be added here once it is uploaded to the site.';
     } else {
-      studyPackage.href = STUDY_CONFIG.studyPackageUrl;
+      studyPackage.href = studyPackageUrl;
       studyPackage.removeAttribute('aria-disabled');
       studyPackage.classList.remove('is-disabled');
     }
