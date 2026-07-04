@@ -10,7 +10,7 @@ Most routine content changes happen in `js/study-data.js`.
 
 - `startDate` and `endDate`: Rooted in the Word date range.
 - `whatsAppUrl`: leave blank when men are being added to WhatsApp individually; add a group invite link only if the site should show one.
-- `studyPackageUrl`: path or URL for the uploaded full guide file.
+- `studyPackageUrl`: path or URL for the uploaded full guide file. If blank, the site uses `assets/steady-men-rooted-in-the-word-full-guide.docx.pdf`.
 - `studyNights`: dates, titles, times, locations, and notes.
 - `optionalResources`: optional video or support links shown under Resources.
 - `brotherhoodReminders`: short rotating connection reminders.
