@@ -16,7 +16,7 @@ Most routine content changes happen in `js/study-data.js`.
 - `brotherhoodReminders`: short rotating connection reminders.
 - `READING_PLAN`: daily readings, themes, study night reminders, and short notes.
 
-The page uses BibleGateway links generated in `js/app.js`. Do not paste large Bible passages directly into the site.
+The page generates Bible.com / YouVersion CSB links in `js/app.js`. Simple readings use direct passage links, while multi-chapter or multi-passage readings use Bible.com search links with CSB selected. If future readings introduce a new Bible book, add its Bible.com code to `BIBLE_BOOK_CODES`. Do not paste large Bible passages directly into the site.
 
 ## Date previews
 Use the `preview` query string to test a specific study day:
