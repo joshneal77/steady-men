@@ -52,6 +52,36 @@
   background: #FFF8EB;
 }
 
+.reading-row.is-completed {
+  background: linear-gradient(0deg, rgba(23, 33, 43, .035), rgba(23, 33, 43, .035)), #FAF8F3;
+  box-shadow: inset 3px 0 0 rgba(190, 139, 59, .28);
+}
+
+.reading-row.is-completed.is-open-day {
+  background: linear-gradient(0deg, rgba(23, 33, 43, .04), rgba(23, 33, 43, .04)), #FCFBF8;
+}
+
+.reading-row.is-completed .date-main,
+.reading-row.is-completed .reading-ref {
+  color: #394551;
+}
+
+.reading-row.is-completed .reading-note {
+  color: #5A6570;
+}
+
+.completed-chip {
+  width: fit-content;
+  padding: 2px 6px;
+  color: #6F5427;
+  background: #ECE3D2;
+  border: 1px solid #DDC99F;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: .8px;
+}
+
 .open-ref {
   color: #8D611E;
 }
@@ -161,8 +191,33 @@
     width: 100%;
   }
 
+  .reading-plan-list,
+  .week-details,
+  .reading-rows,
+  .reading-row,
+  .reading-row > *,
+  .week-summary > span {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .reading-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .reading-note,
+  .reading-ref,
+  .study-night-note,
+  .week-summary-title,
+  .week-summary-subtitle {
+    overflow-wrap: anywhere;
+  }
+
   .reading-actions {
     grid-column: auto;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .copy-reading-button {
