@@ -220,13 +220,20 @@
       const theme = entries[0].theme;
       const focus = entries[0].weekFocus;
       return `<details class="week-details"${open}><summary class="week-summary"><span><span class="week-summary-title">Week ${week}: ${escapeHtml(theme)}</span><span class="week-summary-subtitle">${shortDate(start)} - ${shortDate(end)} | ${escapeHtml(focus)}</span></span><span class="week-summary-icon">+</span></summary><div class="reading-rows">${entries.map((reading) => {
-        const current = reading.date === state.reading.date;
+        const current = state.mode === 'active' && reading.date === state.selected;
+        const completed = !current && isBefore(reading.date, state.selected);
         const classes = ['reading-row'];
         if (current) classes.push('is-today');
+        if (completed) classes.push('is-completed');
         if (reading.openDay) classes.push('is-open-day');
+        const statusChip = current
+          ? '<span class="today-chip">CURRENT DAY</span>'
+          : completed
+            ? `<span class="completed-chip">${reading.openDay ? 'OPEN SUNDAY COMPLETED' : 'READING COMPLETED'}</span>`
+            : '';
         const studyNight = reading.studyNight ? `<div class="study-night-note">${escapeHtml(reading.studyNight)}</div>` : '';
         const actions = reading.openDay ? '' : `<div class="reading-actions"><button class="copy-reading-button" type="button" data-date="${reading.date}" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button></div>`;
-        return `<div class="${classes.join(' ')}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${current ? '<span class="today-chip">CURRENT DAY</span>' : ''}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">Reading Note</span>${escapeHtml(reading.note)}${studyNight}</div>${actions}</div>`;
+        return `<div class="${classes.join(' ')}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${statusChip}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">Reading Note</span>${escapeHtml(reading.note)}${studyNight}</div>${actions}</div>`;
       }).join('')}</div></details>`;
     }).join('');
     const notice = byId('plan-notice');
