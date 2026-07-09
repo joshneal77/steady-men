@@ -3,7 +3,7 @@
   const SITE_TIME_ZONE = 'America/Toronto';
   const BIBLE_COM_VERSION_ID = '1713';
   const BIBLE_COM_VERSION_CODE = 'CSB';
-  const DEFAULT_STUDY_PACKAGE_URL = 'assets/steady-men-rooted-in-the-word-full-guide.docx.pdf';
+  const DEFAULT_STUDY_PACKAGE_URL = 'assets/steady-men-1613-summer-group.docx';
   const BIBLE_BOOK_CODES = {
     'John': 'JHN',
     'James': 'JAS',
@@ -19,6 +19,11 @@
     'Romans': 'ROM',
     '1 Timothy': '1TI',
     '2 Timothy': '2TI'
+  };
+  const CROSS_CHAPTER_PASSAGES = {
+    '1 Thessalonians 4:1-5:11': ['1TH.4.1-18', '1TH.5.1-11'],
+    '1 Thessalonians 4:13-5:11': ['1TH.4.13-18', '1TH.5.1-11'],
+    'Ephesians 5:15-6:4': ['EPH.5.15-33', 'EPH.6.1-4']
   };
 
   function dateFormatter(options) {
@@ -75,7 +80,7 @@
   }
 
   function biblePathParts(reference) {
-    if (reference === '1 Thessalonians 4:13-5:11') return ['1TH.4.13-18', '1TH.5.1-11'];
+    if (CROSS_CHAPTER_PASSAGES[reference]) return CROSS_CHAPTER_PASSAGES[reference];
     return reference.split(';').flatMap((part) => {
       const trimmed = part.trim();
       const book = findBibleBook(trimmed);
@@ -93,10 +98,8 @@
   function bibleUrl(reading) {
     if (reading.openDay) return '';
     const reference = reading.scripture.trim();
-    const useSearch = reference.includes(';') || /:\d+-\d+:\d+/.test(reference) || /^John 9-10$/.test(reference);
-    if (useSearch) return `https://www.bible.com/search/bible?q=${encodeURIComponent(reference)}&version_id=${BIBLE_COM_VERSION_ID}`;
     const parts = biblePathParts(reference);
-    if (!parts.length) return '';
+    if (!parts.length) return `https://www.bible.com/search/bible?q=${encodeURIComponent(reference)}&version_id=${BIBLE_COM_VERSION_ID}`;
     return `https://www.bible.com/bible/${BIBLE_COM_VERSION_ID}/${parts.map((part) => `${part}.${BIBLE_COM_VERSION_CODE}`).join(',')}`;
   }
 
@@ -137,7 +140,7 @@
   }
 
   function nextStudyNight(selected) {
-    return STUDY_CONFIG.studyNights.find((item) => item.date >= selected) || STUDY_CONFIG.studyNights[STUDY_CONFIG.studyNights.length - 1];
+    return STUDY_CONFIG.studyNights.find((item) => item.date >= selected) || null;
   }
 
   function daysUntil(fromKey, toKey) {
@@ -152,7 +155,7 @@
     const { reading, mode, preview } = state;
     const status = byId('hero-status');
     byId('hero-kicker').textContent = preview ? `PREVIEW - ${formatDate(reading.date).toUpperCase()}` : 'ROOTED IN THE WORD';
-    if (mode === 'upcoming') status.textContent = `The Rooted in the Word plan begins ${formatDate(STUDY_CONFIG.startDate)}. Start by looking ahead to the first reading.`;
+    if (mode === 'upcoming') status.textContent = `The Rooted in the Word plan begins ${formatDate(STUDY_CONFIG.startDate)}. The intro gathering is ${formatDate(STUDY_CONFIG.studyNights[0].date)}.`;
     else if (mode === 'complete') status.textContent = 'The summer plan has concluded. Return to the final reading and keep walking steadily in the Word.';
     else status.textContent = `${formatDate(reading.date)} - open the Word, take one faithful step, and stay connected to your brothers.`;
     setReadingLink(byId('hero-reading-link'), reading);
@@ -183,6 +186,17 @@
 
   function renderStudyNights(state) {
     const next = nextStudyNight(state.selected);
+    if (!next) {
+      byId('next-study-night').innerHTML = `
+        <div class="gathering-date-block"><span>GATHERINGS COMPLETE</span><strong>Keep Going</strong></div>
+        <div class="gathering-copy"><h3>Summer gatherings complete</h3><p>Keep walking through the final reading period and stay connected with the group.</p></div>
+        <div class="gathering-countdown">Completed</div>`;
+      byId('study-night-list').innerHTML = STUDY_CONFIG.studyNights.map((item) => {
+        const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
+        return `<div class="gathering-mini"><span class="mini-date">${shortDate(item.date).toUpperCase()}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
+      }).join('');
+      return;
+    }
     const place = next.location ? ` - ${escapeHtml(next.location)}` : '';
     byId('next-study-night').innerHTML = `
       <div class="gathering-date-block"><span>NEXT STUDY NIGHT</span><strong>${formatDate(next.date)}</strong></div>
@@ -238,8 +252,8 @@
     }).join('');
     const notice = byId('plan-notice');
     notice.style.display = 'none';
-    if (state.mode === 'upcoming') { notice.style.display = 'block'; notice.textContent = `The plan begins ${formatDate(STUDY_CONFIG.startDate)}. The first day is highlighted above.`; }
-    else if (state.mode === 'complete') { notice.style.display = 'block'; notice.textContent = 'The 2026 plan has concluded. The final reading is highlighted above.'; }
+    if (state.mode === 'upcoming') { notice.style.display = 'block'; notice.textContent = `The plan begins ${formatDate(STUDY_CONFIG.startDate)}. The first week is open above.`; }
+    else if (state.mode === 'complete') { notice.style.display = 'block'; notice.textContent = 'The 2026 plan has concluded. Completed readings are marked above.'; }
   }
 
   function renderResources() {
@@ -259,6 +273,12 @@
 
     const optionalList = byId('optional-resource-list');
     if (!optionalList) return;
+    const optionalSection = optionalList.closest('.optional-resources');
+    if (optionalSection) optionalSection.hidden = STUDY_CONFIG.showOptionalResources === false;
+    if (STUDY_CONFIG.showOptionalResources === false) {
+      optionalList.innerHTML = '';
+      return;
+    }
     optionalList.innerHTML = (STUDY_CONFIG.optionalResources || []).map((item) => `
       <a class="optional-resource-card" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
         <span class="reading-cell-label">${escapeHtml(item.type)}</span>

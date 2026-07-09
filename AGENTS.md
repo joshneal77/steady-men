@@ -30,7 +30,7 @@ Most routine updates belong in `steady-men-v1/js/study-data.js`:
 - Study Night dates, times, locations, and notes
 - WhatsApp link
 - study package/resource links
-- optional video details
+- optional video details and `showOptionalResources` visibility
 - brotherhood reminder rotation
 
 Keep Bible links easy to update, but do not embed large copyrighted Bible passages.
@@ -40,11 +40,12 @@ For site changes, check:
 
 - `steady-men-v1/index.html` loads with no missing local assets
 - desktop and narrow mobile layouts
-- `?preview=2026-07-11` before the reading plan starts and intro night
-- `?preview=2026-07-12` first reading day
-- `?preview=2026-07-19` open Sunday
-- `?preview=2026-07-24` first in-person Study Night
-- `?preview=2026-08-21` Brotherhood & Accountability Study Night
+- `?preview=2026-07-18` before the reading plan starts and intro gathering
+- `?preview=2026-07-19` first reading day
+- `?preview=2026-07-26` open Sunday
+- `?preview=2026-07-31` Steady Men Night 1
+- `?preview=2026-08-14` Steady Men Night 2
+- `?preview=2026-08-28` Steady Men Night 3
 - `?preview=2026-09-05` final reading day
 - `?preview=2026-09-06` after the study ends
 - America/Toronto date behavior for today's reading

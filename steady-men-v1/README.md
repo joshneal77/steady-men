@@ -10,28 +10,30 @@ Most routine content changes happen in `js/study-data.js`.
 
 - `startDate` and `endDate`: Rooted in the Word date range.
 - `whatsAppUrl`: leave blank when men are being added to WhatsApp individually; add a group invite link only if the site should show one.
-- `studyPackageUrl`: path or URL for the uploaded full guide file. If blank, the site uses `assets/steady-men-rooted-in-the-word-full-guide.docx.pdf`.
+- `studyPackageUrl`: path or URL for the uploaded full guide file. If blank, the site uses `assets/steady-men-1613-summer-group.docx`.
+- `showOptionalResources`: set to `false` to hide the optional video/resource section without deleting the links.
 - `studyNights`: dates, titles, times, locations, and notes.
 - `optionalResources`: optional video or support links shown under Resources.
 - `brotherhoodReminders`: short rotating connection reminders.
 - `READING_PLAN`: daily readings, themes, study night reminders, and short notes.
 
-The page generates Bible.com / YouVersion CSB links in `js/app.js`. Simple readings use direct passage links, while multi-chapter or multi-passage readings use Bible.com search links with CSB selected. If future readings introduce a new Bible book, add its Bible.com code to `BIBLE_BOOK_CODES`. Do not paste large Bible passages directly into the site.
+The page generates Bible.com / YouVersion CSB links in `js/app.js`. Simple readings and supported cross-chapter readings use direct passage links; unknown formats fall back to Bible.com search with CSB selected. If future readings introduce a new Bible book, add its Bible.com code to `BIBLE_BOOK_CODES`. Do not paste large Bible passages directly into the site.
 
 ## Date previews
 Use the `preview` query string to test a specific study day:
 
 ```text
-?preview=2026-07-12
+?preview=2026-07-19
 ```
 
 Useful checks:
 
-- `?preview=2026-07-11` before the reading plan starts and intro night
-- `?preview=2026-07-12` first reading day
-- `?preview=2026-07-19` open Sunday
-- `?preview=2026-07-24` first in-person Study Night
-- `?preview=2026-08-21` Brotherhood & Accountability Study Night
+- `?preview=2026-07-18` before the reading plan starts and intro gathering
+- `?preview=2026-07-19` first reading day
+- `?preview=2026-07-26` open Sunday
+- `?preview=2026-07-31` Steady Men Night 1
+- `?preview=2026-08-14` Steady Men Night 2
+- `?preview=2026-08-28` Steady Men Night 3
 - `?preview=2026-09-05` final reading day
 - `?preview=2026-09-06` after the study ends
 
