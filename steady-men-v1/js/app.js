@@ -139,8 +139,24 @@
     return STUDY_CONFIG.brotherhoodReminders[day % STUDY_CONFIG.brotherhoodReminders.length];
   }
 
+  function isScheduledGathering(item) {
+    return /^\d{4}-\d{2}-\d{2}$/.test(item.date || '');
+  }
+
+  function gatheringDateLabel(item, style = 'long') {
+    if (!isScheduledGathering(item)) return item.dateLabel || 'Date TBD';
+    return style === 'short' ? shortDate(item.date).toUpperCase() : formatDate(item.date);
+  }
+
+  function gatheringCountdown(fromKey, item) {
+    if (!isScheduledGathering(item)) return 'TBD';
+    return daysUntil(fromKey, item.date);
+  }
+
   function nextStudyNight(selected) {
-    return STUDY_CONFIG.studyNights.find((item) => item.date >= selected) || null;
+    return STUDY_CONFIG.studyNights.find((item) => isScheduledGathering(item) && item.date >= selected)
+      || STUDY_CONFIG.studyNights.find((item) => !isScheduledGathering(item))
+      || null;
   }
 
   function daysUntil(fromKey, toKey) {
@@ -193,19 +209,19 @@
         <div class="gathering-countdown">Completed</div>`;
       byId('study-night-list').innerHTML = STUDY_CONFIG.studyNights.map((item) => {
         const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
-        return `<div class="gathering-mini"><span class="mini-date">${shortDate(item.date).toUpperCase()}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
+        return `<div class="gathering-mini"><span class="mini-date">${gatheringDateLabel(item, 'short')}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
       }).join('');
       return;
     }
     const place = next.location ? ` - ${escapeHtml(next.location)}` : '';
     byId('next-study-night').innerHTML = `
-      <div class="gathering-date-block"><span>NEXT STUDY NIGHT</span><strong>${formatDate(next.date)}</strong></div>
+      <div class="gathering-date-block"><span>NEXT STUDY NIGHT</span><strong>${gatheringDateLabel(next)}</strong></div>
       <div class="gathering-copy"><h3>${escapeHtml(next.title)}</h3><p>${escapeHtml(next.theme)} - ${escapeHtml(next.time)}${place}<br>${escapeHtml(next.note || '')}</p></div>
-      <div class="gathering-countdown">${daysUntil(state.selected, next.date)}</div>`;
+      <div class="gathering-countdown">${gatheringCountdown(state.selected, next)}</div>`;
     byId('study-night-list').innerHTML = STUDY_CONFIG.studyNights.map((item) => {
-      const isNext = item.date === next.date;
+      const isNext = item === next;
       const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
-      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${shortDate(item.date).toUpperCase()}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
+      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${gatheringDateLabel(item, 'short')}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
     }).join('');
   }
 
