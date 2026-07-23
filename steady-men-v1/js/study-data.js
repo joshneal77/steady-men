@@ -26,28 +26,30 @@ const STUDY_CONFIG = {
       note: "Approx. 1 hour: expectations/introductions, group hopes, and a clear start."
     },
     {
-      date: "2026-07-31",
+      date: "2026-07-27",
       title: "Steady Men Night 1",
       theme: "Rooted in Christ",
-      time: "9:00 PM",
-      location: "In person: 693 Line 3, Niagara-on-the-Lake",
-      note: "Further details shared in WhatsApp."
+      time: "8:00 PM",
+      location: "Josh's house",
+      note: "Details to follow in WhatsApp."
     },
     {
-      date: "2026-08-14",
+      date: "",
+      dateLabel: "Date TBD",
       title: "Steady Men Night 2",
       theme: "Brotherhood & Accountability",
-      time: "9:00 PM",
-      location: "In person: 693 Line 3, Niagara-on-the-Lake",
-      note: "Further details shared in WhatsApp."
+      time: "Time TBD",
+      location: "Location TBD",
+      note: "Location and time will be communicated in WhatsApp."
     },
     {
-      date: "2026-08-28",
+      date: "",
+      dateLabel: "Date TBD",
       title: "Steady Men Night 3",
       theme: "Endurance & Finishing Well",
-      time: "9:00 PM",
-      location: "In person: 693 Line 3, Niagara-on-the-Lake",
-      note: "Further details shared in WhatsApp."
+      time: "Time TBD",
+      location: "Location TBD",
+      note: "Location and time will be communicated in WhatsApp."
     }
   ],
   optionalResources: [
@@ -156,6 +158,7 @@ const READING_PLAN = [
     scripture: "John 5",
     theme: "Rooted in Christ",
     weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
+    studyNight: "Men's Gathering Tonight - 8:00 PM | Josh's house | Details to follow in WhatsApp",
     note: "Jesus heals, speaks with the authority of the Father, and calls people to honor Him. The issue is not whether we admire Jesus, but whether we trust and obey Him. Our faith becomes steady when His voice carries more weight than our fears or preferences."
   },
   {
@@ -184,7 +187,6 @@ const READING_PLAN = [
     scripture: "John 8",
     theme: "Rooted in Christ",
     weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    studyNight: "Men's Gathering Tonight - 9:00 PM | 693 Line 3, NOTL",
     note: "Jesus confronts sin without abandoning people, exposes false confidence, and declares Himself the light of the world. Freedom comes from remaining in His word, not from doing whatever we feel. This is a strong passage for guarding our minds and homes with truth."
   },
   {
@@ -285,7 +287,6 @@ const READING_PLAN = [
     scripture: "John 20",
     theme: "Faithful in Daily Life",
     weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    studyNight: "Men's Gathering Tonight - 9:00 PM | 693 Line 3, NOTL",
     note: "The risen Jesus meets fearful disciples with peace, restores purpose, and sends them into the world. The resurrection changes what is possible: sin, fear, and failure do not get the final word. We follow a living Savior."
   },
   {
@@ -386,7 +387,6 @@ const READING_PLAN = [
     scripture: "Galatians 6:1-10",
     theme: "Brotherhood & Accountability",
     weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    studyNight: "Men's Gathering Tonight - 9:00 PM | 693 Line 3, NOTL",
     note: "This is one of our memory passages because it holds grace and responsibility together. We restore a brother gently, carry burdens, examine our own lives, and do not grow weary in doing good. Accountability is meant to help men walk forward, not to shame them."
   },
   {

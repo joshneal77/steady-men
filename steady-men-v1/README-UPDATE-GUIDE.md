@@ -14,15 +14,15 @@ At the top, you can change:
 - `whatsAppUrl`, which should stay blank when men are added individually.
 - `studyPackageUrl`, which points to the current full guide download.
 - `showOptionalResources`, which can be set to `false` to hide the optional video/resource section.
-- `studyNights`, which controls the Intro Gathering and Steady Men Night dates, times, locations, and notes.
+- `studyNights`, which controls the Intro Gathering and Steady Men Night dates, times, locations, and notes. Use `dateLabel: "Date TBD"` with a blank `date` when a gathering date is not set yet.
 - `optionalResources`, which controls the optional videos/support resources.
 - `READING_PLAN`, which controls each date, Scripture reading, theme, week focus, Study Night reminder, and Reading Note.
 
 ## Current gathering dates
 - Saturday, July 18, 2026 at 9:00 PM - Intro Gathering
-- Friday, July 31, 2026 at 9:00 PM - Steady Men Night 1
-- Friday, August 14, 2026 at 9:00 PM - Steady Men Night 2
-- Friday, August 28, 2026 at 9:00 PM - Steady Men Night 3
+- Monday, July 27, 2026 at 8:00 PM - Steady Men Night 1
+- Date TBD - Steady Men Night 2
+- Date TBD - Steady Men Night 3
 
 ## Preview a day
 Add `?preview=YYYY-MM-DD` to the end of the address.
@@ -31,9 +31,8 @@ Useful checks:
 - `?preview=2026-07-18`
 - `?preview=2026-07-19`
 - `?preview=2026-07-26`
-- `?preview=2026-07-31`
-- `?preview=2026-08-14`
-- `?preview=2026-08-28`
+- `?preview=2026-07-27`
+- `?preview=2026-07-28` to check the Date TBD next-gathering state
 - `?preview=2026-09-05`
 - `?preview=2026-09-06`
 

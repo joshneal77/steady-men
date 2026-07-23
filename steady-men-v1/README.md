@@ -12,7 +12,7 @@ Most routine content changes happen in `js/study-data.js`.
 - `whatsAppUrl`: leave blank when men are being added to WhatsApp individually; add a group invite link only if the site should show one.
 - `studyPackageUrl`: path or URL for the uploaded full guide file. If blank, the site uses `assets/steady-men-1613-summer-group.docx`.
 - `showOptionalResources`: set to `false` to hide the optional video/resource section without deleting the links.
-- `studyNights`: dates, titles, times, locations, and notes.
+- `studyNights`: dates, titles, times, locations, and notes. Use `dateLabel: "Date TBD"` with a blank `date` when a gathering date is not set yet.
 - `optionalResources`: optional video or support links shown under Resources.
 - `brotherhoodReminders`: short rotating connection reminders.
 - `READING_PLAN`: daily readings, themes, study night reminders, and short notes.
@@ -31,9 +31,8 @@ Useful checks:
 - `?preview=2026-07-18` before the reading plan starts and intro gathering
 - `?preview=2026-07-19` first reading day
 - `?preview=2026-07-26` open Sunday
-- `?preview=2026-07-31` Steady Men Night 1
-- `?preview=2026-08-14` Steady Men Night 2
-- `?preview=2026-08-28` Steady Men Night 3
+- `?preview=2026-07-27` Steady Men Night 1
+- `?preview=2026-07-28` Date TBD next-gathering state
 - `?preview=2026-09-05` final reading day
 - `?preview=2026-09-06` after the study ends
 
