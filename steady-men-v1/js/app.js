@@ -3,31 +3,13 @@
   const SITE_TIME_ZONE = 'America/Toronto';
   const BIBLE_COM_VERSION_ID = '1713';
   const BIBLE_COM_VERSION_CODE = 'CSB';
-  const DEFAULT_STUDY_PACKAGE_URL = 'assets/steady-men-1613-summer-group.docx';
   const BIBLE_BOOK_CODES = {
-    'John': 'JHN',
-    'James': 'JAS',
-    'Galatians': 'GAL',
-    'Ecclesiastes': 'ECC',
-    'Proverbs': 'PRO',
-    '1 Thessalonians': '1TH',
-    'Ephesians': 'EPH',
-    'Colossians': 'COL',
-    '1 Peter': '1PE',
-    '1 Corinthians': '1CO',
-    'Hebrews': 'HEB',
-    'Romans': 'ROM',
-    '1 Timothy': '1TI',
-    '2 Timothy': '2TI'
-  };
-  const CROSS_CHAPTER_PASSAGES = {
-    '1 Thessalonians 4:1-5:11': ['1TH.4.1-18', '1TH.5.1-11'],
-    '1 Thessalonians 4:13-5:11': ['1TH.4.13-18', '1TH.5.1-11'],
-    'Ephesians 5:15-6:4': ['EPH.5.15-33', 'EPH.6.1-4']
+    'Luke': 'LUK',
+    'Acts': 'ACT'
   };
 
   function dateFormatter(options) {
-    return new Intl.DateTimeFormat(undefined, { timeZone: SITE_TIME_ZONE, ...options });
+    return new Intl.DateTimeFormat('en-CA', { timeZone: SITE_TIME_ZONE, ...options });
   }
 
   function toSiteKey(date = new Date()) {
@@ -73,39 +55,21 @@
     return { selected, mode, reading, preview: Boolean(preview) };
   }
 
-  function findBibleBook(reference) {
-    return Object.keys(BIBLE_BOOK_CODES)
-      .sort((a, b) => b.length - a.length)
-      .find((book) => reference.startsWith(`${book} `));
-  }
-
-  function biblePathParts(reference) {
-    if (CROSS_CHAPTER_PASSAGES[reference]) return CROSS_CHAPTER_PASSAGES[reference];
-    return reference.split(';').flatMap((part) => {
-      const trimmed = part.trim();
-      const book = findBibleBook(trimmed);
-      if (!book) return [];
-      const code = BIBLE_BOOK_CODES[book];
-      const locator = trimmed.slice(book.length).trim();
-      if (/^\d+-\d+$/.test(locator)) {
-        const [start, end] = locator.split('-').map(Number);
-        return Array.from({ length: end - start + 1 }, (_, index) => `${code}.${start + index}`);
-      }
-      return [`${code}.${locator.replace(':', '.').replace(/\s+/g, '')}`];
-    });
-  }
-
   function bibleUrl(reading) {
     if (reading.openDay) return '';
-    const reference = reading.scripture.trim();
-    const parts = biblePathParts(reference);
-    if (!parts.length) return `https://www.bible.com/search/bible?q=${encodeURIComponent(reference)}&version_id=${BIBLE_COM_VERSION_ID}`;
-    return `https://www.bible.com/bible/${BIBLE_COM_VERSION_ID}/${parts.map((part) => `${part}.${BIBLE_COM_VERSION_CODE}`).join(',')}`;
+    if (reading.bibleUrl) return reading.bibleUrl;
+    const reference = reading.scripture.trim().replace(/[\u2013\u2014]/g, '-');
+    const match = /^(Luke|Acts) (\d+)(?::(\d+)(?:-(\d+))?)?$/.exec(reference);
+    if (!match) return '';
+    const [, book, chapter, start, end] = match;
+    const verses = start ? `.${start}${end ? `-${end}` : ''}` : '';
+    return `https://www.bible.com/bible/${BIBLE_COM_VERSION_ID}/${BIBLE_BOOK_CODES[book]}.${chapter}${verses}.${BIBLE_COM_VERSION_CODE}`;
   }
 
   function setReadingLink(link, reading) {
     if (!link) return;
-    if (reading.openDay) {
+    const url = bibleUrl(reading);
+    if (!url) {
       link.classList.add('hidden');
       link.removeAttribute('href');
       link.removeAttribute('target');
@@ -113,23 +77,21 @@
       return;
     }
     link.classList.remove('hidden');
-    link.href = bibleUrl(reading);
+    link.href = url;
     link.textContent = 'Open in Bible App';
     link.target = '_blank';
     link.rel = 'noopener';
   }
 
-  function promptFor(reading) {
-    if (reading.openDay) return 'What needs attention today: rest, prayer, catching up, or reaching out to a brother?';
-    const prompts = [
-      'What is one faithful response God is calling from you today?',
-      'Where does this reading need to shape your home, work, or relationships?',
-      'What truth from this passage should you carry into WhatsApp or prayer today?',
-      'Where are you tempted to rely on yourself instead of Christ?',
-      'What would it look like to live this out quietly and honestly today?'
-    ];
-    const seed = Number(reading.date.slice(-2));
-    return prompts[seed % prompts.length];
+  function renderOverview(reading) {
+    if (!reading.overview || reading.openDay) return '';
+    return `<a class="optional-overview text-link" href="${escapeHtml(reading.overview.url)}" target="_blank" rel="noopener"><span>Optional Section Overview<br>${escapeHtml(reading.overview.title)}</span></a>`;
+  }
+
+  function renderStudyNightNote(reading) {
+    const gathering = STUDY_CONFIG.studyNights.find((item) => item.date === reading.date);
+    if (!gathering) return '';
+    return `<div class="study-night-note">${escapeHtml(gathering.title)} - ${escapeHtml(gathering.time)}<br>${escapeHtml(gathering.location)}. ${escapeHtml(gathering.note)}</div>`;
   }
 
   function getReminder(dateKey) {
@@ -170,9 +132,9 @@
   function renderHero(state) {
     const { reading, mode, preview } = state;
     const status = byId('hero-status');
-    byId('hero-kicker').textContent = preview ? `PREVIEW - ${formatDate(reading.date).toUpperCase()}` : 'ROOTED IN THE WORD';
-    if (mode === 'upcoming') status.textContent = `The Rooted in the Word plan begins ${formatDate(STUDY_CONFIG.startDate)}. The intro gathering is ${formatDate(STUDY_CONFIG.studyNights[0].date)}.`;
-    else if (mode === 'complete') status.textContent = 'The summer plan has concluded. Return to the final reading and keep walking steadily in the Word.';
+    byId('hero-kicker').textContent = preview ? `PREVIEW - ${formatDate(state.selected).toUpperCase()}` : 'FALL SESSION 2026 | LUKE + ACTS';
+    if (mode === 'upcoming') status.textContent = `Our journey through Luke and Acts begins ${formatDate(STUDY_CONFIG.startDate)}, with Launch Night in person from ${STUDY_CONFIG.studyNights[0].time}.`;
+    else if (mode === 'complete') status.textContent = 'The Fall reading plan is complete. Keep living as witnesses where God has placed us.';
     else status.textContent = `${formatDate(reading.date)} - open the Word, take one faithful step, and stay connected to your brothers.`;
     setReadingLink(byId('hero-reading-link'), reading);
   }
@@ -183,16 +145,18 @@
     byId('today-new-testament').textContent = reading.scripture;
     byId('today-companion').textContent = reading.theme;
     byId('today-note').textContent = reading.note;
-    byId('reflection-question').textContent = promptFor(reading);
+    byId('today-overview').innerHTML = renderOverview(reading);
+    byId('today-study-night').innerHTML = renderStudyNightNote(reading);
+    byId('today-reading-label').textContent = state.mode === 'upcoming' ? 'OPENING READING' : state.mode === 'complete' ? 'FINAL READING' : "TODAY'S READING";
     setReadingLink(byId('today-reading-link'), reading);
     setReadingLink(byId('hero-reading-link'), reading);
     byId('brotherhood-reminder').textContent = getReminder(reading.date);
-    const copyButton = byId('today-copy-button');
-    if (copyButton) {
+    ['today-copy-button', 'today-share-button'].forEach((id) => {
+      const copyButton = byId(id);
+      if (!copyButton) return;
       copyButton.dataset.date = reading.date;
-      copyButton.dataset.defaultLabel = 'Copy for WhatsApp';
       copyButton.classList.toggle('hidden', Boolean(reading.openDay));
-    }
+    });
     const whatsApp = byId('whatsapp-link');
     if (STUDY_CONFIG.whatsAppUrl) {
       whatsApp.href = STUDY_CONFIG.whatsAppUrl;
@@ -205,23 +169,23 @@
     if (!next) {
       byId('next-study-night').innerHTML = `
         <div class="gathering-date-block"><span>GATHERINGS COMPLETE</span><strong>Keep Going</strong></div>
-        <div class="gathering-copy"><h3>Summer gatherings complete</h3><p>Keep walking through the final reading period and stay connected with the group.</p></div>
+        <div class="gathering-copy"><h3>Fall gatherings complete</h3><p>Keep showing up in Scripture, prayer, and brotherhood.</p></div>
         <div class="gathering-countdown">Completed</div>`;
       byId('study-night-list').innerHTML = STUDY_CONFIG.studyNights.map((item) => {
         const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
-        return `<div class="gathering-mini"><span class="mini-date">${gatheringDateLabel(item, 'short')}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
+        return `<div class="gathering-mini"><span class="mini-date">${gatheringDateLabel(item)}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.time)}${location}</span></div>`;
       }).join('');
       return;
     }
     const place = next.location ? ` - ${escapeHtml(next.location)}` : '';
     byId('next-study-night').innerHTML = `
       <div class="gathering-date-block"><span>NEXT STUDY NIGHT</span><strong>${gatheringDateLabel(next)}</strong></div>
-      <div class="gathering-copy"><h3>${escapeHtml(next.title)}</h3><p>${escapeHtml(next.theme)} - ${escapeHtml(next.time)}${place}<br>${escapeHtml(next.note || '')}</p></div>
+      <div class="gathering-copy"><h3>${escapeHtml(next.title)}</h3><p>${escapeHtml(next.time)}${place}<br>${escapeHtml(next.note || '')}</p></div>
       <div class="gathering-countdown">${gatheringCountdown(state.selected, next)}</div>`;
     byId('study-night-list').innerHTML = STUDY_CONFIG.studyNights.map((item) => {
       const isNext = item === next;
       const location = item.location ? `<br>${escapeHtml(item.location)}` : '';
-      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${gatheringDateLabel(item, 'short')}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.theme)}<br>${escapeHtml(item.time)}${location}</span></div>`;
+      return `<div class="gathering-mini ${isNext ? 'is-next' : ''}"><span class="mini-date">${gatheringDateLabel(item)}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.time)}${location}</span></div>`;
     }).join('');
   }
 
@@ -261,20 +225,19 @@
           : completed
             ? `<span class="completed-chip">${reading.openDay ? 'OPEN SUNDAY COMPLETED' : 'READING COMPLETED'}</span>`
             : '';
-        const studyNight = reading.studyNight ? `<div class="study-night-note">${escapeHtml(reading.studyNight)}</div>` : '';
-        const actions = reading.openDay ? '' : `<div class="reading-actions"><button class="copy-reading-button" type="button" data-date="${reading.date}" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button></div>`;
-        return `<div class="${classes.join(' ')}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${statusChip}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">Reading Note</span>${escapeHtml(reading.note)}${studyNight}</div>${actions}</div>`;
+        const actions = reading.openDay ? '' : `<div class="reading-actions"><a class="text-link reading-app-link" href="${bibleUrl(reading)}" target="_blank" rel="noopener">Open in Bible App</a><button class="copy-reading-button" type="button" data-date="${reading.date}" data-copy-kind="whatsapp" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button><button class="copy-reading-button" type="button" data-date="${reading.date}" data-copy-kind="reading-link" data-default-label="Copy Reading Link">Copy Reading Link</button></div>`;
+        return `<div class="${classes.join(' ')}" data-reading-date="${reading.date}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${statusChip}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">${reading.openDay ? 'Open Sunday' : 'Reading Note'}</span>${escapeHtml(reading.note)}${renderStudyNightNote(reading)}${renderOverview(reading)}</div>${actions}</div>`;
       }).join('')}</div></details>`;
     }).join('');
     const notice = byId('plan-notice');
     notice.style.display = 'none';
     if (state.mode === 'upcoming') { notice.style.display = 'block'; notice.textContent = `The plan begins ${formatDate(STUDY_CONFIG.startDate)}. The first week is open above.`; }
-    else if (state.mode === 'complete') { notice.style.display = 'block'; notice.textContent = 'The 2026 plan has concluded. Completed readings are marked above.'; }
+    else if (state.mode === 'complete') { notice.style.display = 'block'; notice.textContent = 'The Fall 2026 reading plan is complete. Completed readings are marked above.'; }
   }
 
   function renderResources() {
     const studyPackage = byId('study-package-link');
-    const studyPackageUrl = STUDY_CONFIG.studyPackageUrl || DEFAULT_STUDY_PACKAGE_URL;
+    const studyPackageUrl = STUDY_CONFIG.studyPackageUrl;
     if (!studyPackageUrl) {
       studyPackage.removeAttribute('href');
       studyPackage.setAttribute('aria-disabled', 'true');
@@ -319,12 +282,18 @@
   }
 
   function whatsappText(reading) {
-    return `*Steady Men 16:13 — ${formatDate(reading.date)}*\n\n*Reading:* ${reading.scripture}\n${bibleUrl(reading)}`;
+    const message = `*Steady Men 16:13 — ${formatDate(reading.date)}*\n\n*Reading:* ${reading.scripture}\n${bibleUrl(reading)}`;
+    return reading.overview ? `${message}\n\nOptional section overview:\n${reading.overview.title}\n${reading.overview.url}` : message;
+  }
+
+  function readingLinkText(reading) {
+    return `Today’s Reading — ${formatDate(reading.date)}\n\nReading: ${reading.scripture}\n${bibleUrl(reading)}`;
   }
 
   function setCopyFeedback(button, message) {
     const defaultLabel = button.dataset.defaultLabel || 'Copy for WhatsApp';
     button.textContent = message;
+    byId('copy-status').textContent = `${defaultLabel}: ${message}`;
     button.classList.add('is-copied');
     window.setTimeout(() => {
       button.textContent = defaultLabel;
@@ -335,14 +304,17 @@
   function handleCopyButton(button) {
     const reading = READING_PLAN.find((item) => item.date === button.dataset.date);
     if (!reading || reading.openDay) return;
-    copyText(whatsappText(reading))
+    const message = button.dataset.copyKind === 'reading-link' ? readingLinkText(reading) : whatsappText(reading);
+    copyText(message)
       .then(() => setCopyFeedback(button, 'Copied'))
-      .catch(() => setCopyFeedback(button, 'Select text'));
+      .catch(() => setCopyFeedback(button, 'Copy failed'));
   }
 
   function bindCopyButtons() {
-    const todayCopy = byId('today-copy-button');
-    if (todayCopy) todayCopy.addEventListener('click', () => handleCopyButton(todayCopy));
+    ['today-copy-button', 'today-share-button'].forEach((id) => {
+      const button = byId(id);
+      if (button) button.addEventListener('click', () => handleCopyButton(button));
+    });
     const plan = byId('reading-plan-list');
     plan.addEventListener('click', (event) => {
       const button = event.target.closest('.copy-reading-button');
@@ -383,11 +355,21 @@
   }
 
   function init() {
-    const state = scheduleState();
-    renderHero(state);
-    renderToday(state);
-    renderStudyNights(state);
-    renderReadingPlan(state);
+    let renderedDate;
+    function renderDay() {
+      const state = scheduleState();
+      if (state.selected === renderedDate) return;
+      renderedDate = state.selected;
+      renderHero(state);
+      renderToday(state);
+      renderStudyNights(state);
+      renderReadingPlan(state);
+    }
+    renderDay();
+    window.setInterval(renderDay, 60000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) renderDay();
+    });
     renderResources();
     bindCopyButtons();
     setActiveNav();

@@ -1,9 +1,9 @@
 # Steady Men Maintenance Notes
 
 ## Project purpose
-Steady Men is a Christian men's discipleship initiative rooted in 1 Corinthians 16:13-14. The current website is Version 1: a simple daily hub for men participating in the Rooted in the Word summer reading plan.
+Steady Men is a Christian men's discipleship initiative rooted in 1 Corinthians 16:13-14. The current website is a simple daily hub for the Rooted in the Word Fall Session 2026: Luke + Acts, September 21 - December 5.
 
-The homepage should stay focused on Today's Journey: today's reading, reflection, brotherhood reminder, memory focus, next Study Night, and resources.
+The homepage should stay focused on Today's Journey: today's reading and guide note, brotherhood reminder, purpose, next Study Night, optional Leading at Home, and resources.
 
 ## Active website root
 The active static website lives in `steady-men-v1/`.
@@ -40,15 +40,19 @@ For site changes, check:
 
 - `steady-men-v1/index.html` loads with no missing local assets
 - desktop and narrow mobile layouts
-- `?preview=2026-07-18` before the reading plan starts and intro gathering
-- `?preview=2026-07-19` first reading day
-- `?preview=2026-07-26` open Sunday
-- `?preview=2026-07-31` Steady Men Night 1
-- `?preview=2026-08-14` Steady Men Night 2
-- `?preview=2026-08-28` Steady Men Night 3
-- `?preview=2026-09-05` final reading day
-- `?preview=2026-09-06` after the study ends
+- `?preview=2026-09-20` before launch
+- `?preview=2026-09-21` first reading, Launch Night, and first optional overview
+- `?preview=2026-09-27` Open Sunday
+- `?preview=2026-10-06` Tuesday Study Night 2 (not October 5)
+- `?preview=2026-10-08`, `?preview=2026-11-02`, and `?preview=2026-11-17` other optional overviews
+- `?preview=2026-12-05` final reading
+- `?preview=2026-12-06` readings complete, December 7 wrap-up still upcoming
+- `?preview=2026-12-08` all gatherings complete
+- `node tests/site.test.cjs` from the active website root
+- both copy buttons, with overview links only in WhatsApp on the four assigned dates
 - America/Toronto date behavior for today's reading
 - service worker cache changes do not trap stale pages
 
 For pull requests, include what changed, why, deployment risks, tests performed, remaining decisions, and how to update content.
+
+Keep readings within a single chapter as listed in the final Fall DOCX. Study Night reminders are derived from `studyNights`; do not maintain duplicate dates in individual readings. Keep the optional general video section hidden for Fall and do not add RightNow Media. The full guide download is `assets/steady-men-fall-2026-final.docx`. See the website README for the sharing rules and content locations.
