@@ -1,87 +1,66 @@
 /* Edit this file to update the schedule, study night details, resource links, and daily notes. */
 const STUDY_CONFIG = {
   siteTitle: "Steady Men 16:13",
-  studyTitle: "Rooted in the Word | Summer Reading Plan 2026",
-  tagline: "A daily walk in the Word. Honest brotherhood. Steady growth.",
-  startDate: "2026-07-19",
-  endDate: "2026-09-05",
+  studyTitle: "Rooted in the Word | Fall Session 2026",
+  tagline: "Formed by Christ. Rooted in Scripture. Steady Together.",
+  startDate: "2026-09-21",
+  endDate: "2026-12-05",
   bibleVersion: "CSB",
   whatsAppUrl: "",
-  studyPackageUrl: "assets/steady-men-1613-summer-group.docx",
-  showOptionalResources: true,
-  memory: {
-    reference: "Psalm 1:1-3",
-    version: "CSB",
-    theme: "Delight. Meditate. Be Rooted.",
-    url: "https://www.bible.com/bible/1713/PSA.1.1-3.CSB",
-    note: "Memory work is encouraged, not tested. Let this passage shape steady attention to God's Word."
-  },
+  studyPackageUrl: "assets/steady-men-fall-2026-final.docx",
+  showOptionalResources: false,
   studyNights: [
     {
-      date: "2026-07-18",
-      title: "Intro Gathering",
-      theme: "Getting Started",
-      time: "9:00 PM",
-      location: "Online by Zoom/Teams (TBD)",
-      note: "Approx. 1 hour: expectations/introductions, group hopes, and a clear start."
+      date: "2026-09-21",
+      title: "Study Night 1 / Launch Night",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
     },
     {
-      date: "2026-07-27",
-      title: "Steady Men Night 1",
-      theme: "Rooted in Christ",
-      time: "8:00 PM",
-      location: "Josh's house",
-      note: "Details to follow in WhatsApp."
+      date: "2026-10-06",
+      title: "Study Night 2",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
     },
     {
-      date: "",
-      dateLabel: "Date TBD",
-      title: "Steady Men Night 2",
-      theme: "Brotherhood & Accountability",
-      time: "Time TBD",
-      location: "Location TBD",
-      note: "Location and time will be communicated in WhatsApp."
+      date: "2026-10-19",
+      title: "Study Night 3",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
     },
     {
-      date: "",
-      dateLabel: "Date TBD",
-      title: "Steady Men Night 3",
-      theme: "Endurance & Finishing Well",
-      time: "Time TBD",
-      location: "Location TBD",
-      note: "Location and time will be communicated in WhatsApp."
+      date: "2026-11-02",
+      title: "Study Night 4",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
+    },
+    {
+      date: "2026-11-16",
+      title: "Study Night 5",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
+    },
+    {
+      date: "2026-11-30",
+      title: "Study Night 6",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
+    },
+    {
+      date: "2026-12-07",
+      title: "Study Night 7 / Wrap-up Night",
+      time: "8:00-9:30 PM",
+      location: "In person",
+      note: "Further details will be shared through WhatsApp."
     }
   ],
-  optionalResources: [
-    {
-      title: "Where Have All the Good Men Gone?",
-      type: "Optional Video",
-      scripture: "Genesis 1-3",
-      url: "https://www.youtube.com/watch?v=6u2r8-VBHvg",
-      summary: "A helpful background message on faithful work, obedience, sacrificial love, and humble responsibility."
-    },
-    {
-      title: "Stand Firm & Act Like Men",
-      type: "Optional Video",
-      scripture: "1 Peter 5:6-10",
-      url: "https://www.youtube.com/watch?v=YcHdx3uyUks",
-      summary: "A supporting message on humility, casting burdens on Christ, refusing isolation, and getting back up through grace."
-    },
-    {
-      title: "Stand Firm",
-      type: "Optional Video",
-      scripture: "Ephesians 6:10-18",
-      url: "https://www.youtube.com/watch?v=0Z8Z-J7dcv0",
-      summary: "A supporting message on standing in the Lord's strength and fighting for the people God has entrusted to us."
-    },
-    {
-      title: "Be Strong",
-      type: "Optional Video",
-      scripture: "Matthew 20:17-28",
-      url: "https://www.youtube.com/watch?v=vo7-W-TnT2Q",
-      summary: "A supporting message on strength shaped by Jesus: enduring hardship, humility, and serving in love."
-    }
-  ],
+  optionalResources: [],
   brotherhoodReminders: [
     "A simple checkmark, done, or reaction in WhatsApp helps the group keep walking together.",
     "Do not quietly disappear. If you miss a few days, jump back in with today's reading.",
@@ -93,357 +72,565 @@ const STUDY_CONFIG = {
   ]
 };
 
-const OPEN_SUNDAY_NOTE = "Catch up, reflect, pray, or rest. Do not stress about missed days - jump back in with the current reading and keep going.";
-
 const READING_PLAN = [
   {
-    date: "2026-07-19",
-    scripture: "John 1:1-18",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "John opens by showing that Jesus is the eternal Word who was with God and is God. He is not merely a teacher or example; He is the source of life and light. A God-centered man starts by seeing Jesus for who He truly is."
+    "date": "2026-09-21",
+    "scripture": "Luke 1:1-38",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Luke begins by showing God moving quietly but powerfully through ordinary people. Zechariah and Mary are invited to trust God before they can see the full picture. Steady faith often starts with obedience before complete understanding.",
+    "overview": {
+      "title": "BibleProject - Luke 1-9",
+      "url": "https://bibleproject.com/videos/luke-1-9/"
+    }
   },
   {
-    date: "2026-07-20",
-    scripture: "John 1:19-51",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "Jesus calls ordinary men to follow Him and begins to reveal who He is. The first disciples do not have everything figured out; they respond to His invitation and bring others with them. Steady growth begins with following Jesus and helping other men see Him more clearly."
+    "date": "2026-09-22",
+    "scripture": "Luke 1:39-80",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Mary responds with worship, and Zechariah speaks of God remembering His promises. This chapter teaches us to see our lives inside God’s bigger story. Men are steadied when praise and trust become stronger than fear and control."
   },
   {
-    date: "2026-07-21",
-    scripture: "John 2",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "Jesus shows His authority over celebration, worship, and the temple. He brings joy, but He also refuses to let worship become hollow or self-serving. Following Him means letting Him shape both the ordinary parts of life and the places where our hearts have drifted."
+    "date": "2026-09-23",
+    "scripture": "Luke 2:1-21",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus enters the world in humility, announced first to shepherds. God’s kingdom does not arrive through image, status, or noise. Christlike formation begins by paying attention to the quiet ways God works."
   },
   {
-    date: "2026-07-22",
-    scripture: "John 3:1-21",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "Jesus tells Nicodemus that a religious life is not enough; we must be made new by the Spirit. This passage brings us back to the gospel: we are not earning a place with God, but receiving new life through faith in Christ."
+    "date": "2026-09-24",
+    "scripture": "Luke 2:22-52",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Simeon, Anna, and young Jesus all show lives centered on God’s purposes. Jesus grows in wisdom, stature, and favour with God and people. Godly maturity is not accidental; it is formed over time in ordinary faithfulness."
   },
   {
-    date: "2026-07-23",
-    scripture: "John 3:22-36",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "John the Baptist gives a clear picture of humility: Jesus must increase, and we must decrease. A steady man does not build his life around being noticed, right, or important. He gladly makes more of Christ."
+    "date": "2026-09-25",
+    "scripture": "Luke 3",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "John calls people to repentance that bears fruit, not empty religious words. He prepares the way for Jesus by calling people back to honest obedience. A steady man lets God confront what needs to change."
   },
   {
-    date: "2026-07-24",
-    scripture: "John 4:1-26",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "Jesus meets a woman with a complicated story and offers living water that truly satisfies. He sees people fully without turning away from them. Real change begins when we bring our thirst, shame, and need to Christ rather than trying to satisfy them elsewhere."
+    "date": "2026-09-26",
+    "scripture": "Luke 4",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus faces temptation with Scripture, begins His mission, and shows authority over evil and sickness. He is not driven by appetite, approval, or power. He is led by the Spirit and faithful to the Father."
   },
   {
-    date: "2026-07-25",
-    scripture: "John 4:27-54",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His identity, truth, obedience, and invitation to follow Him.",
-    note: "The woman at the well becomes a witness, and Jesus calls His disciples to see the spiritual needs around them. Faith is not meant to stay private. Men who are being changed by Jesus learn to notice, serve, and speak about what He has done."
+    "date": "2026-09-27",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-07-26",
-    scripture: "Open Sunday",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-09-28",
+    "scripture": "Luke 5",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus calls ordinary workers, cleanses the unclean, forgives sins, and eats with sinners. He does not call perfect men; He calls men willing to leave old ways and follow Him. Grace leads to a new direction."
   },
   {
-    date: "2026-07-27",
-    scripture: "John 5",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    studyNight: "Men's Gathering Tonight - 8:00 PM | Josh's house | Details to follow in WhatsApp",
-    note: "Jesus heals, speaks with the authority of the Father, and calls people to honor Him. The issue is not whether we admire Jesus, but whether we trust and obey Him. Our faith becomes steady when His voice carries more weight than our fears or preferences."
+    "date": "2026-09-29",
+    "scripture": "Luke 6:1-26",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus confronts shallow religion and chooses His apostles before teaching about the kingdom. Blessing looks different in Jesus’ hands than it does in the world. He forms men who live by His values, not cultural assumptions."
   },
   {
-    date: "2026-07-28",
-    scripture: "John 6:1-29",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    note: "Jesus provides for a crowd and then challenges people who only want Him for what He can give. He is not a tool for a more comfortable life. He is the One we need, and faith means trusting Him even when we do not yet see the whole plan."
+    "date": "2026-09-30",
+    "scripture": "Luke 6:27-49",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus calls His followers to love enemies, examine their own hearts, and build on His words. The mouth speaks from what fills the heart, and a tree is known by its fruit. Formation shows up in how we speak, respond, forgive, and obey."
   },
   {
-    date: "2026-07-29",
-    scripture: "John 6:30-71",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    note: "Jesus calls Himself the bread of life, and many people walk away because His words are hard. Peter stays because he recognizes that Jesus alone has the words of eternal life. A steady man keeps coming back to Christ when obedience is costly or confusing."
+    "date": "2026-10-01",
+    "scripture": "Luke 7:1-35",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus honours humble faith, shows compassion to a grieving mother, and answers John’s doubts with evidence of the kingdom. Faith is not always loud or certain. Sometimes it is simply bringing our need to Jesus and trusting Him again."
   },
   {
-    date: "2026-07-30",
-    scripture: "John 7",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    note: "Jesus teaches openly despite opposition and invites the thirsty to come to Him. He does not chase approval or move according to pressure. He follows the Father's timing and speaks the truth with courage."
+    "date": "2026-10-02",
+    "scripture": "Luke 7:36-50",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "A sinful woman responds to Jesus with love because she knows she has been forgiven much. The religious man misses grace because he sees others clearly but not himself. Humility grows when we remember how much mercy we have received."
   },
   {
-    date: "2026-07-31",
-    scripture: "John 8",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    note: "Jesus confronts sin without abandoning people, exposes false confidence, and declares Himself the light of the world. Freedom comes from remaining in His word, not from doing whatever we feel. This is a strong passage for guarding our minds and homes with truth."
+    "date": "2026-10-03",
+    "scripture": "Luke 8:1-25",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus teaches that the Word bears fruit in receptive hearts and then shows His authority over the storm. We need both hearing and trusting. The question is whether God’s Word is taking root deeply enough to hold us steady when life shakes."
   },
   {
-    date: "2026-08-01",
-    scripture: "John 9-10",
-    theme: "Rooted in Christ",
-    weekFocus: "Seeing Jesus clearly: His authority, compassion, courage, and call to trust.",
-    note: "Jesus gives sight to a man born blind and describes Himself as the Good Shepherd. He knows His sheep, leads them, and lays down His life for them. Men are called to listen for Christ's voice and lead others by serving, protecting, and pointing them to Him."
+    "date": "2026-10-04",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-08-02",
-    scripture: "Open Sunday",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-10-05",
+    "scripture": "Luke 8:26-56",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus restores the tormented, heals the desperate, and raises the dead. No situation is too unclean, too late, or too far gone for Him. Men following Jesus learn to bring fear, shame, and desperation into His presence."
   },
   {
-    date: "2026-08-03",
-    scripture: "John 11",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus enters grief, weeps with those who mourn, and shows power over death. He is neither distant nor overwhelmed by suffering. Following Him includes being present with people in hard moments and trusting that death does not have the final word."
+    "date": "2026-10-06",
+    "scripture": "Luke 9:1-36",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus sends His disciples, feeds the crowd, reveals His glory, and teaches that following Him means self-denial. Discipleship is not using Jesus to support our plans. It is laying down our lives and listening to the Son."
   },
   {
-    date: "2026-08-04",
-    scripture: "John 12",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus speaks about a life that bears fruit by following Him rather than seeking self-protection or human praise. He also models a heart fixed on the Father's glory. A faithful man learns to put obedience above image and comfort."
+    "date": "2026-10-07",
+    "scripture": "Luke 9:37-62",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus confronts weak faith, pride, revenge, and half-hearted following. He is patient with failure but direct about the cost of discipleship. A steady man learns to follow Jesus without always needing comfort, control, or recognition."
   },
   {
-    date: "2026-08-05",
-    scripture: "John 13:1-20",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus washes His disciples' feet and gives them an example of humble service. Biblical leadership is not about being above others; it is about using strength and responsibility for their good. This matters at home, at work, and in the church."
+    "date": "2026-10-08",
+    "scripture": "Luke 10",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus sends the seventy-two, celebrates God’s work, teaches neighbour-love, and commends Mary’s attention to His word. Mission and presence belong together. We serve faithfully, but we also sit at Jesus’ feet and listen.",
+    "overview": {
+      "title": "BibleProject - Luke 10-24",
+      "url": "https://bibleproject.com/videos/luke-10-24/"
+    }
   },
   {
-    date: "2026-08-06",
-    scripture: "John 13:21-38",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus remains steady while betrayal and failure surround Him. He gives His followers a new command: love one another as He has loved them. Real brotherhood is built on that kind of committed, Christ-shaped love, not convenience."
+    "date": "2026-10-09",
+    "scripture": "Luke 11:1-28",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus teaches His disciples to pray and calls people to hear and keep God’s Word. Prayer is not a performance; it is dependence on the Father. Men are formed as they learn to ask, seek, knock, and obey."
   },
   {
-    date: "2026-08-07",
-    scripture: "John 14",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus tells troubled disciples not to let their hearts be afraid because He is the way, the truth, and the life. He promises the Holy Spirit to help them obey and remember His words. Men do not have to carry faithfulness alone; Christ has given His presence and help."
+    "date": "2026-10-10",
+    "scripture": "Luke 11:29-54",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus warns against spiritual blindness, hypocrisy, and looking clean on the outside while the heart is far from God. This is a hard but needed passage. Formation means allowing Jesus to address the hidden places, not only the visible ones."
   },
   {
-    date: "2026-08-08",
-    scripture: "John 15",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus shows us humble service, prayerful dependence, love, and courage under pressure.",
-    note: "Jesus calls His disciples to abide in Him because fruitfulness comes from remaining connected to Him. This is the heart of daily time in the Word: not checking a box, but staying close to the source of life. Psalm 1 uses a similar picture of a tree rooted near water."
+    "date": "2026-10-11",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-08-09",
-    scripture: "Open Sunday",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-10-12",
+    "scripture": "Luke 12:1-34",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus speaks about fear, hypocrisy, greed, worry, and treasure. What we fear and what we treasure deeply forms how we live. A man rooted in Christ learns to seek God’s kingdom rather than being ruled by anxiety or possessions."
   },
   {
-    date: "2026-08-10",
-    scripture: "John 16",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "Jesus prepares His disciples for trouble without leaving them hopeless. He promises the Spirit, tells them to pray in His name, and says that in Him they can have peace. A steady man does not deny hardship; he learns to face it with Christ."
+    "date": "2026-10-13",
+    "scripture": "Luke 12:35-59",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus calls His servants to readiness, faithfulness, and wise stewardship. We are accountable for what has been entrusted to us. Steady men live awake, not passive, using responsibility for God’s purposes."
   },
   {
-    date: "2026-08-11",
-    scripture: "John 17",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "Jesus prays for His disciples and for those who will believe through their message. His prayer centers on knowing God, being kept from evil, growing in truth, and living in unity. Prayer is not an extra part of Christian life; it is part of how we stand and care for one another."
+    "date": "2026-10-14",
+    "scripture": "Luke 13",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus calls people to repent, shows compassion, and grieves over Jerusalem’s resistance. God’s patience is real, but so is His call to respond. Formation includes letting Jesus interrupt our excuses and draw us back to Him."
   },
   {
-    date: "2026-08-12",
-    scripture: "John 18",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "Jesus faces arrest and injustice without panic, manipulation, or compromise. Peter's denial reminds us that confidence in ourselves is fragile. Jesus remains faithful where we fail, which gives us both humility and hope."
+    "date": "2026-10-15",
+    "scripture": "Luke 14",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus teaches humility, hospitality, and the cost of discipleship. The kingdom reshapes who we honour, how we use our homes, and what we are willing to surrender. Following Jesus must become more important than image or comfort."
   },
   {
-    date: "2026-08-13",
-    scripture: "John 19",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "Jesus goes to the cross willingly and finishes the work the Father gave Him. His love is sacrificial, costly, and purposeful. Husbands, fathers, single men, and brothers alike are called to let Christ redefine strength through obedience and self-giving love."
+    "date": "2026-10-16",
+    "scripture": "Luke 15",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus tells stories of the lost sheep, lost coin, and lost son. God’s heart is to seek and restore the lost, not celebrate self-righteous distance. Men formed by grace become men who pursue, forgive, and rejoice in restoration."
   },
   {
-    date: "2026-08-14",
-    scripture: "John 20",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "The risen Jesus meets fearful disciples with peace, restores purpose, and sends them into the world. The resurrection changes what is possible: sin, fear, and failure do not get the final word. We follow a living Savior."
+    "date": "2026-10-17",
+    "scripture": "Luke 16",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus confronts how we handle money, faithfulness, and eternal realities. What we do with small responsibilities reveals larger loyalties. A steady man learns to use resources as a servant of God, not as a master over his heart."
   },
   {
-    date: "2026-08-15",
-    scripture: "John 21",
-    theme: "Faithful in Daily Life",
-    weekFocus: "Jesus finishes His work with prayer, sacrifice, resurrection hope, and a clear mission for His people.",
-    note: "Jesus restores Peter after failure and calls him to love Him and care for His people. The question is not whether we have failed, but whether we will return to Jesus and follow Him again. His grace restores men for faithful service."
+    "date": "2026-10-18",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-08-16",
-    scripture: "Open Sunday",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-10-19",
+    "scripture": "Luke 17",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus speaks about forgiveness, faith, gratitude, and readiness for the kingdom. The grateful leper reminds us not to receive mercy casually. Faithfulness is often shown in simple obedience, humility, and returning to give thanks."
   },
   {
-    date: "2026-08-17",
-    scripture: "James 1:1-18",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "James begins with trials, wisdom, and the danger of being pulled away by our own desires. He does not say hardship is easy, but that God can use it to produce endurance. Ask God for wisdom honestly and keep bringing your struggles into the light."
+    "date": "2026-10-20",
+    "scripture": "Luke 18",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus teaches persistence in prayer, humility before God, childlike dependence, surrender, and mercy. The Pharisee, rich ruler, and blind man all reveal different postures. Jesus receives those who know their need."
   },
   {
-    date: "2026-08-18",
-    scripture: "James 1:19-27",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "James calls believers to be quick to listen, slow to speak, slow to anger, and doers of the word. Daily Scripture matters because it should shape how we speak, respond, and care for people. Hearing truth without living it leaves us unchanged."
+    "date": "2026-10-21",
+    "scripture": "Luke 19:1-27",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Zacchaeus shows repentance that changes real life, and Jesus teaches stewardship while we wait for the King. Grace does not leave a man unchanged. It reshapes what he does with money, opportunity, responsibility, and influence."
   },
   {
-    date: "2026-08-19",
-    scripture: "James 2:1-13",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "James confronts favoritism and reminds believers that mercy is central to a life shaped by God. Brotherhood is not a place for comparison, status, or treating some men as more important than others. We build one another up because Christ has shown us mercy."
+    "date": "2026-10-22",
+    "scripture": "Luke 19:28-48",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus enters Jerusalem as King and weeps over the city before cleansing the temple. He is gentle and authoritative, compassionate and holy. Following Him means receiving His reign over worship, priorities, and the direction of our lives."
   },
   {
-    date: "2026-08-20",
-    scripture: "James 2:14-26",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "James shows that genuine faith produces visible action. We are not saved by works, but faith that never affects how we live is empty. Steady men take responsibility and let their trust in Christ show up in practical obedience."
+    "date": "2026-10-23",
+    "scripture": "Luke 20",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus faces testing from religious leaders and responds with wisdom and authority. He refuses traps, exposes false motives, and points people back to God. Men need wisdom that is rooted in truth, not reaction or pride."
   },
   {
-    date: "2026-08-21",
-    scripture: "James 3:1-12",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "James takes our words seriously because the tongue can direct, damage, or bless. A man can be strong in many areas and still wound people through careless speech. Ask where your words need more truth, patience, and self-control."
+    "date": "2026-10-24",
+    "scripture": "Luke 21",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus warns about hardship, destruction, and watchfulness, while also noticing the poor widow’s costly gift. Faithfulness is not measured by appearance or ease. We endure by trusting Him and staying awake to what matters."
   },
   {
-    date: "2026-08-22",
-    scripture: "James 3:13-18",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Practical faith that shows up in trials, speech, humility, wisdom, and how we treat one another.",
-    note: "Godly wisdom is humble, peaceable, gentle, and full of mercy. This is not weak leadership; it is strength under control. Homes, workplaces, and friendships are changed when men choose wisdom from above instead of jealousy, pride, or anger."
+    "date": "2026-10-25",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-08-23",
-    scripture: "Open Sunday",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-10-26",
+    "scripture": "Luke 22:1-38",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus shares the meal, teaches servant leadership, warns Peter, and prepares His disciples for testing. Even at the table, pride and weakness are present. Jesus forms men by grace, truth, humility, and service."
   },
   {
-    date: "2026-08-24",
-    scripture: "James 4:1-12",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "James traces conflict back to desires that are ruling the heart and calls us to submit to God. Accountability starts with humility: we bring our own pride, anger, and temptation before the Lord instead of only seeing what is wrong in others."
+    "date": "2026-10-27",
+    "scripture": "Luke 22:39-71",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "In Gethsemane and trial, Jesus remains surrendered to the Father while His disciples struggle and Peter denies Him. This passage shows both human weakness and Christ’s faithfulness. Our hope rests on His obedience, not our strength."
   },
   {
-    date: "2026-08-25",
-    scripture: "James 4:13-17",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "James speaks to planning, work, and the illusion of control. It is good to work and plan, but our confidence rests in God's will, not our schedules. Quiet faithfulness includes doing the good we know to do today."
+    "date": "2026-10-28",
+    "scripture": "Luke 23:1-25",
+    // Bible.com needs these two CSB ranges to avoid its "No Available Verses" response.
+    "bibleUrl": "https://www.bible.com/bible/1713/LUK.23.1-16,18-25.CSB",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus stands before rulers while the crowd chooses Barabbas. Injustice, cowardice, and compromise surround Him, yet He does not panic or retaliate. He is steady under pressure because He is surrendered to the Father."
   },
   {
-    date: "2026-08-26",
-    scripture: "James 5:1-12",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "James warns against trusting wealth, comfort, or control and calls believers to patient endurance. He points to the farmer who works faithfully while waiting for what he cannot force. Men need patience in work, family life, and the long process of spiritual growth."
+    "date": "2026-10-29",
+    "scripture": "Luke 23:26-56",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "Jesus is crucified, forgives, welcomes the repentant criminal, and entrusts Himself to the Father. His strength is sacrificial love. The cross reshapes what men should call courage, leadership, and faithfulness."
   },
   {
-    date: "2026-08-27",
-    scripture: "James 5:13-20",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "James closes with prayer, confession, restoration, and bringing wandering people back. This is a key picture for Steady Men: men who pray for one another, speak honestly, and help each other return when someone drifts."
+    "date": "2026-10-30",
+    "scripture": "Luke 24:1-35",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "The resurrection is announced, and Jesus opens the Scriptures to the disciples on the road. Their hearts burn as they begin to see the story clearly. Scripture and resurrection hope reframe confusion, grief, and disappointment."
   },
   {
-    date: "2026-08-28",
-    scripture: "Galatians 6:1-10",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "This is one of our memory passages because it holds grace and responsibility together. We restore a brother gently, carry burdens, examine our own lives, and do not grow weary in doing good. Accountability is meant to help men walk forward, not to shame them."
+    "date": "2026-10-31",
+    "scripture": "Luke 24:36-53",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "note": "The risen Jesus gives peace, opens minds to understand Scripture, and sends His followers as witnesses. Luke ends with worship, joy, and mission. Disciples are formed by the risen Christ and sent into the world with His message."
   },
   {
-    date: "2026-08-29",
-    scripture: "Proverbs 27:5-17",
-    theme: "Brotherhood & Accountability",
-    weekFocus: "Responsibility with grace: prayer, restoration, work, and bearing one another's burdens.",
-    note: "These verses show why men need one another. Honest correction is better than hidden love, and friends sharpen friends through truth and presence. Brotherhood becomes meaningful when we know God's Word well enough to encourage and challenge one another with it."
+    "date": "2026-11-01",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Luke",
+    "weekFocus": "Jesus forms His disciples",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
   },
   {
-    date: "2026-08-30",
-    scripture: "Open Sunday",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    openDay: true,
-    note: OPEN_SUNDAY_NOTE
+    "date": "2026-11-02",
+    "scripture": "Acts 1",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Acts begins with the risen Jesus, the promise of the Spirit, and the call to witness. The disciples are told to wait before they go. God’s mission requires both dependence and obedience.",
+    "overview": {
+      "title": "BibleProject - Acts 1-12",
+      "url": "https://bibleproject.com/videos/acts-1-12/"
+    }
   },
   {
-    date: "2026-08-31",
-    scripture: "1 Thessalonians 4:1-5:11",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul calls believers to grow in holiness, love one another, live quietly, work faithfully, and stay awake in hope because Christ will return. Steady men do not drift or live carelessly; they pursue purity, responsibility, faith, love, hope, and encouragement in everyday life."
+    "date": "2026-11-03",
+    "scripture": "Acts 2",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The Spirit comes, Peter preaches, people respond, and the church begins a shared life of teaching, fellowship, prayer, and generosity. The church is not built by hype but by the Spirit and the Word. Formation becomes communal."
   },
   {
-    date: "2026-09-01",
-    scripture: "Ephesians 5:15-6:4",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul calls believers to walk wisely, be filled with the Spirit, and let Christ shape the home. Husbands are called to sacrificial love, fathers to patient instruction, and all believers to live with humility and care. Faithfulness becomes visible in our closest relationships."
+    "date": "2026-11-04",
+    "scripture": "Acts 3",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Peter and John heal a lame man and point attention to Jesus, not themselves. The miracle becomes a witness to the risen Christ. Men formed by Jesus use opportunities to serve and point others back to Him."
   },
   {
-    date: "2026-09-02",
-    scripture: "Colossians 3:12-25",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul shows what life in Christ looks like inside real relationships: compassion, humility, forgiveness, love, peace, thankfulness, and doing everything in Jesus' name. The home is one of the clearest places where our faith becomes visible. Let Christ's peace and word shape the atmosphere you bring into it."
+    "date": "2026-11-05",
+    "scripture": "Acts 4",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The apostles face pressure but pray for boldness rather than safety. The believers share what they have and stand together. Courage grows in a praying community that trusts God more than approval."
   },
   {
-    date: "2026-09-03",
-    scripture: "Galatians 5:16-26",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul contrasts the desires of the flesh with life led by the Spirit. The answer to temptation is not merely trying harder; it is walking by the Spirit day by day. The fruit God produces includes self-control, faithfulness, gentleness, and love."
+    "date": "2026-11-06",
+    "scripture": "Acts 5",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Ananias and Sapphira warn against hypocrisy, while the apostles keep preaching despite opposition. God cares about truth inside the community and boldness outside it. Steady faith requires integrity and courage."
   },
   {
-    date: "2026-09-04",
-    scripture: "Romans 12:9-21",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul gives a practical picture of sincere Christian love: honor, hospitality, patience in suffering, prayer, humility, and refusing revenge. This is a strong summary of the kind of men we want to become. We overcome evil not by becoming harsh, but by doing good in the strength of Christ."
+    "date": "2026-11-07",
+    "scripture": "Acts 6",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The early church faces practical needs and appoints faithful servants so the mission can continue. Spiritual maturity shows up in how problems are handled. Healthy brotherhood requires service, wisdom, and shared responsibility."
   },
   {
-    date: "2026-09-05",
-    scripture: "2 Timothy 4:6-18",
-    theme: "Endurance & Finishing Well",
-    weekFocus: "Finishing the summer with holiness, responsibility, Spirit-led living, love, perseverance, and a long view of faithfulness.",
-    note: "Paul looks back on a life of keeping the faith and forward to the Lord's final rescue. Finishing well is not about having an easy story or a perfect record. It is about continuing to trust Christ, fight the good fight, and keep the faith through every season."
+    "date": "2026-11-08",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
+  },
+  {
+    "date": "2026-11-09",
+    "scripture": "Acts 7:1-36",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Stephen retells Israel’s story and shows that God has always been at work beyond human control. He understands his moment through Scripture. Men need the Word deeply enough to interpret life faithfully."
+  },
+  {
+    "date": "2026-11-10",
+    "scripture": "Acts 7:37-60",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Stephen confronts resistance to God and dies with his eyes fixed on Jesus. His faithfulness is costly but clear. Following Christ may require courage, forgiveness, and endurance under pressure."
+  },
+  {
+    "date": "2026-11-11",
+    "scripture": "Acts 8",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Persecution scatters believers, but the gospel spreads. Philip serves across boundaries, and the Ethiopian receives the Word with joy. God can use disruption to move His mission forward."
+  },
+  {
+    "date": "2026-11-12",
+    "scripture": "Acts 9",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Saul is confronted by Jesus, humbled, and transformed from enemy to witness. No man is beyond the reach of grace. Christ can redirect a life that seemed set in the wrong direction."
+  },
+  {
+    "date": "2026-11-13",
+    "scripture": "Acts 10",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Peter learns that the gospel is for the nations as Cornelius receives the message. God breaks down barriers and expands Peter’s understanding. A formed man stays teachable when God corrects his assumptions."
+  },
+  {
+    "date": "2026-11-14",
+    "scripture": "Acts 11",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Peter explains God’s work among the Gentiles, and the church in Antioch grows. Barnabas encourages the work and brings Saul in to help. Healthy ministry notices grace, strengthens people, and makes room for others to serve."
+  },
+  {
+    "date": "2026-11-15",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
+  },
+  {
+    "date": "2026-11-16",
+    "scripture": "Acts 12",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The church prays while Peter is imprisoned, and God delivers him. Herod’s pride is judged, while the Word continues to spread. Prayer is not a side activity; it is how dependent people live before God."
+  },
+  {
+    "date": "2026-11-17",
+    "scripture": "Acts 13:1-25",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The church worships, fasts, and sends Barnabas and Saul by the Spirit’s direction. Mission begins in worship and dependence. Men are formed not only for themselves but to be sent where God leads.",
+    "overview": {
+      "title": "BibleProject - Acts 13-28",
+      "url": "https://bibleproject.com/videos/acts-13-28/"
+    }
+  },
+  {
+    "date": "2026-11-18",
+    "scripture": "Acts 13:26-52",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul proclaims Jesus from Scripture, and the gospel brings both joy and opposition. The Word is received by some and rejected by others. Faithfulness means continuing with joy even when not everyone responds well."
+  },
+  {
+    "date": "2026-11-19",
+    "scripture": "Acts 14",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul and Barnabas face both praise and persecution, yet continue strengthening the disciples. They teach that entering the kingdom includes hardship. Steady men do not quit when obedience becomes difficult."
+  },
+  {
+    "date": "2026-11-20",
+    "scripture": "Acts 15",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The church wrestles through a major dispute and seeks clarity about the gospel. Unity requires truth, humility, and wise leadership. Men must learn to handle disagreement in ways that protect both grace and faithfulness."
+  },
+  {
+    "date": "2026-11-21",
+    "scripture": "Acts 16",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "God redirects Paul’s plans, opens Lydia’s heart, and brings salvation in a prison. Mission often unfolds through interruptions, closed doors, and suffering. God is at work even when the path changes."
+  },
+  {
+    "date": "2026-11-22",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
+  },
+  {
+    "date": "2026-11-23",
+    "scripture": "Acts 17",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul reasons from Scripture in different settings and points people to the living God. He knows both the Word and the world around him. Men need faith that can speak wisely in everyday conversations."
+  },
+  {
+    "date": "2026-11-24",
+    "scripture": "Acts 18",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul faces fear and opposition but is encouraged by the Lord to keep speaking. He works, teaches, and is strengthened by others like Priscilla, Aquila, and Apollos. Ministry is sustained through courage and partnership."
+  },
+  {
+    "date": "2026-11-25",
+    "scripture": "Acts 19",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "The gospel transforms people, confronts false power, and disrupts idols tied to money and culture. Following Jesus affects what people value and practice. Real formation can challenge the habits and systems around us."
+  },
+  {
+    "date": "2026-11-26",
+    "scripture": "Acts 20",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul models faithful ministry, hard work, tears, courage, and care for the church. He tells leaders to watch over themselves and the flock. Godly men lead by service, sacrifice, and attention to their own souls."
+  },
+  {
+    "date": "2026-11-27",
+    "scripture": "Acts 21",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul continues toward Jerusalem despite warnings and tension. He is willing to suffer for the name of Jesus. Discernment does not always lead to comfort; sometimes obedience leads into difficulty with courage."
+  },
+  {
+    "date": "2026-11-28",
+    "scripture": "Acts 22",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul tells his story and points to the grace of Christ in his own life. Testimony is not self-promotion; it is witness to what Jesus has done. Men should be able to speak honestly about God’s work in their lives."
+  },
+  {
+    "date": "2026-11-29",
+    "scripture": "OPEN SUNDAY",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "openDay": true,
+    "note": "Catch up, reflect, pray, or rest. Do not stress about missed days. Jump back in with the current reading and keep going."
+  },
+  {
+    "date": "2026-11-30",
+    "scripture": "Acts 23",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul stands before leaders and receives encouragement from the Lord to keep testifying. God preserves him through danger and confusion. Courage is strengthened when we remember that Christ is present in the middle of pressure."
+  },
+  {
+    "date": "2026-12-01",
+    "scripture": "Acts 24",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul speaks with a clear conscience about righteousness, self-control, and judgment. Felix delays responding. The passage reminds us that hearing truth is not the same as surrendering to it."
+  },
+  {
+    "date": "2026-12-02",
+    "scripture": "Acts 25",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul appeals to Caesar as political leaders debate his case. God’s mission continues through legal complexity and human power structures. Faithfulness often means staying steady when the process is slow and unclear."
+  },
+  {
+    "date": "2026-12-03",
+    "scripture": "Acts 26",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul gives his testimony before Agrippa, showing how Christ changed his life and sent him to others. He speaks respectfully and boldly. A formed man can tell the truth without arrogance or fear."
+  },
+  {
+    "date": "2026-12-04",
+    "scripture": "Acts 27",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Paul endures a dangerous storm and speaks courage to others because he trusts God’s word. Faith does not remove the storm, but it steadies a man within it. Others are helped when one man stands firm in trust."
+  },
+  {
+    "date": "2026-12-05",
+    "scripture": "Acts 28",
+    "theme": "Acts",
+    "weekFocus": "The Spirit sends the church",
+    "note": "Acts ends with Paul still proclaiming the kingdom and teaching about Jesus with boldness. The story is unfinished because the mission continues. The question is how we will keep living as witnesses where God has placed us."
   }
 ];
