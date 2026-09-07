@@ -17,7 +17,7 @@ Do not move, rename, or flatten this folder unless the Vercel project root has b
 - Do not commit directly to `main`; use a feature branch and PR.
 
 ## Visual direction
-Use the established identity: dark navy `#17212B`, gold `#BE8B3B`, white or warm off-white, clean modern typography, restrained card styling, and thin gold dividers.
+Use the reading-first design system in `steady-men-v1/DESIGN.md`: white, dark ink, restrained forest green and gold, serif reading typography, open section layouts, and thin dividers. Shared tokens and components live in `css/styles.css`; do not add a competing override stylesheet.
 
 The site should feel clean, grounded, calm, encouraging, masculine without being aggressive, rooted in Scripture, and easy to understand quickly.
 

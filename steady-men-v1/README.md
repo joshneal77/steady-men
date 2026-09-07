@@ -29,6 +29,10 @@ October 28 keeps the guide's `Luke 23:1-25` reference. Its optional `bibleUrl` f
 
 ## Verification
 
+The reading-first visual system and redesign review notes are in [DESIGN.md](DESIGN.md). The redesign must be reviewed on its preview deployment before merging into production.
+
+The previous/next controls and linked plan dates use `?day=YYYY-MM-DD` to browse a reading without changing today's completion status or the next gathering. The Today control returns to the actual Toronto date. `?preview=` simulates today for testing; the two parameters can be combined. The week selector opens one week, and Current week returns to the real/preview date.
+
 From this directory:
 
 ```sh
