@@ -1,4 +1,4 @@
-const CACHE_NAME = 'steady-men-redesign-2026-v1';
+const CACHE_NAME = 'steady-men-refresh-2026-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -8,7 +8,7 @@ const CORE_ASSETS = [
   './js/app.js',
   './assets/steady-men-crest.png',
   './manifest.webmanifest',
-  ...['arrow-left', 'arrow-right', 'arrow-up-right', 'copy', 'book-open', 'calendar-days', 'menu', 'download', 'x', 'chevron-down'].map((name) => `./assets/icons/${name}.svg`)
+  ...['arrow-left', 'arrow-right', 'arrow-up-right', 'copy', 'book-open', 'calendar-days', 'menu', 'download', 'x', 'chevron-down', 'house', 'users'].map((name) => `./assets/icons/${name}.svg`)
 ];
 
 self.addEventListener('install', (event) => {

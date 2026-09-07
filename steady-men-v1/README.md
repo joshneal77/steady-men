@@ -29,7 +29,7 @@ October 28 keeps the guide's `Luke 23:1-25` reference. Its optional `bibleUrl` f
 
 ## Verification
 
-The reading-first visual system and redesign review notes are in [DESIGN.md](DESIGN.md). The redesign must be reviewed on its preview deployment before merging into production.
+The navy-and-gold visual refresh and review notes are in [DESIGN.md](DESIGN.md). Josh prefers an update to the familiar dark design, not the previous sparse light/green proposal. The refresh must be reviewed on its preview deployment before merging into production.
 
 The previous/next controls and linked plan dates use `?day=YYYY-MM-DD` to browse a reading without changing today's completion status or the next gathering. The Today control returns to the actual Toronto date. `?preview=` simulates today for testing; the two parameters can be combined. The week selector opens one week, and Current week returns to the real/preview date.
 
@@ -44,6 +44,8 @@ git diff --check
 ```
 
 There are no separate lint, typecheck, or build commands for this HTML/CSS/vanilla JavaScript site. The Node tests cover every plan date and link, both share formats, the overview schedule, gatherings, Toronto dates, and current resources.
+
+When Playwright and a compatible Chromium browser are available, run `node tests/mobile.test.cjs`. Set `PLAYWRIGHT_CHANNEL=msedge` to use installed Microsoft Edge, or omit it to use Playwright's Chromium. This optional test dependency is not loaded by the website. The test starts and stops its own local server, verifies that all assigned readings and both copy buttons fit on the first phone screen, and writes screenshots to a temporary directory (or `QA_OUTPUT`). Test at default text size and separately check browser zoom/large-text readability; never hide notes or prevent scrolling to force a first-screen fit.
 
 Serve this directory locally for clipboard and PWA testing. Check desktop and mobile widths (including 320px and 375px), both copy buttons, completed-day links, the mobile menu, and the guide download. Use `?preview=YYYY-MM-DD` for date previews:
 

@@ -1,13 +1,13 @@
-# Steady Men Reading-First Redesign
+# Steady Men Navy-and-Gold Refresh
 
 ## Direction
-The daily passage leads, with its Bible App action immediately available. White space, ink, forest green, quiet gold, and book-like serif reading typography create a grounded experience without a promotional hero or dashboard.
+This second iteration follows Josh's clarified preference: refresh the existing darker website instead of replacing its identity. Keep the navy/gold contrast, recognizable crest, and single scrolling page. The passage and both copy actions must be immediately visible on a phone. The previous light/green proposal is retained in Git history, not used as the design direction.
 
 ## Shared system
-- Colors: white canvas, ink #182b35, green #24483c, deep green #142922, gold #806020, pale green #f1f5f1, muted text #58675f.
-- Typography: local Segoe UI/system sans for controls and dates; Georgia/serif for reading references, notes, and principal headings. No remote font requests.
-- Layout: 1152px maximum content width, open full-width sections, thin borders, restrained 4px control corners.
-- Controls: primary Bible action first; share actions second. Touch controls are at least 44px high. Visible keyboard focus and reduced-motion support are required.
+- Colors: navy #172632, deeper sidebar #111e29, gold #dbb36d, accessible dark gold #815817 on light surfaces, white and cool light grey #f2f4f5.
+- Typography: local Segoe UI/system sans with stronger, compact headings and readable notes. Georgia is reserved for the existing foundation quotation. No remote font requests.
+- Layout: a 236px desktop sidebar (216px on smaller laptops), 1140px maximum inner content width, full-width contrasting sections, thin dividers, and 6px control corners.
+- Controls: a compact gold Bible action and equally tappable outlined copy buttons. All actions are at least 44px high. Share controls sit side-by-side on phones and remain above the bottom navigation without scrolling.
 - Mobile: bottom navigation for Today, Reading Plan, and Study Nights; More menu for secondary destinations. Reading rows stack with notes and actions intact.
 - Completion is date-based only: subdued surfaces and textual status, never personal tracking or achievements.
 - Icons: locally hosted Lucide icons with their license in assets/icons; no external runtime dependency.
@@ -16,7 +16,9 @@ The daily passage leads, with its Bible App action immediately available. White 
 The approved assets/steady-men-crest.png is unchanged. It anchors the masthead, About area, footer, and error page. Existing alternative brand files remain intact; no new mark or wordmark was generated.
 
 ## Before and after
-The former introductory/card-heavy presentation becomes a daily reader: passage, Bible action, sharing, and note come first. Previous/next reading controls and linked plan dates support catching up without changing what counts as today. The week selector shortens navigation through the long plan. Study Nights and resources use simple readable rows, and the existing purpose and participation wording has a dedicated About section.
+The familiar dark desktop sidebar returns. The opening section combines the session identity and daily reading in a tighter navy composition; gold actions, restrained dividers, and brighter type provide contrast. Unlike the live site's separate introductory banner and tall cards, the daily actions are immediately available. Unlike the first redesign, there is no oversized serif passage, sparse white opening, or understated text-only sharing action. Announcements sit below the daily actions on phones. The reading plan has dark expanded-week headers and light readable entries; all navigation still scrolls within one page.
+
+Previous/next reading controls and linked plan dates support catching up without changing what counts as today. The week selector shortens navigation through the long plan. Study Nights and resources remain easy to scan, and existing purpose and participation wording stays in About.
 
 ## Preserved
 The Fall data file and downloadable DOCX are byte-for-byte unchanged from the production base. All 76 dates, 66 assigned readings, 10 Open Sundays, notes, themes, seven gatherings, four optional overviews, Bible links, both copied-message formats, Leading at Home, and blank WhatsApp URL remain intact. General optional videos stay hidden.
@@ -26,6 +28,7 @@ One stylesheet replaces competing base/override styles. Semantic regions, native
 
 ## Verification
 - Built-in Node tests cover the full schedule, exact link strings, copy formats, gatherings, real calendar previews, Toronto daylight saving boundaries, and downloads.
+- The committed mobile browser test checks all 66 assigned readings at 375x600px: passage, Bible action, and both copy buttons are visible, unobstructed, and fit their controls. It also checks 320x568, 390x664, and 430x740px phones, pre-start/final states, Open Sundays, and the responsive 404.
 - Playwright in Microsoft Edge checked nine widths from 320px to 1440px with every plan week expanded: no horizontal clipping.
 - Both real clipboard buttons were checked on the homepage and plan for seven dates, including study nights, overview days, and the Luke 23 CSB exception.
 - Previous/next, Today, linked dates, browser Back, week selection, navigation bounds, keyboard menu/accordion use, and copy failure/fallback were exercised.
