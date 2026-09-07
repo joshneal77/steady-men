@@ -7,6 +7,8 @@
     'Luke': 'LUK',
     'Acts': 'ACT'
   };
+  const copyFeedbackTimers = new WeakMap();
+  let displayedDate = null;
 
   function dateFormatter(options) {
     return new Intl.DateTimeFormat('en-CA', { timeZone: SITE_TIME_ZONE, ...options });
@@ -39,7 +41,9 @@
 
   function getPreviewKey() {
     const value = new URLSearchParams(window.location.search).get('preview');
-    return /^\d{4}-\d{2}-\d{2}$/.test(value || '') ? value : null;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return null;
+    const date = parseKey(value);
+    return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value ? value : null;
   }
 
   function scheduleState() {
@@ -132,10 +136,10 @@
   function renderHero(state) {
     const { reading, mode, preview } = state;
     const status = byId('hero-status');
-    byId('hero-kicker').textContent = preview ? `PREVIEW - ${formatDate(state.selected).toUpperCase()}` : 'FALL SESSION 2026 | LUKE + ACTS';
+    byId('hero-kicker').textContent = preview ? `PREVIEW - ${formatDate(state.selected).toUpperCase()}` : 'FALL SESSION 2026 · LUKE + ACTS';
     if (mode === 'upcoming') status.textContent = `Our journey through Luke and Acts begins ${formatDate(STUDY_CONFIG.startDate)}, with Launch Night in person from ${STUDY_CONFIG.studyNights[0].time}.`;
     else if (mode === 'complete') status.textContent = 'The Fall reading plan is complete. Keep living as witnesses where God has placed us.';
-    else status.textContent = `${formatDate(reading.date)} - open the Word, take one faithful step, and stay connected to your brothers.`;
+    else status.textContent = '';
     setReadingLink(byId('hero-reading-link'), reading);
   }
 
@@ -147,7 +151,14 @@
     byId('today-note').textContent = reading.note;
     byId('today-overview').innerHTML = renderOverview(reading);
     byId('today-study-night').innerHTML = renderStudyNightNote(reading);
-    byId('today-reading-label').textContent = state.mode === 'upcoming' ? 'OPENING READING' : state.mode === 'complete' ? 'FINAL READING' : "TODAY'S READING";
+    byId('today-reading-label').textContent = state.browsing ? 'FROM THE READING PLAN' : state.mode === 'upcoming' ? 'OPENING READING' : state.mode === 'complete' ? 'FINAL READING' : "TODAY'S READING";
+    document.querySelector('.daily-note h2').textContent = reading.openDay ? 'Open Sunday' : 'Reading Note';
+    byId('today-translation').classList.toggle('hidden', Boolean(reading.openDay));
+    const index = READING_PLAN.findIndex((item) => item.date === reading.date);
+    byId('previous-reading').disabled = index === 0;
+    byId('next-reading').disabled = index === READING_PLAN.length - 1;
+    byId('return-today').disabled = !state.browsing;
+    byId('return-today').textContent = state.mode === 'upcoming' ? 'Opening day' : state.mode === 'complete' ? 'Final day' : 'Today';
     setReadingLink(byId('today-reading-link'), reading);
     setReadingLink(byId('hero-reading-link'), reading);
     byId('brotherhood-reminder').textContent = getReminder(reading.date);
@@ -166,6 +177,9 @@
 
   function renderStudyNights(state) {
     const next = nextStudyNight(state.selected);
+    byId('next-gathering-preview').innerHTML = next
+      ? `<span><span class="eyebrow">NEXT STUDY NIGHT</span><strong>${gatheringDateLabel(next)}</strong><small>${escapeHtml(next.title)} · ${escapeHtml(next.time)}</small></span><span class="icon icon-arrow-right" aria-hidden="true"></span>`
+      : '<span><span class="eyebrow">STEADY TOGETHER</span><strong>Fall gatherings complete</strong></span><span class="icon icon-arrow-right" aria-hidden="true"></span>';
     if (!next) {
       byId('next-study-night').innerHTML = `
         <div class="gathering-date-block"><span>GATHERINGS COMPLETE</span><strong>Keep Going</strong></div>
@@ -199,6 +213,12 @@
     return `<a class="reading-ref" target="_blank" rel="noopener" href="${bibleUrl(reading)}">${escapeHtml(reading.scripture)}</a>`;
   }
 
+  function readingDateHref(date) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('day', date);
+    return `?${params}#today`;
+  }
+
   function renderReadingPlan(state) {
     const weekGroups = new Map();
     READING_PLAN.forEach((reading) => {
@@ -213,7 +233,7 @@
       const open = week === activeWeek ? ' open' : '';
       const theme = entries[0].theme;
       const focus = entries[0].weekFocus;
-      return `<details class="week-details"${open}><summary class="week-summary"><span><span class="week-summary-title">Week ${week}: ${escapeHtml(theme)}</span><span class="week-summary-subtitle">${shortDate(start)} - ${shortDate(end)} | ${escapeHtml(focus)}</span></span><span class="week-summary-icon">+</span></summary><div class="reading-rows">${entries.map((reading) => {
+      return `<details class="week-details" id="week-${week}"${open}><summary class="week-summary"><span><span class="week-summary-title">Week ${week}: ${escapeHtml(theme)}</span><span class="week-summary-subtitle">${shortDate(start)} - ${shortDate(end)} | ${escapeHtml(focus)}</span></span><span class="week-summary-icon" aria-hidden="true">+</span></summary><div class="reading-rows">${entries.map((reading) => {
         const current = state.mode === 'active' && reading.date === state.selected;
         const completed = !current && isBefore(reading.date, state.selected);
         const classes = ['reading-row'];
@@ -226,9 +246,11 @@
             ? `<span class="completed-chip">${reading.openDay ? 'OPEN SUNDAY COMPLETED' : 'READING COMPLETED'}</span>`
             : '';
         const actions = reading.openDay ? '' : `<div class="reading-actions"><a class="text-link reading-app-link" href="${bibleUrl(reading)}" target="_blank" rel="noopener">Open in Bible App</a><button class="copy-reading-button" type="button" data-date="${reading.date}" data-copy-kind="whatsapp" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button><button class="copy-reading-button" type="button" data-date="${reading.date}" data-copy-kind="reading-link" data-default-label="Copy Reading Link">Copy Reading Link</button></div>`;
-        return `<div class="${classes.join(' ')}" data-reading-date="${reading.date}"><div class="date-cell"><span class="date-main">${formatDate(reading.date)}</span>${statusChip}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">${reading.openDay ? 'Open Sunday' : 'Reading Note'}</span>${escapeHtml(reading.note)}${renderStudyNightNote(reading)}${renderOverview(reading)}</div>${actions}</div>`;
+        return `<div class="${classes.join(' ')}" data-reading-date="${reading.date}"><div class="date-cell"><a class="date-main" href="${escapeHtml(readingDateHref(reading.date))}" data-view-date="${reading.date}" aria-label="View reading for ${formatDate(reading.date)}">${formatDate(reading.date)}</a>${statusChip}</div><div><span class="reading-cell-label">Passage</span>${renderReadingReference(reading)}</div><div class="reading-note"><span class="reading-cell-label">${reading.openDay ? 'Open Sunday' : 'Reading Note'}</span>${escapeHtml(reading.note)}${renderStudyNightNote(reading)}${renderOverview(reading)}</div>${actions}</div>`;
       }).join('')}</div></details>`;
     }).join('');
+    byId('week-select').innerHTML = [...weekGroups.entries()].map(([week, entries]) => `<option value="${week}">Week ${week} · ${shortDate(entries[0].date)} - ${shortDate(entries[entries.length - 1].date)}</option>`).join('');
+    byId('week-select').value = String(activeWeek);
     const notice = byId('plan-notice');
     notice.style.display = 'none';
     if (state.mode === 'upcoming') { notice.style.display = 'block'; notice.textContent = `The plan begins ${formatDate(STUDY_CONFIG.startDate)}. The first week is open above.`; }
@@ -267,18 +289,27 @@
       </a>`).join('');
   }
 
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(text); return; }
+      catch { /* Fall back when a browser denies clipboard permission. */ }
+    }
+    const focusedElement = document.activeElement;
     const textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.setAttribute('readonly', '');
     textarea.style.position = 'fixed';
     textarea.style.left = '-9999px';
+    textarea.style.top = '0';
     document.body.appendChild(textarea);
     textarea.select();
-    const successful = document.execCommand('copy');
-    textarea.remove();
-    return successful ? Promise.resolve() : Promise.reject(new Error('Copy failed'));
+    textarea.setSelectionRange(0, text.length);
+    try {
+      if (!document.execCommand('copy')) throw new Error('Copy failed');
+    } finally {
+      textarea.remove();
+      if (focusedElement && focusedElement.focus) focusedElement.focus({ preventScroll: true });
+    }
   }
 
   function whatsappText(reading) {
@@ -295,10 +326,12 @@
     button.textContent = message;
     byId('copy-status').textContent = `${defaultLabel}: ${message}`;
     button.classList.add('is-copied');
-    window.setTimeout(() => {
+    window.clearTimeout(copyFeedbackTimers.get(button));
+    copyFeedbackTimers.set(button, window.setTimeout(() => {
       button.textContent = defaultLabel;
       button.classList.remove('is-copied');
-    }, 2200);
+      if (byId('copy-status').textContent === `${defaultLabel}: ${message}`) byId('copy-status').textContent = '';
+    }, 2200));
   }
 
   function handleCopyButton(button) {
@@ -323,28 +356,102 @@
   }
 
   function setActiveNav() {
-    const sections = document.querySelectorAll('.section-anchor, #today');
+    const sections = [...document.querySelectorAll('.section-anchor')];
     const navLinks = document.querySelectorAll('[data-nav]');
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const id = visible.target.id;
-      navLinks.forEach((link) => link.classList.toggle('active', link.dataset.nav === id));
-    }, { rootMargin: '-24% 0px -60% 0px', threshold: [0.02, 0.2, 0.6] });
-    sections.forEach((section) => observer.observe(section));
+    let scheduled = false;
+    function update() {
+      const current = sections.filter((section) => section.getBoundingClientRect().top <= 140).at(-1) || sections[0];
+      navLinks.forEach((link) => {
+        const active = link.dataset.nav === current.id;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      scheduled = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!scheduled) { scheduled = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   function setMobileMenu() {
     const button = byId('menu-button');
     const nav = byId('mobile-nav');
-    button.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      button.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      nav.classList.remove('open');
+    function closeMenu() {
+      nav.hidden = true;
       button.setAttribute('aria-expanded', 'false');
-    }));
+      button.setAttribute('aria-label', 'Open navigation');
+    }
+    button.addEventListener('click', () => {
+      const open = nav.hidden;
+      nav.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !nav.hidden) { closeMenu(); button.focus(); }
+    });
+    document.addEventListener('click', (event) => {
+      if (!nav.hidden && !nav.contains(event.target) && !button.contains(event.target)) closeMenu();
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 800) closeMenu();
+    });
+  }
+
+  function openWeek(week, scroll = false) {
+    const target = byId(`week-${week}`);
+    if (!target) return;
+    document.querySelectorAll('.week-details').forEach((details) => { details.open = details === target; });
+    byId('week-select').value = String(week);
+    if (scroll) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
+
+  function showReading() {
+    const state = scheduleState();
+    if (!READING_PLAN.some((item) => item.date === displayedDate)) displayedDate = null;
+    const reading = READING_PLAN.find((item) => item.date === displayedDate) || state.reading;
+    const displayState = { ...state, reading, browsing: reading.date !== state.reading.date };
+    renderHero(displayState);
+    renderToday(displayState);
+    openWeek(weekNumber(reading.date));
+  }
+
+  function navigateReading(date) {
+    displayedDate = READING_PLAN.some((item) => item.date === date) ? date : null;
+    const url = new URL(window.location.href);
+    if (displayedDate) url.searchParams.set('day', displayedDate);
+    else url.searchParams.delete('day');
+    window.history.pushState(null, '', url);
+    showReading();
+  }
+
+  function bindReadingNavigation() {
+    ['previous-reading', 'next-reading'].forEach((id, direction) => {
+      byId(id).addEventListener('click', () => {
+        const date = displayedDate || scheduleState().reading.date;
+        const index = READING_PLAN.findIndex((item) => item.date === date);
+        const next = READING_PLAN[index + (direction === 0 ? -1 : 1)];
+        if (next) navigateReading(next.date);
+      });
+    });
+    byId('return-today').addEventListener('click', () => navigateReading(null));
+    byId('reading-plan-list').addEventListener('click', (event) => {
+      const link = event.target.closest('[data-view-date]');
+      if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      navigateReading(link.dataset.viewDate);
+      byId('today').scrollIntoView({ block: 'start', behavior: 'instant' });
+      byId('today').focus({ preventScroll: true });
+    });
+    byId('week-select').addEventListener('change', (event) => openWeek(Number(event.target.value), true));
+    byId('plan-current').addEventListener('click', () => openWeek(weekNumber(scheduleState().reading.date), true));
+    window.addEventListener('popstate', () => {
+      displayedDate = new URLSearchParams(window.location.search).get('day');
+      showReading();
+    });
   }
 
   function registerServiceWorker() {
@@ -355,15 +462,16 @@
   }
 
   function init() {
+    displayedDate = new URLSearchParams(window.location.search).get('day');
+    if (!READING_PLAN.some((item) => item.date === displayedDate)) displayedDate = null;
     let renderedDate;
     function renderDay() {
       const state = scheduleState();
       if (state.selected === renderedDate) return;
       renderedDate = state.selected;
-      renderHero(state);
-      renderToday(state);
       renderStudyNights(state);
       renderReadingPlan(state);
+      showReading();
     }
     renderDay();
     window.setInterval(renderDay, 60000);
@@ -372,6 +480,7 @@
     });
     renderResources();
     bindCopyButtons();
+    bindReadingNavigation();
     setActiveNav();
     setMobileMenu();
     registerServiceWorker();

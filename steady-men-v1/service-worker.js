@@ -1,13 +1,14 @@
-const CACHE_NAME = 'steady-men-fall-2026-v1';
+const CACHE_NAME = 'steady-men-refresh-2026-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
   './css/styles.css',
-  './css/rooted-word.css',
+  './404.html',
   './js/study-data.js',
   './js/app.js',
   './assets/steady-men-crest.png',
-  './manifest.webmanifest'
+  './manifest.webmanifest',
+  ...['arrow-left', 'arrow-right', 'arrow-up-right', 'copy', 'book-open', 'calendar-days', 'menu', 'download', 'x', 'chevron-down', 'house', 'users'].map((name) => `./assets/icons/${name}.svg`)
 ];
 
 self.addEventListener('install', (event) => {
@@ -21,7 +22,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then((keys) => Promise.all(keys.filter((key) => key.startsWith('steady-men-') && key !== CACHE_NAME).map((key) => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
@@ -33,14 +34,22 @@ self.addEventListener('fetch', (event) => {
   if (requestUrl.origin !== self.location.origin) return;
 
   if (event.request.mode === 'navigate') {
+    const appPath = new URL('./', self.location.href).pathname;
+    const isHome = requestUrl.pathname === appPath || requestUrl.pathname === `${appPath}index.html`;
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put('./index.html', copy));
+          if (response.ok && isHome) {
+            const copy = response.clone();
+            event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put('./index.html', copy)));
+          }
           return response;
         })
-        .catch(() => caches.match('./index.html'))
+        .catch(async () => {
+          if (isHome) return caches.match('./index.html');
+          const page = await caches.match('./404.html');
+          return new Response(await page.text(), { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+        })
     );
     return;
   }
@@ -48,8 +57,10 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        if (response.ok) {
+          const copy = response.clone();
+          event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)));
+        }
         return response;
       })
       .catch(() => caches.match(event.request))

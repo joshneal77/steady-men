@@ -2,144 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Steady Men 16:13 - Rooted in the Word. Fall Session 2026: Luke + Acts, September 21 - December 5. Daily Scripture, honest brotherhood, prayer, and accountability.">
-  <meta name="theme-color" content="#17212B">
+  <meta name="theme-color" content="#111e29">
   <meta name="color-scheme" content="light">
+  <meta property="og:title" content="Steady Men 16:13 | Rooted in the Word">
+  <meta property="og:description" content="Formed by Christ. Rooted in Scripture. Steady Together. Fall 2026: Luke + Acts.">
+  <meta property="og:type" content="website">
   <title>Steady Men 16:13 | Rooted in the Word | Fall 2026</title>
   <link rel="icon" href="assets/steady-men-crest.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/steady-men-crest.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/rooted-word.css">
 </head>
 <body>
-  <a class="skip-link" href="#today">Skip to today's journey</a>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="Primary navigation">
+  <a class="skip-link" href="#today">Skip to today's reading</a>
+  <header class="site-header">
+    <div class="container masthead">
       <a class="brand" href="#today" aria-label="Steady Men home">
-        <img src="assets/steady-men-crest.png" alt="Steady Men crest" class="brand-mark">
+        <img src="assets/steady-men-crest.png" alt="Steady Men crest" width="76" height="76" class="brand-mark">
         <span class="brand-type"><strong>STEADY MEN</strong><small>1 CORINTHIANS 16:13</small></span>
       </a>
-      <nav class="nav-list" id="desktop-nav">
-        <a href="#today" class="nav-link active" data-nav="today"><span class="nav-icon">◉</span>Today</a>
-        <a href="#reading-plan" class="nav-link" data-nav="reading-plan"><span class="nav-icon">▤</span>Reading Plan</a>
-        <a href="#study-nights" class="nav-link" data-nav="study-nights"><span class="nav-icon">◫</span>Study Nights</a>
-        <a href="#leading-at-home" class="nav-link" data-nav="leading-at-home"><span class="nav-icon">✦</span>Leading at Home</a>
-        <a href="#resources" class="nav-link" data-nav="resources"><span class="nav-icon">↗</span>Resources</a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#today" data-nav="today" class="active" aria-current="location"><span class="icon icon-book-open" aria-hidden="true"></span>Today</a>
+        <a href="#reading-plan" data-nav="reading-plan"><span class="icon icon-menu" aria-hidden="true"></span>Reading Plan</a>
+        <a href="#study-nights" data-nav="study-nights"><span class="icon icon-calendar-days" aria-hidden="true"></span>Study Nights</a>
+        <a href="#leading-at-home" data-nav="leading-at-home"><span class="icon icon-home" aria-hidden="true"></span>Leading at Home</a>
+        <a href="#resources" data-nav="resources"><span class="icon icon-download" aria-hidden="true"></span>Resources</a>
+        <a href="#about" data-nav="about"><span class="icon icon-users" aria-hidden="true"></span>About Steady Men</a>
       </nav>
-      <div class="sidebar-verse">
-        <div class="sidebar-label">OUR FOUNDATION</div>
-        <p>"Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love."</p>
-        <span>1 CORINTHIANS 16:13-14</span>
+      <button id="menu-button" class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav" title="Open navigation"><span class="icon icon-menu" aria-hidden="true"></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="More navigation" hidden>
+      <a href="#about" data-nav="about">About Steady Men</a>
+      <a href="#leading-at-home" data-nav="leading-at-home">Leading at Home</a>
+      <a href="#resources" data-nav="resources">Resources &amp; full guide</a>
+    </nav>
+    <div class="sidebar-foundation"><p class="eyebrow">OUR FOUNDATION</p><p>"Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love."</p><span>1 CORINTHIANS 16:13-14</span></div>
+  </header>
+
+  <main>
+    <section id="today" class="daily-section section-anchor" aria-labelledby="today-new-testament" tabindex="-1">
+      <div class="container">
+        <div class="session-line"><div><span class="eyebrow" id="hero-kicker">FALL SESSION 2026 · LUKE + ACTS</span><h2 class="session-title">Rooted in the Word.</h2></div><span class="session-dates">September 21 - December 5, 2026</span></div>
+        <div class="daily-topline">
+          <div><span id="today-reading-label" class="eyebrow">TODAY'S READING</span><p id="today-date" class="reading-date"></p></div>
+          <nav class="day-navigation" aria-label="Reading navigation">
+            <button id="previous-reading" class="icon-button" type="button" aria-label="Previous reading day" title="Previous reading day"><span class="icon icon-arrow-left" aria-hidden="true"></span></button>
+            <button id="return-today" class="quiet-button" type="button">Today</button>
+            <button id="next-reading" class="icon-button" type="button" aria-label="Next reading day" title="Next reading day"><span class="icon icon-arrow-right" aria-hidden="true"></span></button>
+          </nav>
+        </div>
+        <div class="daily-layout">
+          <div class="daily-passage">
+            <h1 id="today-new-testament">Rooted in the Word.</h1>
+            <p class="reading-context"><span id="today-companion"></span><span id="today-translation">CSB</span></p>
+            <a id="today-reading-link" class="button button-primary external-link" href="#reading-plan">Open in Bible App</a>
+            <div class="share-actions">
+              <button id="today-copy-button" class="copy-reading-button" type="button" data-copy-kind="whatsapp" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button>
+              <button id="today-share-button" class="copy-reading-button" type="button" data-copy-kind="reading-link" data-default-label="Copy Reading Link">Copy Reading Link</button>
+            </div>
+            <p id="hero-status" class="session-notice">Loading today's reading...</p>
+            <div id="today-overview"></div>
+          </div>
+          <div class="daily-note">
+            <h2 class="eyebrow">Reading Note</h2>
+            <p id="today-note" class="reading-note-text"></p>
+            <div id="today-study-night"></div>
+            <a class="text-link forward-link" href="#reading-plan">View Reading Plan</a>
+          </div>
+        </div>
+        <div class="daily-bottom">
+          <div class="brotherhood-inline"><span class="eyebrow">STEADY TOGETHER</span><p id="brotherhood-reminder"></p><a id="whatsapp-link" class="text-link hidden" href="#" target="_blank" rel="noopener">Open WhatsApp Group</a></div>
+          <a id="next-gathering-preview" class="next-preview" href="#study-nights"></a>
+        </div>
       </div>
-    </aside>
+    </section>
 
-    <header class="mobile-header">
-      <a class="mobile-brand" href="#today"><img src="assets/steady-men-crest.png" alt=""><span><strong>STEADY MEN</strong><small>16:13</small></span></a>
-      <button id="menu-button" class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span><span class="visually-hidden">Open navigation</span></button>
-      <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#today" data-nav="today">Today</a>
-        <a href="#reading-plan" data-nav="reading-plan">Reading Plan</a>
-        <a href="#study-nights" data-nav="study-nights">Study Nights</a>
-        <a href="#leading-at-home" data-nav="leading-at-home">Leading at Home</a>
-        <a href="#resources" data-nav="resources">Resources</a>
-      </nav>
-    </header>
-
-    <main class="main-content">
-      <section id="today" class="hero-section section-anchor" aria-labelledby="today-heading">
-        <div class="hero-content">
-          <div class="eyebrow" id="hero-kicker">FALL SESSION 2026 | LUKE + ACTS</div>
-          <h1 id="today-heading">Rooted in the Word.</h1>
-          <p class="session-dates">September 21 - December 5, 2026</p>
-          <p id="hero-status" class="hero-status">Loading today's reading...</p>
-          <div class="hero-actions">
-            <a id="hero-reading-link" class="button button-primary" href="#">Open Today's Reading <span aria-hidden="true">→</span></a>
-            <a class="button button-quiet" href="#reading-plan">View Reading Plan</a>
-          </div>
+    <section id="reading-plan" class="section-block plan-section section-anchor" aria-labelledby="reading-plan-heading">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE DAILY RHYTHM</p><h2 id="reading-plan-heading">Fall Reading Plan</h2></div>
+          <p class="section-intro">Read the passage. Read the short Reading Note. Sit with what the text is saying before moving on. Sundays are open for catch-up, reflection, prayer, or rest.</p>
         </div>
-        <div class="hero-side">
-          <img src="assets/steady-men-crest.png" alt="" class="hero-mark">
-          <div class="hero-side-rule"></div>
-          <p>Formed by Christ.<br>Rooted in Scripture.<br>Steady Together.</p>
+        <div class="plan-toolbar">
+          <label for="week-select">Go to week <select id="week-select"></select></label>
+          <button id="plan-current" class="quiet-button" type="button">Current week <span class="icon icon-arrow-right" aria-hidden="true"></span></button>
         </div>
-      </section>
-
-      <section class="today-grid" aria-label="Today's journey details">
-        <article class="card reading-card">
-          <div class="card-topline"><span class="card-icon">✦</span><span class="eyebrow" id="today-reading-label">TODAY'S READING</span></div>
-          <div id="today-date" class="card-date"></div>
-          <h2 id="today-new-testament" class="reading-primary"></h2>
-          <p id="today-companion" class="reading-companion"></p>
-          <div class="card-actions">
-            <a id="today-reading-link" class="text-link" href="#" target="_blank" rel="noopener">Open in Bible App</a>
-            <button id="today-copy-button" class="copy-reading-button compact" type="button" data-copy-kind="whatsapp" data-default-label="Copy for WhatsApp">Copy for WhatsApp</button>
-            <button id="today-share-button" class="copy-reading-button compact" type="button" data-copy-kind="reading-link" data-default-label="Copy Reading Link">Copy Reading Link</button>
-          </div>
-          <div id="today-overview"></div>
-          <div id="today-study-night"></div>
-        </article>
-
-        <article class="card reflection-card">
-          <div class="card-topline"><span class="card-icon">◌</span><span class="eyebrow">TODAY'S NOTE</span></div>
-          <h2>Keep this in view.</h2>
-          <p id="today-note" class="reflection-text"></p>
-        </article>
-
-        <article class="card brotherhood-card">
-          <div class="card-topline"><span class="card-icon">⌁</span><span class="eyebrow">BROTHERHOOD</span></div>
-          <h2>Do not disappear.</h2>
-          <p id="brotherhood-reminder" class="brotherhood-text"></p>
-          <a id="whatsapp-link" class="text-link hidden" href="#" target="_blank" rel="noopener">Open WhatsApp Group <span aria-hidden="true">→</span></a>
-        </article>
-
-        <article class="card memory-card">
-          <div class="card-topline"><span class="card-icon">⌂</span><span class="eyebrow">OUR PURPOSE</span></div>
-          <h2>Formed by Christ.</h2>
-          <p>Steady Men exists to help everyday men be intentionally formed by Christ through daily Scripture, honest brotherhood, prayer, and accountability. As our hearts are pointed toward God, our lives should show the evidence of that formation in our homes, churches, workplaces, and communities.</p>
-        </article>
-      </section>
-
-      <section id="reading-plan" class="section-block section-anchor" aria-labelledby="reading-plan-heading">
-        <div class="section-header"><div><p class="eyebrow">SEPTEMBER 21 - DECEMBER 5, 2026 | LUKE + ACTS</p><h2 id="reading-plan-heading">Fall Reading Plan</h2></div><p class="section-intro">Read the passage. Read the short Reading Note. Sit with what the text is saying before moving on. Sundays are open for catch-up, reflection, prayer, or rest.</p></div>
         <div id="plan-notice" class="plan-notice"></div>
         <div id="reading-plan-list" class="reading-plan-list"></div>
-      </section>
+      </div>
+    </section>
 
-      <section id="study-nights" class="section-block section-anchor" aria-labelledby="study-nights-heading">
-        <div class="section-header"><div><p class="eyebrow">IN PERSON | 8:00-9:30 PM</p><h2 id="study-nights-heading">Steady Men Study Nights</h2></div><p class="section-intro">Casual and honest: Scripture discussion, prayer, encouragement, accountability, snacks, and possibly a campfire when weather allows. Further details will be shared through WhatsApp. Study Night 2 meets Tuesday, October 6.</p></div>
-        <div id="next-study-night" class="next-gathering-card"></div>
+    <section id="study-nights" class="section-block section-anchor" aria-labelledby="study-nights-heading">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">SHOW UP TOGETHER</p><h2 id="study-nights-heading">Steady Men Study Nights</h2></div>
+          <p class="section-intro">Casual and honest: Scripture discussion, prayer, encouragement, accountability, snacks, and possibly a campfire when weather allows. Further details will be shared through WhatsApp. Study Night 2 meets Tuesday, October 6.</p>
+        </div>
+        <div id="next-study-night" class="next-gathering"></div>
         <div id="study-night-list" class="gathering-list"></div>
-      </section>
+      </div>
+    </section>
 
-      <section id="leading-at-home" class="section-block section-anchor memory-section" aria-labelledby="leading-at-home-heading">
-        <div class="memory-layout">
-          <div><p class="eyebrow">OPTIONAL | LEADING AT HOME</p><h2 id="leading-at-home-heading">Scripture in everyday life.</h2><p class="memory-lead">This is not a main requirement of the group, and it is not meant to add pressure or create another thing to keep up with. It is simply an optional tool for men who want to share the daily Scripture reading with their wife, family, kids, or even a friend.</p><p class="memory-lead">This connects with Deuteronomy 6:5-9, where God's Word is not only something to know privately, but something carried in the heart and talked about in the normal rhythms of life.</p><a class="button button-outline" href="https://www.bible.com/bible/1713/DEU.6.5-9.CSB" target="_blank" rel="noopener">Read Deuteronomy 6:5-9 <span aria-hidden="true">→</span></a></div>
-          <div class="memory-visual"><div class="tree-ring ring-1"></div><div class="tree-ring ring-2"></div><div class="tree-ring ring-3"></div><div class="tree-symbol">✦</div><div class="memory-ref">DEUTERONOMY<br><strong>6:5-9</strong></div></div>
+    <section id="about" class="section-block about-section section-anchor" aria-labelledby="about-heading">
+      <div class="container about-layout">
+        <div class="about-title"><img src="assets/steady-men-crest.png" alt="" width="112" height="112" loading="lazy"><p class="eyebrow">STEADY MEN 16:13</p><h2 id="about-heading">Formed by Christ.<br>Rooted in Scripture.<br>Steady Together.</h2></div>
+        <div class="about-copy">
+          <p class="eyebrow">OUR PURPOSE</p>
+          <p class="purpose-text">Steady Men exists to help everyday men be intentionally formed by Christ through daily Scripture, honest brotherhood, prayer, and accountability. As our hearts are pointed toward God, our lives should show the evidence of that formation in our homes, churches, workplaces, and communities.</p>
+          <div class="rhythm-list">
+            <div><h3>Daily Scripture</h3><p>Read the passage. Read the short Reading Note. Sit with what the text is saying before moving on.</p></div>
+            <div><h3>Open Sundays</h3><p>Sundays are open for catch-up, reflection, prayer, or rest.</p></div>
+            <div><h3>Honest brotherhood</h3><p>A simple checkmark, done, or reaction in WhatsApp helps the group keep walking together.</p></div>
+            <div><h3>Study Nights</h3><p>In person, 8:00-9:30 PM. Scripture discussion, prayer, encouragement, and accountability.</p></div>
+          </div>
+          <a class="text-link forward-link" href="#today">Open today's reading</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="resources" class="section-block section-anchor" aria-labelledby="resources-heading">
-        <div class="section-header"><div><p class="eyebrow">KEEP EVERYTHING TOGETHER</p><h2 id="resources-heading">Resources</h2></div><p class="section-intro">Daily Scripture remains the core rhythm. The four BibleProject section overviews are optional supports for the readings.</p></div>
+    <section id="leading-at-home" class="section-block section-anchor" aria-labelledby="leading-at-home-heading">
+      <div class="container home-layout">
+        <div><p class="eyebrow">OPTIONAL · LEADING AT HOME</p><h2 id="leading-at-home-heading">Scripture in<br>everyday life.</h2><a class="text-link external-link" href="https://www.bible.com/bible/1713/DEU.6.5-9.CSB" target="_blank" rel="noopener">Read Deuteronomy 6:5-9</a></div>
+        <div class="home-copy"><p>This is not a main requirement of the group, and it is not meant to add pressure or create another thing to keep up with. It is simply an optional tool for men who want to share the daily Scripture reading with their wife, family, kids, or even a friend.</p><p>This connects with Deuteronomy 6:5-9, where God's Word is not only something to know privately, but something carried in the heart and talked about in the normal rhythms of life.</p><a class="text-link forward-link" href="#today">Today's reading &amp; sharing</a></div>
+      </div>
+    </section>
+
+    <section id="resources" class="section-block resources-section section-anchor" aria-labelledby="resources-heading">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">KEEP EVERYTHING TOGETHER</p><h2 id="resources-heading">Resources</h2></div><p class="section-intro">Daily Scripture remains the core rhythm. The four BibleProject section overviews are optional supports for the readings.</p></div>
         <div class="resource-grid">
-          <a id="study-package-link" class="resource-card" href="assets/steady-men-fall-2026-final.docx" download><span class="resource-icon">↓</span><span><strong>Full Fall 2026 Guide</strong><small>Word document: Luke + Acts readings, notes, Study Nights, and Leading at Home.</small></span><span class="resource-arrow">→</span></a>
-          <a class="resource-card" href="#reading-plan"><span class="resource-icon">▤</span><span><strong>Reading Plan</strong><small>Every day from September 21 to December 5 in one place.</small></span><span class="resource-arrow">→</span></a>
-          <a class="resource-card" href="#leading-at-home"><span class="resource-icon">✦</span><span><strong>Leading at Home</strong><small>An optional way to share Scripture with those closest to us.</small></span><span class="resource-arrow">→</span></a>
+          <a id="study-package-link" class="resource-card" href="assets/steady-men-fall-2026-final.docx" download><span class="icon icon-download" aria-hidden="true"></span><span><strong>Full Fall 2026 Guide</strong><small>Word document: Luke + Acts readings, notes, Study Nights, and Leading at Home.</small></span><span class="icon icon-arrow-up-right" aria-hidden="true"></span></a>
+          <a class="resource-card" href="#reading-plan"><span class="icon icon-book-open" aria-hidden="true"></span><span><strong>Reading Plan</strong><small>Every day from September 21 to December 5 in one place.</small></span><span class="icon icon-arrow-up-right" aria-hidden="true"></span></a>
+          <a class="resource-card" href="#leading-at-home"><span class="icon icon-arrow-right" aria-hidden="true"></span><span><strong>Leading at Home</strong><small>An optional way to share Scripture with those closest to us.</small></span><span class="icon icon-arrow-up-right" aria-hidden="true"></span></a>
         </div>
-        <div class="optional-resources" hidden>
-          <div class="section-header compact"><div><p class="eyebrow">OPTIONAL SUPPORT</p><h2>Video Resources</h2></div></div>
-          <div id="optional-resource-list" class="optional-resource-list"></div>
-        </div>
-      </section>
-
-      <footer class="site-footer">
-        <div class="footer-brand"><img src="assets/steady-men-crest.png" alt=""><span><strong>STEADY MEN</strong><small>1 CORINTHIANS 16:13</small></span></div>
-        <p>Be watchful. Stand firm in the faith. Act like men. Be strong. Let everything be done in love.</p>
-      </footer>
-    </main>
-  </div>
-  <p id="copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        <div class="optional-resources" hidden><h3>Video Resources</h3><div id="optional-resource-list" class="optional-resource-list"></div></div>
+      </div>
+    </section>
+    <noscript><div class="container no-script"><p>The daily reading and sharing controls need JavaScript. The full Fall guide includes the complete reading plan.</p><a class="text-link" href="assets/steady-men-fall-2026-final.docx">Download the full guide</a></div></noscript>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <div><a class="brand" href="#today"><img src="assets/steady-men-crest.png" alt="" width="60" height="60" loading="lazy"><span class="brand-type"><strong>STEADY MEN <span>16:13</span></strong><small>ROOTED IN THE WORD</small></span></a><p>Formed by Christ. Rooted in Scripture. Steady Together.</p></div>
+      <div class="foundation"><p>"Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love."</p><span>1 CORINTHIANS 16:13-14</span></div>
+    </div>
+  </footer>
+  <nav class="bottom-nav" aria-label="Daily navigation">
+    <a href="#today" data-nav="today" class="active" aria-current="location"><span class="icon icon-book-open" aria-hidden="true"></span>Today</a>
+    <a href="#reading-plan" data-nav="reading-plan"><span class="icon icon-menu" aria-hidden="true"></span>Reading Plan</a>
+    <a href="#study-nights" data-nav="study-nights"><span class="icon icon-calendar-days" aria-hidden="true"></span>Study Nights</a>
+  </nav>
+  <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
   <script src="js/study-data.js"></script>
   <script src="js/app.js"></script>
 </body>

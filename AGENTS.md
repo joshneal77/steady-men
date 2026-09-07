@@ -17,7 +17,7 @@ Do not move, rename, or flatten this folder unless the Vercel project root has b
 - Do not commit directly to `main`; use a feature branch and PR.
 
 ## Visual direction
-Use the established identity: dark navy `#17212B`, gold `#BE8B3B`, white or warm off-white, clean modern typography, restrained card styling, and thin gold dividers.
+Use the navy-and-gold refresh in `steady-men-v1/DESIGN.md`. Josh prefers the live site's darker identity, contrasting light reading-plan sections, and compact sans-serif typography. Preserve the desktop sidebar and single scrolling page. On phones, the dated reading and both copy buttons must be visible without scrolling. Shared tokens and components live in `css/styles.css`; do not add a competing override stylesheet.
 
 The site should feel clean, grounded, calm, encouraging, masculine without being aggressive, rooted in Scripture, and easy to understand quickly.
 
@@ -40,6 +40,7 @@ For site changes, check:
 
 - `steady-men-v1/index.html` loads with no missing local assets
 - desktop and narrow mobile layouts
+- `node tests/mobile.test.cjs` when Playwright is available; this protects first-screen access to all daily reading/copy actions
 - `?preview=2026-09-20` before launch
 - `?preview=2026-09-21` first reading, Launch Night, and first optional overview
 - `?preview=2026-09-27` Open Sunday

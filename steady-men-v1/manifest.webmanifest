@@ -3,8 +3,8 @@
   "short_name": "Steady Men",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#F5F3EE",
-  "theme_color": "#17212B",
+  "background_color": "#172632",
+  "theme_color": "#111e29",
   "description": "Rooted in the Word | Fall 2026 | Luke + Acts | September 21 - December 5",
   "icons": [
     {

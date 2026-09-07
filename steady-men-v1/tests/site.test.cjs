@@ -15,7 +15,7 @@ vm.runInContext(fs.readFileSync(path.join(root, 'js/study-data.js'), 'utf8'), co
 const app = fs.readFileSync(path.join(root, 'js/app.js'), 'utf8');
 // Exercise the production functions without starting browser rendering.
 vm.runInContext(app.replace("document.addEventListener('DOMContentLoaded', init);", `
-  globalThis.api = { bibleUrl, whatsappText, readingLinkText, scheduleState, nextStudyNight, toSiteKey, renderStudyNightNote };
+  globalThis.api = { bibleUrl, whatsappText, readingLinkText, scheduleState, nextStudyNight, toSiteKey, renderStudyNightNote, getPreviewKey };
 `), context);
 const config = vm.runInContext('STUDY_CONFIG', context);
 const readings = vm.runInContext('READING_PLAN', context);
@@ -121,6 +121,17 @@ test('pre-start, open Sunday, section changes, final reading, and post-plan prev
     assert.equal(state.mode, mode);
     assert.equal(state.reading.scripture, scripture);
   }
+});
+
+test('preview dates reject impossible calendar days without crashing the reader', () => {
+  for (const date of ['2026-02-30', '2026-13-01', '2026-09-00', 'invalid', '']) {
+    context.window.location.search = `?preview=${date}`;
+    assert.equal(api.getPreviewKey(), null);
+    assert.doesNotThrow(() => api.scheduleState());
+  }
+  context.window.location.search = '?preview=2026-10-06&day=2026-09-21';
+  assert.equal(api.getPreviewKey(), '2026-10-06');
+  assert.equal(api.scheduleState().reading.date, '2026-10-06', 'browsing must not change today');
 });
 
 test('Toronto midnight and daylight saving boundaries are independent of device timezone', () => {
